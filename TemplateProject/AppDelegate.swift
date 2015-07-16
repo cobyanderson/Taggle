@@ -11,6 +11,8 @@ import UIKit
 import Fabric
 import Crashlytics
 import Parse
+import Bond
+
 
 
 @UIApplicationMain
