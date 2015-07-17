@@ -8,7 +8,7 @@
 
 import UIKit
 
-class newGameViewController: UIViewController, UITableViewDataSource, UITableViewDelegate  {
+class newGameViewController: UIViewController, UITableViewDataSource, UITableViewDelegate   {
     
     
     @IBOutlet weak var newGameTableView: UITableView!
@@ -18,12 +18,16 @@ class newGameViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     var friendNames: [String] = ["Eugene","Meilun","Navin","Guilherme","Tanna"]
+    
+    var selectedRow: Int = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-      //  self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
-        newGameTableView.dataSource = self
+        
+        
+    //tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
+    newGameTableView.dataSource = self
 
         // Do any additional setup after loading the view.
     }
@@ -43,7 +47,31 @@ class newGameViewController: UIViewController, UITableViewDataSource, UITableVie
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 50
     }
-   
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        println(" the \(indexPath.row) was selected")
+        
+// Uncommented will allow
+//        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+//        self.selectedRow = indexPath.row
+//        
+//        let cell = tableView.cellForRowAtIndexPath(indexPath)
+//        toggleCell(cell!)
+        
+        
+        
+
+    }
+    // turns checks on and off
+    func toggleCell(cell: UITableViewCell) {
+        if cell.accessoryType == UITableViewCellAccessoryType.Checkmark {
+            cell.accessoryType = UITableViewCellAccessoryType.None
+        } else {
+            cell.accessoryType = UITableViewCellAccessoryType.Checkmark
+        }
+    }
+
+
+
 
     /*
     // MARK: - Navigation

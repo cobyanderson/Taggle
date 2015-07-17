@@ -9,6 +9,11 @@
 import UIKit
 
 class AddFriendsViewController: UIViewController {
+    
+    
+    @IBAction func cancelButtonPressed(sender: AnyObject) {
+        dismissViewControllerAnimated(true, completion: nil)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()

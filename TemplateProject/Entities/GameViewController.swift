@@ -10,6 +10,16 @@ import UIKit
 
 class GameViewController: UIViewController {
 
+    @IBAction func quitGame(sender: AnyObject) {
+            let alert = UIAlertController(title: "Quit Game", message: "Do you really want to be a jerk?", preferredStyle: UIAlertControllerStyle.Alert)
+            let noAction = UIAlertAction(title: "Yes I do, Quit.", style: UIAlertActionStyle.Default) { (UIAlertAction) -> Void in }
+            let yesAction = UIAlertAction(title: "Nah, keep playing.", style: UIAlertActionStyle.Default) { (UIAlertAction) -> Void in }
+            alert.addAction(noAction)
+            alert.addAction(yesAction)
+            presentViewController(alert, animated: true) { () -> Void in }
+            
+        
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
 

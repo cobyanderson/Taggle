@@ -13,10 +13,12 @@ class mainTableViewController: UITableViewController, UITableViewDelegate, UITab
 
     @IBOutlet var mainTableView: UITableView!
     
-    
-    
-    var playerNames: [String] = ["Joey","Felecia","Vikram"]
-    
+    var gamePlayerNames: [String] = [] {
+        didSet {
+            mainTableView.reloadData()
+        }
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -24,45 +26,48 @@ class mainTableViewController: UITableViewController, UITableViewDelegate, UITab
         self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
         mainTableView.dataSource = self
         
-        //testing Parse
-        let testObject = PFObject(className: "TestObject")
-        testObject["foo"] = "bar"
-        testObject.saveInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
-            println("Object has been saved.")
-        }
+        PFUser.logInWithUsername("Coby", password: "test")
+//        PFUser.logInWithUsernameInBackground("Coby", password: "test") { (<#PFUser?#>, <#NSError?#>) -> Void in
+//            <#code#>
+//        }
+       
+        
     }
+
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
-            return self.playerNames.count
-        } else {
-            return 1
+            if self.gamePlayerNames.count == 0 {
+                return 1
+            }
+            else {
+                return self.gamePlayerNames.count
+            }
+        }
+        else {
+            return 0
         }
     }
     
-//    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-//        if section == 0 {
-//            return "Mama"
-//        } else {
-//            return "Papa"
-//        }
-//    }
     
     override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let header = tableView.dequeueReusableCellWithIdentifier("Header Cell") as! headerViewCell
         switch section {
         case 0:
             header.headerTitle.text = "Current Games"
+            header.backgroundColor = UIColor(red: 34/255, green: 240/255, blue: 109/255, alpha: 1)
         case 1:
             header.headerTitle.text = "Pending Games"
+            header.backgroundColor = UIColor(red: 200/255, green: 250/255, blue: 90/255, alpha: 0.8)
         default:
             header.headerTitle.text = "Ended Games"
+            header.backgroundColor = UIColor(red: 220/255, green: 80/255, blue: 89/255, alpha: 1)
         }
         return header
     }
    
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 70
+        return 60
     }
     
     
@@ -72,10 +77,16 @@ class mainTableViewController: UITableViewController, UITableViewDelegate, UITab
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
         var cell:UITableViewCell = self.mainTableView.dequeueReusableCellWithIdentifier("gameCell") as! UITableViewCell
-        cell.textLabel?.text = self.playerNames[indexPath.row]
-        cell.textLabel!.font = UIFont(name: "STHeitiSC-Light", size: 20)
+        if self.gamePlayerNames.count == 0 {
+            cell.textLabel?.text = "No Games found!😭 Press + below!"
+            cell.textLabel?.textColor = UIColor(red: 1, green: 0, blue: 0, alpha: 1)
+        }
+        else {
+            cell.textLabel?.text = self.gamePlayerNames[indexPath.row]
+
+        }
+        cell.textLabel!.font = UIFont(name: "STHeitiSC-Light", size: 16)
 
         
         return cell
@@ -87,7 +98,12 @@ class mainTableViewController: UITableViewController, UITableViewDelegate, UITab
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         println("you selected the cell at \(indexPath.row)! and index \(indexPath.section)!")
+        self.performSegueWithIdentifier("segueToGame", sender: self)
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        
     }
+    
+    
 
 //        
 //        func mainTableView (tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -106,12 +122,17 @@ class mainTableViewController: UITableViewController, UITableViewDelegate, UITab
     
 
     //
-    override func viewWillAppear(animated: Bool) {
+    override func viewDidAppear(animated: Bool) {
         
-    //changes the title to an image in the navigation bar
+    //changes the title to an image in the navigation bar but image moves jankily when view pushes
         let image = UIImage(named: "Taggle")!
-        // or changes title: self.navigationItem.title = "random"
+//         or changes title: self.navigationItem.title = "random"
         self.navigationItem.titleView = UIImageView(image: image)
+        self.navigationItem.backBarButtonItem?.title = "    "
+        
+        
+        
+        
     }
 
   override func didReceiveMemoryWarning() {
