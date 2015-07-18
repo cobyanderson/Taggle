@@ -30,8 +30,19 @@ class mainTableViewController: UITableViewController, UITableViewDelegate, UITab
 //        PFUser.logInWithUsernameInBackground("Coby", password: "test") { (<#PFUser?#>, <#NSError?#>) -> Void in
 //            <#code#>
 //        }
-       
         
+        
+//        CreateNewGame(4, "Felecia", "Navin", "Meilun", { (success, error) -> Void in
+//            if error != nil {
+//                println("not saved")
+//                return
+//            }
+//            self.mainTableView.reloadData()
+//        })
+        GameQuery(3) { result in
+            self.gamePlayerNames.append(result)
+            
+        }
     }
 
     
@@ -84,9 +95,10 @@ class mainTableViewController: UITableViewController, UITableViewDelegate, UITab
         }
         else {
             cell.textLabel?.text = self.gamePlayerNames[indexPath.row]
+            cell.textLabel?.textColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
 
         }
-        cell.textLabel!.font = UIFont(name: "STHeitiSC-Light", size: 16)
+        cell.textLabel!.font = UIFont(name: "STHeitiSC-Medium", size: 16)
 
         
         return cell
