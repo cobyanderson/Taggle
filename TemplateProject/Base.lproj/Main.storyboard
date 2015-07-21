@@ -238,7 +238,7 @@
                                         <fontDescription key="fontDescription" name="STHeitiSC-Medium" family="Heiti SC" pointSize="18"/>
                                         <state key="normal" title="Change Password">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                            <color key="titleShadowColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                            <color key="titleShadowColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lkO-XS-1qO">
@@ -255,26 +255,26 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8ZB-IL-4WV">
                                         <rect key="frame" x="8" y="363" width="584" height="71"/>
-                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                        <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="71" id="Fn7-iJ-8cH"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="STHeitiSC-Medium" family="Heiti SC" pointSize="18"/>
                                         <state key="normal" title="Log Out">
                                             <color key="titleColor" red="1" green="0.0" blue="0.19576055710000001" alpha="1" colorSpace="calibratedRGB"/>
-                                            <color key="titleShadowColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                            <color key="titleShadowColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mej-yw-RIK">
                                         <rect key="frame" x="8" y="221" width="584" height="71"/>
-                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                        <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="71" id="dkP-Ie-c9W"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="STHeitiSC-Medium" family="Heiti SC" pointSize="18"/>
                                         <state key="normal" title="License">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                            <color key="titleShadowColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                            <color key="titleShadowColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8YK-47-bzE">
@@ -286,7 +286,7 @@
                                                     <constraint firstAttribute="height" id="800-iQ-bR5"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="STHeitiSC-Medium" family="Heiti SC" pointSize="30"/>
-                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                                 <variation key="default">
                                                     <mask key="constraints">
@@ -509,6 +509,9 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="p0g-nu-XAG"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="viewUsername" destination="7Ca-ga-9Bi" id="94N-25-Yr9"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hvo-1P-TuB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -526,42 +529,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add Friends" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Ie-Qb-y5J">
-                                <rect key="frame" x="249" y="30" width="103" height="18"/>
-                                <fontDescription key="fontDescription" name="STHeitiSC-Medium" family="Heiti SC" pointSize="18"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsMultipleSelection="YES" rowHeight="89" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Siv-5g-xaE">
-                                <rect key="frame" x="0.0" y="69" width="600" height="556"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="separatorColor" red="1" green="0.2570281365" blue="0.3796108346" alpha="1" colorSpace="calibratedRGB"/>
-                                <prototypes>
-                                    <tableViewCell clearsContextBeforeDrawing="NO" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" shouldIndentWhileEditing="NO" reuseIdentifier="friendCell" rowHeight="60" id="AfM-nn-Vp7">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="AfM-nn-Vp7" id="OsA-MN-HMd">
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <view userInteractionEnabled="NO" tag="-1" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7Ob-jP-d85">
-                                                    <rect key="frame" x="0.0" y="86" width="600" height="2"/>
-                                                    <color key="backgroundColor" red="1" green="0.2570281365" blue="0.3796108346" alpha="1" colorSpace="calibratedRGB"/>
-                                                </view>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="bottom" secondItem="7Ob-jP-d85" secondAttribute="bottom" id="bYD-lx-cjR"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
-                            </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gTr-ze-75x">
-                                <rect key="frame" x="519" y="24" width="65" height="30"/>
-                                <fontDescription key="fontDescription" name="STHeitiSC-Medium" family="Heiti SC" pointSize="18"/>
-                                <state key="normal" title="Add">
-                                    <color key="titleColor" red="0.15294118230000001" green="0.77254909279999995" blue="0.85098046059999999" alpha="1" colorSpace="deviceRGB"/>
-                                    <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eof-M6-8BO">
                                 <rect key="frame" x="11" y="24" width="65" height="30"/>
                                 <fontDescription key="fontDescription" name="STHeitiSC-Medium" family="Heiti SC" pointSize="18"/>
@@ -573,22 +540,109 @@
                                     <action selector="cancelButtonPressed:" destination="OAV-iF-GRa" eventType="touchUpInside" id="hLZ-n5-82A"/>
                                 </connections>
                             </button>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="IEq-T0-y5l">
+                                <rect key="frame" x="0.0" y="69" width="600" height="44"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="OAV-iF-GRa" id="TyP-dM-yLc"/>
+                                </connections>
+                            </searchBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="50" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Siv-5g-xaE">
+                                <rect key="frame" x="0.0" y="113" width="600" height="512"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="separatorColor" red="0.15294118230000001" green="0.77254909279999995" blue="0.85098046059999999" alpha="1" colorSpace="deviceRGB"/>
+                                <prototypes>
+                                    <tableViewCell clearsContextBeforeDrawing="NO" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" shouldIndentWhileEditing="NO" reuseIdentifier="userCell" rowHeight="50" id="AfM-nn-Vp7" customClass="AddFriendsTableViewCell" customModule="Taggle" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="AfM-nn-Vp7" id="OsA-MN-HMd">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dTL-u5-jav">
+                                                    <rect key="frame" x="553" y="4" width="41" height="41"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="41" id="1A4-vM-cTI"/>
+                                                        <constraint firstAttribute="width" constant="41" id="G0g-YF-ZcD"/>
+                                                        <constraint firstAttribute="height" constant="41" id="jOp-kZ-oYK"/>
+                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="41" id="kfS-eK-Fj8"/>
+                                                    </constraints>
+                                                    <color key="tintColor" red="0.0" green="1" blue="0.50196081399917603" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <state key="normal" image="Add">
+                                                        <color key="titleColor" red="0.15294118230000001" green="0.77254909279999995" blue="0.85098046059999999" alpha="1" colorSpace="deviceRGB"/>
+                                                    </state>
+                                                    <state key="selected" image="facetag_checkmark"/>
+                                                    <variation key="default">
+                                                        <mask key="constraints">
+                                                            <exclude reference="1A4-vM-cTI"/>
+                                                            <exclude reference="kfS-eK-Fj8"/>
+                                                        </mask>
+                                                    </variation>
+                                                    <connections>
+                                                        <action selector="addButtonPressed:" destination="AfM-nn-Vp7" eventType="touchUpInside" id="Qkp-BZ-PVb"/>
+                                                    </connections>
+                                                </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XSE-yE-A6b">
+                                                    <rect key="frame" x="8" y="14" width="530" height="21"/>
+                                                    <fontDescription key="fontDescription" name="STHeitiSC-Medium" family="Heiti SC" pointSize="18"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="XSE-yE-A6b" firstAttribute="centerY" secondItem="dTL-u5-jav" secondAttribute="centerY" id="Aoo-TG-3Fs"/>
+                                                <constraint firstAttribute="trailing" secondItem="dTL-u5-jav" secondAttribute="trailing" constant="6" id="BKs-QV-AtX"/>
+                                                <constraint firstItem="XSE-yE-A6b" firstAttribute="top" secondItem="OsA-MN-HMd" secondAttribute="topMargin" constant="6" id="H3I-FK-VKp"/>
+                                                <constraint firstItem="dTL-u5-jav" firstAttribute="leading" secondItem="XSE-yE-A6b" secondAttribute="trailing" constant="15" id="Uy9-H4-zH5"/>
+                                                <constraint firstAttribute="bottom" secondItem="dTL-u5-jav" secondAttribute="bottom" constant="4.5" id="XXS-Fa-W7R"/>
+                                                <constraint firstItem="XSE-yE-A6b" firstAttribute="centerY" secondItem="OsA-MN-HMd" secondAttribute="centerY" id="Yvp-zp-D9u"/>
+                                                <constraint firstItem="dTL-u5-jav" firstAttribute="top" secondItem="OsA-MN-HMd" secondAttribute="top" constant="4" id="pYJ-ey-6is"/>
+                                                <constraint firstItem="XSE-yE-A6b" firstAttribute="leading" secondItem="OsA-MN-HMd" secondAttribute="leadingMargin" id="wPU-KN-Cf4"/>
+                                            </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="Aoo-TG-3Fs"/>
+                                                </mask>
+                                            </variation>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="addButton" destination="dTL-u5-jav" id="hWv-Ve-wBc"/>
+                                            <outlet property="usernameLabel" destination="XSE-yE-A6b" id="IiF-vR-y55"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <sections/>
+                                <connections>
+                                    <outlet property="dataSource" destination="OAV-iF-GRa" id="Fkq-3Z-dfz"/>
+                                </connections>
+                            </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Edit Friends" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Ie-Qb-y5J">
+                                <rect key="frame" x="245" y="30" width="110" height="18"/>
+                                <fontDescription key="fontDescription" name="STHeitiSC-Medium" family="Heiti SC" pointSize="18"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="1" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="8Ie-Qb-y5J" firstAttribute="top" secondItem="CBd-Z8-xFS" secondAttribute="bottom" constant="10" id="0ul-14-Foj"/>
-                            <constraint firstItem="Siv-5g-xaE" firstAttribute="top" secondItem="CBd-Z8-xFS" secondAttribute="bottom" constant="49" id="2LT-Zi-gjR"/>
+                            <constraint firstItem="Siv-5g-xaE" firstAttribute="top" secondItem="CBd-Z8-xFS" secondAttribute="bottom" constant="93" id="2LT-Zi-gjR"/>
                             <constraint firstItem="eof-M6-8BO" firstAttribute="leading" secondItem="ctE-6S-vlD" secondAttribute="leadingMargin" constant="-5" id="BcS-te-rBm"/>
+                            <constraint firstItem="IEq-T0-y5l" firstAttribute="bottom" secondItem="Siv-5g-xaE" secondAttribute="top" id="Enz-2F-wCS"/>
                             <constraint firstAttribute="bottom" secondItem="Siv-5g-xaE" secondAttribute="bottom" constant="-25" id="HxO-F4-vVZ"/>
                             <constraint firstItem="Siv-5g-xaE" firstAttribute="leading" secondItem="ctE-6S-vlD" secondAttribute="leading" id="IfU-N5-Z4b"/>
                             <constraint firstAttribute="centerX" secondItem="8Ie-Qb-y5J" secondAttribute="centerX" id="RHs-Ey-Byo"/>
+                            <constraint firstItem="IEq-T0-y5l" firstAttribute="trailing" secondItem="Siv-5g-xaE" secondAttribute="trailing" id="RRU-6Q-XlL"/>
                             <constraint firstItem="eof-M6-8BO" firstAttribute="top" secondItem="ctE-6S-vlD" secondAttribute="topMargin" constant="25" id="WGy-46-kSA"/>
                             <constraint firstAttribute="trailing" secondItem="Siv-5g-xaE" secondAttribute="trailing" id="e9C-Sx-62w"/>
+                            <constraint firstItem="IEq-T0-y5l" firstAttribute="leading" secondItem="Siv-5g-xaE" secondAttribute="leading" id="mLt-Sq-jLs"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="rwk-yt-kUa"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="addFriendsTableView" destination="Siv-5g-xaE" id="sSL-Y4-tmY"/>
+                        <outlet property="friendSearchBar" destination="IEq-T0-y5l" id="9Cq-AK-X0u"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NRg-YQ-b8F" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -621,7 +675,9 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Add" width="64" height="64"/>
         <image name="AddFriends" width="64" height="64"/>
         <image name="Settings" width="64" height="64"/>
+        <image name="facetag_checkmark" width="59" height="59"/>
     </resources>
 </document>

@@ -25,33 +25,54 @@ class ParseHelper {
     static func getFriendedUsersForUser(user: PFUser, completionBlock: PFArrayResultBlock) {
         let query = PFQuery(className: ParseFriendClass)
         
-        query.whereKey(ParseFriendFromUser, equalTo:user)
+        query.whereKey(ParseFriendFromUser, equalTo: user)
         query.findObjectsInBackgroundWithBlock(completionBlock)
     }
     
     // establishes a one way friend relationship from one user to another
     // parameters: user - the one friending, toUser- the one being friended
     static func addFriendRelationshipFromUser(user: PFUser, toUser: PFUser) {
-        let followObject = PFObject(className: ParseFriendClass)
-        followObject.setObject(user, forKey: ParseFriendFromUser)
-        followObject.setObject(toUser, forKey: ParseFriendtoUser)
+        let friendObject = PFObject(className: ParseFriendClass)
+        let query = PFQuery(className: ParseFriendClass)
+        query.whereKey(ParseFriendtoUser, equalTo: user)
+        query.whereKey(ParseFriendFromUser, equalTo: toUser)
+        // SHOULD THIS EVER CHECK TO MAKE SURE "ACCEPTED" = FALSE?
+        query.findObjectsInBackgroundWithBlock {
+            (results: [AnyObject]?, error: NSError?) -> Void in
+            let results = results as? [PFObject] ?? []
+            if results.isEmpty == true {
+                friendObject.setObject(false, forKey: "accepted")
+                let query = PFQuery(className: self.ParseFriendClass)
+                
+            }
+            else {
+                friendObject.setObject(true, forKey: "accepted")
+                let result = results[0]
+                result.setValue(true, forKey: "accepted")
+                result.saveInBackground()
+                
+            }
+            friendObject.setObject(user, forKey: self.ParseFriendFromUser)
+            friendObject.setObject(toUser, forKey: self.ParseFriendtoUser)
+            friendObject.saveInBackgroundWithBlock(nil)
+        }
         
-        followObject.saveInBackgroundWithBlock(nil)
+        
     }
     // deletes the one-way relationship of friends
     // parameters: user - the user that started the friend relationship, toUser -that user's friend
     static func removeFriendRelationshipFromUser(user: PFUser, toUser: PFUser) {
         let query = PFQuery(className: ParseFriendClass)
-        query.whereKey(ParseFriendFromUser, equalTo:user)
+        query.whereKey(ParseFriendFromUser, equalTo: user)
         query.whereKey(ParseFriendtoUser, equalTo: toUser)
         
         query.findObjectsInBackgroundWithBlock {
             (results: [AnyObject]?, error: NSError?) -> Void in
             
             let results = results as? [PFObject] ?? []
-            
-            for follow in results {
-                follow.deleteInBackgroundWithBlock(nil)
+
+            for friendRelationship in results {
+                friendRelationship.deleteInBackgroundWithBlock(nil)
             }
         }
     }
@@ -61,14 +82,14 @@ class ParseHelper {
     // SHOULD REPLACE WITH FRIEND REQUEST FUNCTION LATER!
     static func allUsers(completionBlock: PFArrayResultBlock) -> PFQuery {
         let query = PFUser.query()!
-        // exclude the current user
-        query.whereKey(ParseHelper.ParseUserUsername,
-            notEqualTo: PFUser.currentUser()!.username!)
-        query.orderByAscending(ParseHelper.ParseUserUsername)
+    
+        query.whereKey(ParseHelper.ParseFriendtoUser, equalTo: PFUser.currentUser()!.objectId!)
+        query.whereKey("accepted", equalTo: false)
+        
         query.limit = 20
         
         query.findObjectsInBackgroundWithBlock(completionBlock)
-        
+        println(query)
         return query
     }
     // fetches users that match the search

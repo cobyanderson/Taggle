@@ -26,7 +26,7 @@ class mainTableViewController: UITableViewController, UITableViewDelegate, UITab
         self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
         mainTableView.dataSource = self
         
-        PFUser.logInWithUsername("Coby", password: "test")
+        PFUser.logInWithUsername("Felecia", password: "test")
 //        PFUser.logInWithUsernameInBackground("Coby", password: "test") { (<#PFUser?#>, <#NSError?#>) -> Void in
 //            <#code#>
 //        }

@@ -26,7 +26,7 @@ class newGameViewController: UIViewController, UITableViewDataSource, UITableVie
         
         
         
-    //tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
+
     newGameTableView.dataSource = self
 
         // Do any additional setup after loading the view.

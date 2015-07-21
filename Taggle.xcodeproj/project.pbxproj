@@ -16,6 +16,8 @@
 		491177041B57017300665F1E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 491177021B57017300665F1E /* Main.storyboard */; };
 		491177081B57121300665F1E /* PhotoTakingHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491177071B57121300665F1E /* PhotoTakingHelper.swift */; };
 		4911770A1B572B6100665F1E /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491177091B572B6100665F1E /* GameViewController.swift */; };
+		499419F81B5D78CF004F4760 /* AddFriendsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499419F71B5D78CF004F4760 /* AddFriendsTableViewCell.swift */; };
+		49941A041B5DC3F2004F4760 /* ParseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49941A031B5DC3F2004F4760 /* ParseHelper.swift */; };
 		49D232B61B599E6E003EA8C3 /* GameLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D232B51B599E6E003EA8C3 /* GameLogic.swift */; };
 		49F216301B5440D600D7872C /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49F2162E1B5440D600D7872C /* Fabric.framework */; };
 		49F216311B5440D600D7872C /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49F2162F1B5440D600D7872C /* Crashlytics.framework */; };
@@ -147,6 +149,8 @@
 		491177031B57017300665F1E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		491177071B57121300665F1E /* PhotoTakingHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoTakingHelper.swift; sourceTree = "<group>"; };
 		491177091B572B6100665F1E /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameViewController.swift; path = Entities/GameViewController.swift; sourceTree = "<group>"; };
+		499419F71B5D78CF004F4760 /* AddFriendsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddFriendsTableViewCell.swift; sourceTree = "<group>"; };
+		49941A031B5DC3F2004F4760 /* ParseHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseHelper.swift; sourceTree = "<group>"; };
 		49D232B51B599E6E003EA8C3 /* GameLogic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameLogic.swift; path = Entities/GameLogic.swift; sourceTree = "<group>"; };
 		49F2162E1B5440D600D7872C /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Fabric.framework; path = TemplateProject/Fabric.framework; sourceTree = "<group>"; };
 		49F2162F1B5440D600D7872C /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Crashlytics.framework; path = TemplateProject/Crashlytics.framework; sourceTree = "<group>"; };
@@ -219,6 +223,7 @@
 				491176F61B55C55000665F1E /* headerViewCell.swift */,
 				491176FC1B55C7B800665F1E /* mainGameTableViewCell.swift */,
 				491176F81B55C55000665F1E /* newGameTableViewController.swift */,
+				499419F71B5D78CF004F4760 /* AddFriendsTableViewCell.swift */,
 			);
 			path = "Cell View Controllers";
 			sourceTree = "<group>";
@@ -256,10 +261,11 @@
 		624262B71B4460CB00005CE3 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				49941A031B5DC3F2004F4760 /* ParseHelper.swift */,
 				624262B81B4460CB00005CE3 /* ErrorHandling.swift */,
 				624262B91B4460CB00005CE3 /* ParseLoginHelper.swift */,
-				49F216411B54CFA900D7872C /* STHeitiLight.ttc */,
 				491177071B57121300665F1E /* PhotoTakingHelper.swift */,
+				49F216411B54CFA900D7872C /* STHeitiLight.ttc */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -504,8 +510,10 @@
 				491177011B56EA0800665F1E /* AddFriendsViewController.swift in Sources */,
 				624262C71B4460CB00005CE3 /* mainTableViewController.swift in Sources */,
 				49D232B61B599E6E003EA8C3 /* GameLogic.swift in Sources */,
+				499419F81B5D78CF004F4760 /* AddFriendsTableViewCell.swift in Sources */,
 				624262C31B4460CB00005CE3 /* ErrorHandling.swift in Sources */,
 				491176FF1B561DFA00665F1E /* SettingsViewController.swift in Sources */,
+				49941A041B5DC3F2004F4760 /* ParseHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
