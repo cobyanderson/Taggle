@@ -22,6 +22,12 @@ class AddFriendsTableViewCell: UITableViewCell {
     @IBOutlet weak var usernameLabel: UILabel!
     weak var delegate: AddFriendsTableViewCellDelegate?
     
+    func checkmarkButton() {
+        let image = UIImage(named: "facetag_checkmark")
+       // addButton = UIButton.buttonWithType(UIButtonType.Custom) as! UIButton
+        addButton.setImage(image, forState: .Normal)
+    }
+    
     var user: PFUser? = nil {
         didSet {
             if let user = user {
@@ -29,15 +35,30 @@ class AddFriendsTableViewCell: UITableViewCell {
             }
         }
     }
-    var canFollow: Bool? = true {
+    // 0 = yes/true, 1 = false, 2 = confirmed
+    var canFollow: Int? = 0 {
         didSet {
             /*
             Change the state of the follow button based on whether or not
             it is possible to follow a user.
             */
             if let canFollow = canFollow {
-                addButton.selected = !canFollow
-                
+                if canFollow == 1 {
+                    //addButton.selected = true
+                    let image = UIImage(named: "Settings")
+                    addButton.setImage(image, forState: .Normal)
+                }
+                if canFollow == 0 {
+                   // addButton.selected = false
+                    let image = UIImage(named: "Add")
+                    addButton.setImage(image, forState: .Normal)
+                }
+                if canFollow == 2 {
+                    //addButton.selected = true
+                    let image = UIImage(named: "facetag_checkmark")
+                    addButton.setImage(image, forState: .Normal)
+                }
+                    
             }
         }
     }
@@ -45,13 +66,14 @@ class AddFriendsTableViewCell: UITableViewCell {
     
     
     @IBAction func addButtonPressed(sender: AnyObject) {
-        if let canFollow = canFollow where canFollow == true {
+        if let canFollow = canFollow where canFollow == 0 {
             delegate?.cell(self, didSelectFriendUser: user!)
-            self.canFollow = false
+            self.canFollow = 1
+           
         }
         else {
             delegate?.cell(self, didSelectUnFriendUser: user!)
-            self.canFollow = true
+            self.canFollow = 0
         }
     }
 }

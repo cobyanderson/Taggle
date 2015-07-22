@@ -570,7 +570,7 @@
                                                     <state key="normal" image="Add">
                                                         <color key="titleColor" red="0.15294118230000001" green="0.77254909279999995" blue="0.85098046059999999" alpha="1" colorSpace="deviceRGB"/>
                                                     </state>
-                                                    <state key="selected" image="facetag_checkmark"/>
+                                                    <state key="selected" image="Settings"/>
                                                     <variation key="default">
                                                         <mask key="constraints">
                                                             <exclude reference="1A4-vM-cTI"/>
@@ -678,6 +678,5 @@
         <image name="Add" width="64" height="64"/>
         <image name="AddFriends" width="64" height="64"/>
         <image name="Settings" width="64" height="64"/>
-        <image name="facetag_checkmark" width="59" height="59"/>
     </resources>
 </document>

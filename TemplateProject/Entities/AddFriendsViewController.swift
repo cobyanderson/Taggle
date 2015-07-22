@@ -27,7 +27,7 @@ class AddFriendsViewController: UIViewController {
     It is used to update the UI immediately upon user interaction, instead of waiting
     for a server response.
     */
-    var friendedUsers: [PFUser]? {
+    var followedUsers: [PFUser]? = [] {
         didSet {
             /**
             the list of following users may be fetched after the tableView has displayed
@@ -36,6 +36,13 @@ class AddFriendsViewController: UIViewController {
             addFriendsTableView.reloadData()
         }
     }
+    
+    var friendedUsers: [PFUser]? = [] {
+        didSet{
+            addFriendsTableView.reloadData()
+        }
+    }
+    
     // the current parse query
     var query: PFQuery? {
         didSet {
@@ -83,11 +90,11 @@ class AddFriendsViewController: UIViewController {
         state = .DefaultMode
         
         // fill the cache of a user's followees
-        ParseHelper.getFriendedUsersForUser(PFUser.currentUser()!) {
+        ParseHelper.getFollowedUsersForUser(PFUser.currentUser()!) {
             (results: [AnyObject]?, error: NSError?) -> Void in
             let relations = results as? [PFObject] ?? []
             // use map to extract the User from a Follow object
-            self.friendedUsers = relations.map {
+            self.followedUsers = relations.map {
                 $0.objectForKey(ParseHelper.ParseFriendtoUser) as! PFUser
             }
             
@@ -130,11 +137,35 @@ extension AddFriendsViewController: UITableViewDataSource {
         let user = users![indexPath.row]
         cell.user = user
         
-        if let friendedUsers = friendedUsers {
+        if let followedUsers = followedUsers {
             // check if current user is already following displayed user
             // change button appereance based on result
-            cell.canFollow = !contains(friendedUsers, user)
+                if contains(followedUsers, user) == true {
+                    cell.canFollow = 1
+                }
+                if contains(followedUsers, user) == false{
+                    cell.canFollow = 0
+                }
         }
+        if let friendedUsers = friendedUsers {
+            if contains(friendedUsers, user) == true {
+                cell.canFollow = 2
+            }
+        }
+        let query = PFQuery(className: "Friend")
+        query.whereKey("toUser", equalTo: PFUser.currentUser()!)
+        query.whereKey("fromUser", equalTo: user)
+        query.whereKey("accepted", equalTo: true)
+        query.findObjectsInBackgroundWithBlock {
+            (results: [AnyObject]?, error: NSError?) -> Void in
+            let results = results as? [PFObject] ?? []
+            if results.isEmpty == false {
+                cell.canFollow = 2
+            }
+        }
+    
+
+    
         cell.delegate = self
         
         return cell
@@ -168,16 +199,30 @@ extension AddFriendsViewController: AddFriendsTableViewCellDelegate {
     
     func cell(cell: AddFriendsTableViewCell, didSelectFriendUser user: PFUser) {
         ParseHelper.addFriendRelationshipFromUser(PFUser.currentUser()!, toUser: user)
-        // update local cache
-        friendedUsers?.append(user)
+        // update local cache of followed users
+        self.followedUsers?.append(user)
+        
+        // only updates local cache of friended users if the friendship goes both ways
+        let query = PFQuery(className: "Friend")
+        query.whereKey("toUser", equalTo: PFUser.currentUser()!)
+        query.whereKey("fromUser", equalTo: user)
+        query.findObjectsInBackgroundWithBlock {
+            (results: [AnyObject]?, error: NSError?) -> Void in
+            let results = results as? [PFObject] ?? []
+            if results.isEmpty == false {
+                self.friendedUsers?.append(user)
+                self.addFriendsTableView.reloadData()
+            }
+        }
+        
     }
     
     func cell(cell: AddFriendsTableViewCell, didSelectUnFriendUser user: PFUser) {
-        if var friendedUsers = friendedUsers {
+        if var followedUsers = followedUsers {
             ParseHelper.removeFriendRelationshipFromUser(PFUser.currentUser()!, toUser: user)
             // update local cache
-            removeObject(user, fromArray: &friendedUsers)
-            self.friendedUsers = friendedUsers
+            removeObject(user, fromArray: &followedUsers)
+            self.followedUsers = followedUsers
         }
     }
     
