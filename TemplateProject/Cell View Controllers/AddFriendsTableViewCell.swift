@@ -17,7 +17,11 @@ protocol AddFriendsTableViewCellDelegate: class {
 
 
 class AddFriendsTableViewCell: UITableViewCell {
-
+    
+    //creates an instance of AddFriendsViewController
+    weak var addFriendsViewController: AddFriendsViewController?
+    
+    
     @IBOutlet weak var addButton: UIButton!
     @IBOutlet weak var usernameLabel: UILabel!
     weak var delegate: AddFriendsTableViewCellDelegate?
@@ -44,18 +48,18 @@ class AddFriendsTableViewCell: UITableViewCell {
             */
             if let canFollow = canFollow {
                 if canFollow == 1 {
-                    //addButton.selected = true
-                    let image = UIImage(named: "Settings")
+                    
+                    let image = UIImage(named: "Request")
                     addButton.setImage(image, forState: .Normal)
                 }
                 if canFollow == 0 {
-                   // addButton.selected = false
-                    let image = UIImage(named: "Add")
+                  
+                    let image = UIImage(named: "Plus")
                     addButton.setImage(image, forState: .Normal)
                 }
                 if canFollow == 2 {
-                    //addButton.selected = true
-                    let image = UIImage(named: "facetag_checkmark")
+                   
+                    let image = UIImage(named: "Checkmark")
                     addButton.setImage(image, forState: .Normal)
                 }
                     
@@ -72,8 +76,26 @@ class AddFriendsTableViewCell: UITableViewCell {
            
         }
         else {
-            delegate?.cell(self, didSelectUnFriendUser: user!)
-            self.canFollow = 0
+            var messageTitle = "Remove Friend?"
+            var messageMessage = "You will no longer be able to start games with your friend or see their stats."
+            if canFollow == 1 {
+                messageTitle = "Delete Friend Request?"
+                messageMessage = "Stop your request from being accepted by your Friend."
+            }
+            let alert = UIAlertController(title: messageTitle, message: messageMessage, preferredStyle: UIAlertControllerStyle.Alert)
+            let noAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Default) { (UIAlertAction) -> Void in }
+            let yesAction = UIAlertAction(title: "Confirm", style: UIAlertActionStyle.Default) { (UIAlertAction) -> Void in
+                self.delegate?.cell(self, didSelectUnFriendUser: self.user!)
+                self.canFollow = 0
+                
+            }
+            
+            alert.addAction(noAction)
+            alert.addAction(yesAction)
+            //uses an instance of AddFriendsViewController
+            self.addFriendsViewController?.presentViewController(alert, animated: true) { () -> Void in }
+
+           
         }
     }
 }

@@ -7,9 +7,19 @@
 //
 import Parse
 import UIKit
+import ParseUI
+import FBSDKCoreKit
 
-class SettingsViewController: UIViewController {
+class SettingsViewController: UIViewController, PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate {
     
+    
+    
+    @IBAction func logoutButtonPressed(sender: AnyObject) {
+        PFUser.logOutInBackgroundWithBlock { (NSError) -> Void in
+        let delegate = UIApplication.sharedApplication().delegate as! AppDelegate
+            delegate.presentLogInView()
+        }
+    }
     @IBOutlet var viewUsername: UILabel!
     
     @IBAction func cancelButtonPressed(sender: AnyObject) {
@@ -32,17 +42,7 @@ class SettingsViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
+

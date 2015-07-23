@@ -10,6 +10,12 @@ import UIKit
 import Parse
 import ConvenienceKit
 
+class Friend: PFUser {
+    weak var fromUser: PFUser!
+    weak var toUser: PFUser!
+    var accepted: Bool = false
+}
+
 
 class AddFriendsViewController: UIViewController {
     
@@ -19,8 +25,9 @@ class AddFriendsViewController: UIViewController {
     @IBOutlet weak var addFriendsTableView: UITableView!
     
     
+    
     // stores all the users that match the current search query
-    var users: [PFUser]?
+    var users: [PFUser]!
     
     /*
     This is a local cache. It stores all the users this user is following.
@@ -61,11 +68,11 @@ class AddFriendsViewController: UIViewController {
         didSet {
             switch (state) {
             case .DefaultMode:
-                query = ParseHelper.allUsers(updateList)
+                query = ParseHelper.allUsers(defaultUpdateList)
                 
             case .SearchMode:
                 let searchText = friendSearchBar?.text ?? ""
-                query = ParseHelper.searchUsers(searchText, completionBlock:updateList)
+                query = ParseHelper.searchUsers(searchText, completionBlock:searchUpdateList)
             }
         }
     }
@@ -74,7 +81,22 @@ class AddFriendsViewController: UIViewController {
     Is called as the completion block of all queries.
     As soon as a query completes, this method updates the Table View.
     */
-    func updateList(results: [AnyObject]?, error: NSError?) {
+    func defaultUpdateList(results: [AnyObject]?, error: NSError?) {
+        
+        var friends = results as? [PFObject] ?? []
+        
+        self.users = friends.map({ (friend) -> PFUser in
+            return friend["fromUser"] as! PFUser
+        })
+        
+        self.addFriendsTableView.reloadData()
+        
+        if let error = error {
+            
+            ErrorHandling.defaultErrorHandler(error)
+        }
+    }
+    func searchUpdateList(results: [AnyObject]?, error: NSError?) {
         self.users = results as? [PFUser] ?? []
         self.addFriendsTableView.reloadData()
         
@@ -150,6 +172,7 @@ extension AddFriendsViewController: UITableViewDataSource {
         if let friendedUsers = friendedUsers {
             if contains(friendedUsers, user) == true {
                 cell.canFollow = 2
+                
             }
         }
         let query = PFQuery(className: "Friend")
@@ -161,12 +184,16 @@ extension AddFriendsViewController: UITableViewDataSource {
             let results = results as? [PFObject] ?? []
             if results.isEmpty == false {
                 cell.canFollow = 2
+                //makes sure the check is gone when the plus is!
+                self.addFriendsTableView.reloadData()
             }
         }
     
 
     
         cell.delegate = self
+        //lets the cell use an instance of AddFriendsViewController
+        cell.addFriendsViewController = self
         
         return cell
     }
@@ -188,7 +215,7 @@ extension AddFriendsViewController: UISearchBarDelegate {
     }
     
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
-        ParseHelper.searchUsers(searchText, completionBlock:updateList)
+        ParseHelper.searchUsers(searchText, completionBlock:searchUpdateList)
     }
    
     
@@ -199,6 +226,7 @@ extension AddFriendsViewController: AddFriendsTableViewCellDelegate {
     
     func cell(cell: AddFriendsTableViewCell, didSelectFriendUser user: PFUser) {
         ParseHelper.addFriendRelationshipFromUser(PFUser.currentUser()!, toUser: user)
+               
         // update local cache of followed users
         self.followedUsers?.append(user)
         
@@ -210,10 +238,11 @@ extension AddFriendsViewController: AddFriendsTableViewCellDelegate {
             (results: [AnyObject]?, error: NSError?) -> Void in
             let results = results as? [PFObject] ?? []
             if results.isEmpty == false {
-                self.friendedUsers?.append(user)
-                self.addFriendsTableView.reloadData()
+            self.friendedUsers?.append(user)
+            self.addFriendsTableView.reloadData()
             }
         }
+        
         
     }
     
@@ -224,6 +253,13 @@ extension AddFriendsViewController: AddFriendsTableViewCellDelegate {
             removeObject(user, fromArray: &followedUsers)
             self.followedUsers = followedUsers
         }
+        if var friendedUsers = friendedUsers {
+            // update other local cache
+            removeObject(user, fromArray: &friendedUsers)
+            self.friendedUsers = friendedUsers
+            self.addFriendsTableView.reloadData()
+        }
+     
     }
     
 }

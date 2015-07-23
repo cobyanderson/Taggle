@@ -88,23 +88,24 @@ class ParseHelper {
             for friendRelationship in results {
                 friendRelationship.deleteInBackgroundWithBlock(nil)
             }
+            
         }
     }
+
     // fetches all users less the current one, limits this to 20
     // parameters: completion block
     // returns: a query
     // SHOULD REPLACE WITH FRIEND REQUEST FUNCTION LATER!
     static func allUsers(completionBlock: PFArrayResultBlock) -> PFQuery {
-        let query = PFUser.query()!
+        let query = PFQuery(className: ParseFriendClass)
     
-        query.whereKey(ParseHelper.ParseFriendtoUser, equalTo: PFUser.currentUser()!.objectId!)
+        query.whereKey(ParseHelper.ParseFriendtoUser, equalTo: PFUser.currentUser()!)
         query.whereKey("accepted", equalTo: false)
-        
-        query.limit = 20
-        
+        query.includeKey("fromUser")
+       
         query.findObjectsInBackgroundWithBlock(completionBlock)
-        println(query)
-        return query
+
+        return query 
     }
     // fetches users that match the search
     // parameters: searchText - text that is used to search, completion block - called when completed
