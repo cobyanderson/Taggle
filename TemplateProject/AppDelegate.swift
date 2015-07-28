@@ -117,11 +117,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
   }
 func presentLogInView() {
+    //
     let loginViewController = PFLogInViewController()
     loginViewController.fields = .UsernameAndPassword | .LogInButton | .SignUpButton | .PasswordForgotten | .Facebook
     loginViewController.delegate = parseLoginHelper
     loginViewController.signUpController?.delegate = parseLoginHelper
     
+    var logoImage = UIImageView()
+    logoImage.image = UIImage(named: "TaggleBig")
+    logoImage.contentMode = UIViewContentMode.ScaleAspectFill
+    var otherImage = UIImageView()
+    otherImage.image = UIImage(named: "TaggleSurprised")
+    otherImage.contentMode = UIViewContentMode.ScaleAspectFill
+    
+    
+    loginViewController.logInView?.logo = logoImage
+    loginViewController.signUpController?.signUpView?.logo = otherImage
+    loginViewController.logInView?.backgroundColor = UIColor(red: 48/255, green: 178/255, blue: 200/255, alpha: 1)
+    loginViewController.logInView?.passwordForgottenButton?.backgroundColor = UIColor.whiteColor()
+    loginViewController.logInView?.tintColor = UIColor(red: 48/255, green: 178/255, blue: 200/255, alpha: 1)
+    loginViewController.signUpController?.signUpView?.backgroundColor =  UIColor(red: 48/255, green: 178/255, blue: 200/255, alpha: 1)
+  
     self.window?.rootViewController = loginViewController
-}
+    }
 }

@@ -69,7 +69,7 @@ class mainTableViewController: UITableViewController, UITableViewDelegate, UITab
             header.backgroundColor = UIColor(red: 34/255, green: 240/255, blue: 109/255, alpha: 1)
         case 1:
             header.headerTitle.text = "Pending Games"
-            header.backgroundColor = UIColor(red: 200/255, green: 250/255, blue: 90/255, alpha: 0.8)
+            header.backgroundColor = UIColor(red: 200/255, green: 255/255, blue: 90/255, alpha: 0.8)
         default:
             header.headerTitle.text = "Ended Games"
             header.backgroundColor = UIColor(red: 220/255, green: 80/255, blue: 89/255, alpha: 1)

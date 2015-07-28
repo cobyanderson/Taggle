@@ -7,28 +7,24 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
+            <rect key="frame" x="0.0" y="0.0" width="535" height="480"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TitleTaggle.png" translatesAutoresizingMaskIntoConstraints="NO" id="ehN-es-4U7">
-                    <rect key="frame" x="165.5" y="195" width="150" height="90"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="150" id="Wzb-HX-bdO"/>
-                        <constraint firstAttribute="height" constant="90" id="qbH-tX-xk0"/>
-                    </constraints>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="TaggleStack.png" translatesAutoresizingMaskIntoConstraints="NO" id="2pd-hD-UWU">
+                    <rect key="frame" x="132" y="0.0" width="271" height="480"/>
                 </imageView>
             </subviews>
             <color key="backgroundColor" red="0.98039215690000003" green="0.20784313730000001" blue="0.34901960780000002" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
-                <constraint firstAttribute="centerY" secondItem="ehN-es-4U7" secondAttribute="centerY" id="XAi-Ez-0g6"/>
-                <constraint firstAttribute="centerX" secondItem="ehN-es-4U7" secondAttribute="centerX" id="m3O-n1-6xz"/>
+                <constraint firstAttribute="centerX" secondItem="2pd-hD-UWU" secondAttribute="centerX" id="HYn-7d-Tnt"/>
+                <constraint firstAttribute="centerY" secondItem="2pd-hD-UWU" secondAttribute="centerY" id="m3W-kk-9am"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="548" y="455"/>
+            <point key="canvasLocation" x="575.5" y="455"/>
         </view>
     </objects>
     <resources>
-        <image name="TitleTaggle.png" width="371" height="200"/>
+        <image name="TaggleStack.png" width="375" height="667"/>
     </resources>
 </document>

@@ -21,7 +21,6 @@ class ParseLoginHelper : NSObject, NSObjectProtocol {
   static let errorDomain = "com.makeschool.parseloginhelpererrordomain"
   static let usernameNotFoundErrorCode = 1
   static let usernameNotFoundLocalizedDescription = "Could not retrieve Facebook username"
-
   let callback: ParseLoginHelperCallback
   
   init(callback: ParseLoginHelperCallback) {
@@ -29,13 +28,15 @@ class ParseLoginHelper : NSObject, NSObjectProtocol {
   }
 }
 
-extension ParseLoginHelper : PFLogInViewControllerDelegate {
+extension ParseLoginHelper : PFLogInViewControllerDelegate{
   
-  
+
+    
   func logInViewController(logInController: PFLogInViewController, didLogInUser user: PFUser) {
     // Determine if this is a Facebook login
+    
     let isFacebookLogin = FBSDKAccessToken.currentAccessToken() != nil
-
+    
     if !isFacebookLogin {
       // Plain parse login, we can return user immediately
       self.callback(user, nil)
