@@ -3,17 +3,17 @@
     {
       "idiom" : "universal",
       "scale" : "1x",
-      "filename" : "TaggleHappy.png"
+      "filename" : "TaggleHappySuperSmall.png"
     },
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "TaggleHappy-1.png"
+      "filename" : "TaggleHappySuperSmall-1.png"
     },
     {
       "idiom" : "universal",
       "scale" : "3x",
-      "filename" : "TaggleHappy-2.png"
+      "filename" : "TaggleHappySuperSmall-2.png"
     }
   ],
   "info" : {
