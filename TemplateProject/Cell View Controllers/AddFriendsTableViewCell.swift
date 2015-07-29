@@ -26,12 +26,6 @@ class AddFriendsTableViewCell: UITableViewCell {
     @IBOutlet weak var usernameLabel: UILabel!
     weak var delegate: AddFriendsTableViewCellDelegate?
     
-    func checkmarkButton() {
-        let image = UIImage(named: "facetag_checkmark")
-       // addButton = UIButton.buttonWithType(UIButtonType.Custom) as! UIButton
-        addButton.setImage(image, forState: .Normal)
-    }
-    
     var user: PFUser? = nil {
         didSet {
             if let user = user {

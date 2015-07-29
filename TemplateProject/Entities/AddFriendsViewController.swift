@@ -68,7 +68,7 @@ class AddFriendsViewController: UIViewController {
         didSet {
             switch (state) {
             case .DefaultMode:
-                query = ParseHelper.allUsers(defaultUpdateList)
+                query = ParseHelper.friendRequests(defaultUpdateList)
                 
             case .SearchMode:
                 let searchText = friendSearchBar?.text ?? ""
@@ -192,6 +192,7 @@ extension AddFriendsViewController: UITableViewDataSource {
 
     
         cell.delegate = self
+        
         //lets the cell use an instance of AddFriendsViewController
         cell.addFriendsViewController = self
         

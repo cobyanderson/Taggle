@@ -92,11 +92,11 @@ class ParseHelper {
         }
     }
 
-    // fetches all users less the current one, limits this to 20
+    // fetches friend requests for the current user, limits this to 20
     // parameters: completion block
     // returns: a query
     // SHOULD REPLACE WITH FRIEND REQUEST FUNCTION LATER!
-    static func allUsers(completionBlock: PFArrayResultBlock) -> PFQuery {
+    static func friendRequests(completionBlock: PFArrayResultBlock) -> PFQuery {
         let query = PFQuery(className: ParseFriendClass)
     
         query.whereKey(ParseHelper.ParseFriendtoUser, equalTo: PFUser.currentUser()!)
@@ -106,6 +106,18 @@ class ParseHelper {
         query.findObjectsInBackgroundWithBlock(completionBlock)
 
         return query 
+    }
+    
+    //fetches all friended users of the current user
+    static func getFriends(completionBlock:PFArrayResultBlock) -> PFQuery {
+        let query = PFQuery(className: ParseFriendClass)
+        query.whereKey(ParseHelper.ParseFriendFromUser, equalTo: PFUser.currentUser()!)
+        query.whereKey("accepted", equalTo: true)
+        query.includeKey("toUser")
+        query.orderByAscending(ParseHelper.ParseFriendtoUser)
+        query.findObjectsInBackgroundWithBlock(completionBlock)
+       
+        return query
     }
     // fetches users that match the search
     // parameters: searchText - text that is used to search, completion block - called when completed
@@ -128,6 +140,19 @@ class ParseHelper {
             query.findObjectsInBackgroundWithBlock(completionBlock)
             
             return query
+    }
+    static func searchFriendedUsers(searchText: String, completionBlock: PFArrayResultBlock) -> PFQuery {
+        let query = PFQuery(className: ParseFriendClass)
+        query.whereKey(ParseHelper.ParseFriendFromUser, equalTo: PFUser.currentUser()!)
+        query.includeKey("toUser")
+      //  query.whereKey(ParseHelper.ParseFriendtoUser, matchesRegex: searchText, modifiers: "i")
+    
+        query.whereKey("accepted", equalTo: true)
+       
+        
+        query.findObjectsInBackgroundWithBlock(completionBlock)
+        
+        return query
     }
     
 }

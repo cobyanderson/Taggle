@@ -16,9 +16,9 @@
 		491177041B57017300665F1E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 491177021B57017300665F1E /* Main.storyboard */; };
 		491177081B57121300665F1E /* PhotoTakingHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491177071B57121300665F1E /* PhotoTakingHelper.swift */; };
 		4911770A1B572B6100665F1E /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491177091B572B6100665F1E /* GameViewController.swift */; };
+		498577841B682EBA005DEB59 /* TaggleStack.png in Resources */ = {isa = PBXBuildFile; fileRef = 498577831B682EBA005DEB59 /* TaggleStack.png */; };
 		499419F81B5D78CF004F4760 /* AddFriendsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499419F71B5D78CF004F4760 /* AddFriendsTableViewCell.swift */; };
 		49941A041B5DC3F2004F4760 /* ParseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49941A031B5DC3F2004F4760 /* ParseHelper.swift */; };
-		49CF532A1B67235E005C0BB2 /* TaggleStack.png in Resources */ = {isa = PBXBuildFile; fileRef = 49CF53291B67235E005C0BB2 /* TaggleStack.png */; };
 		49D232B61B599E6E003EA8C3 /* GameLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D232B51B599E6E003EA8C3 /* GameLogic.swift */; };
 		49F216301B5440D600D7872C /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49F2162E1B5440D600D7872C /* Fabric.framework */; };
 		49F216311B5440D600D7872C /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49F2162F1B5440D600D7872C /* Crashlytics.framework */; };
@@ -149,9 +149,9 @@
 		491177031B57017300665F1E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		491177071B57121300665F1E /* PhotoTakingHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoTakingHelper.swift; sourceTree = "<group>"; };
 		491177091B572B6100665F1E /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameViewController.swift; path = Entities/GameViewController.swift; sourceTree = "<group>"; };
+		498577831B682EBA005DEB59 /* TaggleStack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TaggleStack.png; sourceTree = "<group>"; };
 		499419F71B5D78CF004F4760 /* AddFriendsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddFriendsTableViewCell.swift; sourceTree = "<group>"; };
 		49941A031B5DC3F2004F4760 /* ParseHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseHelper.swift; sourceTree = "<group>"; };
-		49CF53291B67235E005C0BB2 /* TaggleStack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TaggleStack.png; sourceTree = "<group>"; };
 		49D232B51B599E6E003EA8C3 /* GameLogic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameLogic.swift; path = Entities/GameLogic.swift; sourceTree = "<group>"; };
 		49F2162E1B5440D600D7872C /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Fabric.framework; path = TemplateProject/Fabric.framework; sourceTree = "<group>"; };
 		49F2162F1B5440D600D7872C /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Crashlytics.framework; path = TemplateProject/Crashlytics.framework; sourceTree = "<group>"; };
@@ -243,14 +243,14 @@
 				49D232B51B599E6E003EA8C3 /* GameLogic.swift */,
 				624262BD1B4460CB00005CE3 /* mainTableViewController.swift */,
 				491176F11B55A0DA00665F1E /* newGameViewController.swift */,
-				491176FE1B561DFA00665F1E /* SettingsViewController.swift */,
 				491177001B56EA0800665F1E /* AddFriendsViewController.swift */,
+				491176FE1B561DFA00665F1E /* SettingsViewController.swift */,
 				491177091B572B6100665F1E /* GameViewController.swift */,
 				624262B31B4460CB00005CE3 /* LaunchScreen.xib */,
 				491177021B57017300665F1E /* Main.storyboard */,
 				624262B71B4460CB00005CE3 /* Helpers */,
 				624262BA1B4460CB00005CE3 /* Images.xcassets */,
-				49CF53291B67235E005C0BB2 /* TaggleStack.png */,
+				498577831B682EBA005DEB59 /* TaggleStack.png */,
 				624262BB1B4460CB00005CE3 /* Info.plist */,
 				624262BC1B4460CB00005CE3 /* TemplateProject-Bridging-Header.h */,
 				491176F51B55C55000665F1E /* Cell View Controllers */,
@@ -469,8 +469,8 @@
 			files = (
 				624262C51B4460CB00005CE3 /* Images.xcassets in Resources */,
 				491177041B57017300665F1E /* Main.storyboard in Resources */,
+				498577841B682EBA005DEB59 /* TaggleStack.png in Resources */,
 				624262C11B4460CB00005CE3 /* LaunchScreen.xib in Resources */,
-				49CF532A1B67235E005C0BB2 /* TaggleStack.png in Resources */,
 				49F216421B54D05900D7872C /* STHeitiLight.ttc in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
