@@ -10,11 +10,7 @@ import UIKit
 import Parse
 import ConvenienceKit
 
-class Friend: PFUser {
-    weak var fromUser: PFUser!
-    weak var toUser: PFUser!
-    var accepted: Bool = false
-}
+
 
 
 class AddFriendsViewController: UIViewController {
@@ -72,7 +68,7 @@ class AddFriendsViewController: UIViewController {
                 
             case .SearchMode:
                 let searchText = friendSearchBar?.text ?? ""
-                query = ParseHelper.searchUsers(searchText, completionBlock:searchUpdateList)
+                query = ParseHelper.searchUsers(searchText, completionBlock: searchUpdateList)
             }
         }
     }
@@ -125,9 +121,22 @@ class AddFriendsViewController: UIViewController {
                 ErrorHandling.defaultErrorHandler(error)
             }
         }
-    }
-    
+        ParseHelper.getFriendedUsersForUser(PFUser.currentUser()!) {
+            (results: [AnyObject]?, error: NSError?) -> Void in
+            let relations = results as? [PFObject] ?? []
+            // use map to extract the User from a Follow object
+            self.friendedUsers = relations.map {
+                $0.objectForKey(ParseHelper.ParseFriendtoUser) as! PFUser
+            }
+            
+            if let error = error {
+                // Call the default error handler in case of an Error
+                ErrorHandling.defaultErrorHandler(error)
+            }
 
+        }
+    
+    }
     
     
     @IBAction func cancelButtonPressed(sender: AnyObject) {
@@ -239,9 +248,10 @@ extension AddFriendsViewController: AddFriendsTableViewCellDelegate {
             (results: [AnyObject]?, error: NSError?) -> Void in
             let results = results as? [PFObject] ?? []
             if results.isEmpty == false {
-            self.friendedUsers?.append(user)
-            self.addFriendsTableView.reloadData()
+                self.friendedUsers?.append(user)
+                
             }
+            self.addFriendsTableView.reloadData()
         }
         
         

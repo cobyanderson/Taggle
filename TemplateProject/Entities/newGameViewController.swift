@@ -51,7 +51,7 @@ class newGameViewController: UIViewController, UITableViewDataSource, UITableVie
         super.viewDidLoad()
 //        state = .DefaultMode
         newGameTableView.dataSource = self
-        ParseHelper.getFriends(searchUpdateList)
+        query = ParseHelper.getFriends(searchUpdateList)
         
         // Do any additional setup after loading the view.
     }
@@ -74,7 +74,7 @@ class newGameViewController: UIViewController, UITableViewDataSource, UITableVie
         })
         
         let searchText = self.newGameSearchBar?.text ?? ""
-        if searchText == "" {
+        if searchText != "" {
             self.foundFriends = self.foundFriends.filter { (friend) -> Bool in
                 return friend.username!.lowercaseString.rangeOfString(searchText.lowercaseString) != nil
             }
@@ -125,17 +125,17 @@ extension newGameViewController: UISearchBarDelegate {
     func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
         searchBar.setShowsCancelButton(true, animated: true)
         //state = .SearchMode
-        ParseHelper.getFriends(searchUpdateList)
+        query = ParseHelper.getFriends(searchUpdateList)
     }
     func searchBarCancelButtonClicked(searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
         searchBar.text = ""
         searchBar.setShowsCancelButton(false, animated: true)
         //state = .DefaultMode
-        ParseHelper.getFriends(searchUpdateList)
+        query = ParseHelper.getFriends(searchUpdateList)
     }
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
-        ParseHelper.getFriends(searchUpdateList)
+        query = ParseHelper.getFriends(searchUpdateList)
     }
     
 }

@@ -24,11 +24,18 @@ class ParseHelper {
     // parameters: user: the user whose friend requests you want to grab, completion block - ?
     static func getFollowedUsersForUser(user: PFUser, completionBlock: PFArrayResultBlock) {
         let query = PFQuery(className: ParseFriendClass)
-        
-        query.whereKey(ParseFriendFromUser, equalTo: user)
+//******could be wrong! might need to be parse friend to user or change current user to user
+        query.whereKey(ParseFriendFromUser, equalTo: PFUser.currentUser()!)
+        query.whereKey("accepted", equalTo: false)
         query.findObjectsInBackgroundWithBlock(completionBlock)
     }
-    
+    static func getFriendedUsersForUser(user: PFUser, completionBlock: PFArrayResultBlock) {
+        let query = PFQuery(className: ParseFriendClass)
+        query.whereKey(ParseFriendFromUser, equalTo: PFUser.currentUser()!)
+        query.whereKey("accepted", equalTo: true)
+        query.findObjectsInBackgroundWithBlock(completionBlock)
+ 
+    }
     // establishes a one way friend relationship from one user to another
     // parameters: user - the one friending, toUser- the one being friended
     static func addFriendRelationshipFromUser(user: PFUser, toUser: PFUser) {
