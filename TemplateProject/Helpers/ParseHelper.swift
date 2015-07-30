@@ -24,14 +24,13 @@ class ParseHelper {
     // parameters: user: the user whose friend requests you want to grab, completion block - ?
     static func getFollowedUsersForUser(user: PFUser, completionBlock: PFArrayResultBlock) {
         let query = PFQuery(className: ParseFriendClass)
-//******could be wrong! might need to be parse friend to user or change current user to user
-        query.whereKey(ParseFriendFromUser, equalTo: PFUser.currentUser()!)
+        query.whereKey(ParseFriendFromUser, equalTo: user)
         query.whereKey("accepted", equalTo: false)
         query.findObjectsInBackgroundWithBlock(completionBlock)
     }
     static func getFriendedUsersForUser(user: PFUser, completionBlock: PFArrayResultBlock) {
         let query = PFQuery(className: ParseFriendClass)
-        query.whereKey(ParseFriendFromUser, equalTo: PFUser.currentUser()!)
+        query.whereKey(ParseFriendFromUser, equalTo: user)
         query.whereKey("accepted", equalTo: true)
         query.findObjectsInBackgroundWithBlock(completionBlock)
  
@@ -147,19 +146,6 @@ class ParseHelper {
             query.findObjectsInBackgroundWithBlock(completionBlock)
             
             return query
-    }
-    static func searchFriendedUsers(searchText: String, completionBlock: PFArrayResultBlock) -> PFQuery {
-        let query = PFQuery(className: ParseFriendClass)
-        query.whereKey(ParseHelper.ParseFriendFromUser, equalTo: PFUser.currentUser()!)
-        query.includeKey("toUser")
-      //  query.whereKey(ParseHelper.ParseFriendtoUser, matchesRegex: searchText, modifiers: "i")
-    
-        query.whereKey("accepted", equalTo: true)
-       
-        
-        query.findObjectsInBackgroundWithBlock(completionBlock)
-        
-        return query
     }
     
 }

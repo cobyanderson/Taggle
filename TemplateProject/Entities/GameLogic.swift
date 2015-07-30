@@ -20,27 +20,27 @@ let parseWhoseTurn = "whoseTurn"
 let parseObjectID = "objectId"
 
 
-func CreateNewGame(playerCount: Int, secondPlayer: String, thirdPlayer: String, fourthPlayer: String, callback: PFBooleanResultBlock ) {
+func CreateNewGame(playerCount: Int, secondPlayer: PFUser, thirdPlayer: PFUser, fourthPlayer: PFUser, callback: PFBooleanResultBlock ) {
     
-    var query = PFUser.query()
-    query!.whereKey("username", equalTo: secondPlayer)
-    var player2 = query!.findObjects()
-    query!.whereKey("username", equalTo: thirdPlayer)
-    var player3 = query!.findObjects()
-    query!.whereKey("username", equalTo: fourthPlayer)
-    var player4 = query!.findObjects()
+//    var query = PFUser.query()
+//    query!.whereKey("username", equalTo: secondPlayer)
+//    var player2 = query!.findObjects()
+//    query!.whereKey("username", equalTo: thirdPlayer)
+//    var player3 = query!.findObjects()
+//    query!.whereKey("username", equalTo: fourthPlayer)
+//    var player4 = query!.findObjects()
     
     
     let game = PFObject(className: parseGame)
     game[parsePlayNumber] = 0
     game[parseFirstPlayer] = PFUser.currentUser()
     game[parseWhoseTurn] = PFUser.currentUser()
-    game[parseSecondPlayer] = player2![0]
+    game[parseSecondPlayer] = secondPlayer
     if playerCount > 2 {
-        game[parseThirdPlayer] = player3![0]
+        game[parseThirdPlayer] = thirdPlayer
     }
     if playerCount > 3 {
-        game[parseFourthPlayer] = player4![0]
+        game[parseFourthPlayer] = fourthPlayer
     }
     game.saveInBackgroundWithBlock(callback)
 //    game.saveInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in

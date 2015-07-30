@@ -20,53 +20,31 @@ class newGameViewController: UIViewController, UITableViewDataSource, UITableVie
     @IBAction func cancelButtonPressed(sender: AnyObject) {
         dismissViewControllerAnimated(true, completion: nil)
     }
+    @IBAction func StartButtonPressed(sender: AnyObject) {
+        
+    }
     
     var foundFriends: [PFUser]!
     
     var selectedFriends: [PFUser] = []
+    
+    var selectedFriendsCount: Int = 0
     
     var query: PFQuery? {
         didSet {
             oldValue?.cancel()
         }
     }
-    
-//    enum State {
-//        case DefaultMode
-//        case SearchMode
-//    }
-//    var state: State = .DefaultMode {
-//        didSet{
-//            switch(state) {
-//            case .DefaultMode:
-//                query = ParseHelper.getFriends(defaultUpdateList)
-//            
-//            case .SearchMode:
-//                query = ParseHelper.getFriends(searchUpdateList)
-//              
-//            }
-//        }
-//    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
-//        state = .DefaultMode
         newGameTableView.dataSource = self
         query = ParseHelper.getFriends(searchUpdateList)
         
         // Do any additional setup after loading the view.
     }
     
-    func defaultUpdateList(results: [AnyObject]?, error: NSError?) {
-        var friends = results as? [PFObject] ?? []
-        self.foundFriends = friends.map({ (friend) -> PFUser in
-            return friend["toUser"] as! PFUser
-        })
-        self.newGameTableView.reloadData()
-        
-        if let error = error {
-            ErrorHandling.defaultErrorHandler(error)
-        }
-    }
+    
     func searchUpdateList(results: [AnyObject]?, error: NSError?) {
         var friends = results as? [PFObject] ?? []
         self.foundFriends = friends.map({ (friend) -> PFUser in
@@ -80,11 +58,11 @@ class newGameViewController: UIViewController, UITableViewDataSource, UITableVie
             }
         }
         self.newGameTableView.reloadData()
+    
+        if let error = error {
+            ErrorHandling.defaultErrorHandler(error)
+        }
     }
-//        if let error = error {
-//            ErrorHandling.defaultErrorHandler(error)
-//        }
-   
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell: NewGameTableViewCell = self.newGameTableView.dequeueReusableCellWithIdentifier("friendCell") as! NewGameTableViewCell!
@@ -99,21 +77,33 @@ class newGameViewController: UIViewController, UITableViewDataSource, UITableVie
         return self.foundFriends?.count ?? 0
     }
     
-//    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-//         var cell: NewGameTableViewCell = self.newGameTableView.dequeueReusableCellWithIdentifier("friendCell") as! NewGameTableViewCell!
-//        if contains(selectedFriends, foundFriends[indexPath.row]) == false {
-//            selectedFriends.append(foundFriends[indexPath.row])
-//            cell.checkmark = true
-//        }
-//    }
-//    func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
-//         var cell: NewGameTableViewCell = self.newGameTableView.dequeueReusableCellWithIdentifier("friendCell") as! NewGameTableViewCell!
-//        if contains(selectedFriends, foundFriends[indexPath.row]) == true {
-//            selectedFriends.removeAtIndex(indexPath.row)
-//            cell.checkmark = false
-//        }
-//         println(selectedFriends)
-//    }
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+
+        if contains(selectedFriends, foundFriends[indexPath.row]) == false && selectedFriendsCount < 4 {
+            selectedFriendsCount = selectedFriendsCount + 1
+            selectedFriends.append(foundFriends[indexPath.row])
+            tableView.cellForRowAtIndexPath(indexPath)?.accessoryType = UITableViewCellAccessoryType.Checkmark
+        }
+        else {
+            if let index = find(selectedFriends, foundFriends[indexPath.row]) {
+                selectedFriends.removeAtIndex(index)
+                selectedFriendsCount = selectedFriendsCount - 1
+                tableView.cellForRowAtIndexPath(indexPath)?.accessoryType = UITableViewCellAccessoryType.None
+            }
+        }
+
+    }
+
+    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        if contains(selectedFriends, foundFriends[indexPath.row]) {
+            cell.accessoryType = UITableViewCellAccessoryType.Checkmark
+        }
+        else {
+            cell.accessoryType = UITableViewCellAccessoryType.None
+        }
+        
+    }
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -124,20 +114,22 @@ class newGameViewController: UIViewController, UITableViewDataSource, UITableVie
 extension newGameViewController: UISearchBarDelegate {
     func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
         searchBar.setShowsCancelButton(true, animated: true)
-        //state = .SearchMode
-        query = ParseHelper.getFriends(searchUpdateList)
     }
     func searchBarCancelButtonClicked(searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
         searchBar.text = ""
         searchBar.setShowsCancelButton(false, animated: true)
-        //state = .DefaultMode
         query = ParseHelper.getFriends(searchUpdateList)
     }
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
         query = ParseHelper.getFriends(searchUpdateList)
     }
     
+}
+extension PFObject: Equatable {
+}
+public func ==(lhs: PFObject, rhs: PFObject) -> Bool {
+    return lhs.objectId == rhs.objectId
 }
 
 

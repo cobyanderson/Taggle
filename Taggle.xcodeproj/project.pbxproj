@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		491176F21B55A0DA00665F1E /* newGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491176F11B55A0DA00665F1E /* newGameViewController.swift */; };
 		491176F91B55C55000665F1E /* headerViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491176F61B55C55000665F1E /* headerViewCell.swift */; };
-		491176FB1B55C55000665F1E /* newGameTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491176F81B55C55000665F1E /* newGameTableViewController.swift */; };
+		491176FB1B55C55000665F1E /* NewGameTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491176F81B55C55000665F1E /* NewGameTableViewController.swift */; };
 		491176FD1B55C7B800665F1E /* mainGameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491176FC1B55C7B800665F1E /* mainGameTableViewCell.swift */; };
 		491176FF1B561DFA00665F1E /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491176FE1B561DFA00665F1E /* SettingsViewController.swift */; };
 		491177011B56EA0800665F1E /* AddFriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491177001B56EA0800665F1E /* AddFriendsViewController.swift */; };
@@ -142,7 +142,7 @@
 /* Begin PBXFileReference section */
 		491176F11B55A0DA00665F1E /* newGameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = newGameViewController.swift; path = Entities/newGameViewController.swift; sourceTree = "<group>"; };
 		491176F61B55C55000665F1E /* headerViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = headerViewCell.swift; sourceTree = "<group>"; };
-		491176F81B55C55000665F1E /* newGameTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = newGameTableViewController.swift; sourceTree = "<group>"; };
+		491176F81B55C55000665F1E /* NewGameTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewGameTableViewController.swift; sourceTree = "<group>"; };
 		491176FC1B55C7B800665F1E /* mainGameTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = mainGameTableViewCell.swift; sourceTree = "<group>"; };
 		491176FE1B561DFA00665F1E /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsViewController.swift; path = Entities/SettingsViewController.swift; sourceTree = "<group>"; };
 		491177001B56EA0800665F1E /* AddFriendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddFriendsViewController.swift; path = Entities/AddFriendsViewController.swift; sourceTree = "<group>"; };
@@ -222,7 +222,7 @@
 			children = (
 				491176F61B55C55000665F1E /* headerViewCell.swift */,
 				491176FC1B55C7B800665F1E /* mainGameTableViewCell.swift */,
-				491176F81B55C55000665F1E /* newGameTableViewController.swift */,
+				491176F81B55C55000665F1E /* NewGameTableViewController.swift */,
 				499419F71B5D78CF004F4760 /* AddFriendsTableViewCell.swift */,
 			);
 			path = "Cell View Controllers";
@@ -505,7 +505,7 @@
 				491177081B57121300665F1E /* PhotoTakingHelper.swift in Sources */,
 				4911770A1B572B6100665F1E /* GameViewController.swift in Sources */,
 				491176F91B55C55000665F1E /* headerViewCell.swift in Sources */,
-				491176FB1B55C55000665F1E /* newGameTableViewController.swift in Sources */,
+				491176FB1B55C55000665F1E /* NewGameTableViewController.swift in Sources */,
 				491176F21B55A0DA00665F1E /* newGameViewController.swift in Sources */,
 				491177011B56EA0800665F1E /* AddFriendsViewController.swift in Sources */,
 				624262C71B4460CB00005CE3 /* mainTableViewController.swift in Sources */,

@@ -125,8 +125,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w9d-GY-nOy">
-                                <rect key="frame" x="11" y="24" width="65" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w9d-GY-nOy">
+                                <rect key="frame" x="11" y="25" width="65" height="30"/>
                                 <fontDescription key="fontDescription" name="STHeitiSC-Medium" family="Heiti SC" pointSize="18"/>
                                 <state key="normal" title="Cancel">
                                     <color key="titleColor" red="0.98039215690000003" green="0.20784313730000001" blue="0.34901960780000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -137,23 +137,23 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New Game" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZdF-6J-kOl">
-                                <rect key="frame" x="249" y="30" width="102" height="18"/>
+                                <rect key="frame" x="249" y="30" width="101.5" height="18"/>
                                 <fontDescription key="fontDescription" name="STHeitiSC-Medium" family="Heiti SC" pointSize="18"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lly-PY-3Fh">
-                                <rect key="frame" x="519" y="24" width="65" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lly-PY-3Fh">
+                                <rect key="frame" x="545" y="24" width="39" height="30"/>
                                 <fontDescription key="fontDescription" name="STHeitiSC-Medium" family="Heiti SC" pointSize="18"/>
                                 <state key="normal" title="Start">
                                     <color key="titleColor" red="0.0" green="1" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="cancelButtonPressed:" destination="XlV-1E-lby" eventType="touchUpInside" id="CP8-5k-sTB"/>
+                                    <action selector="StartButtonPressed:" destination="XlV-1E-lby" eventType="touchUpInside" id="LCu-n3-z1c"/>
                                 </connections>
                             </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsMultipleSelection="YES" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="UQH-C4-uEC">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="UQH-C4-uEC">
                                 <rect key="frame" x="0.0" y="113" width="600" height="487"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="separatorColor" red="0.15294118230000001" green="0.77254909279999995" blue="0.85098046059999999" alpha="1" colorSpace="deviceRGB"/>
@@ -163,23 +163,7 @@
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ZEB-5d-6ev" id="yOW-a4-a38">
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" highlightedImage="Checkmark" translatesAutoresizingMaskIntoConstraints="NO" id="Jv7-tb-8eY">
-                                                    <rect key="frame" x="535" y="17" width="50" height="50"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="30" id="AOw-Dq-eZ7"/>
-                                                        <constraint firstAttribute="height" constant="30" id="SmN-W6-uWi"/>
-                                                    </constraints>
-                                                </imageView>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="trailingMargin" secondItem="Jv7-tb-8eY" secondAttribute="trailing" constant="5" id="OIJ-YW-uRa"/>
-                                                <constraint firstAttribute="centerY" secondItem="Jv7-tb-8eY" secondAttribute="centerY" id="bPH-NS-YTj"/>
-                                            </constraints>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="friendQueued" destination="Jv7-tb-8eY" id="Ei9-kx-dwd"/>
-                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -197,6 +181,7 @@
                         </subviews>
                         <color key="backgroundColor" red="0.15294118230000001" green="0.77254909279999995" blue="0.85098046059999999" alpha="1" colorSpace="deviceRGB"/>
                         <constraints>
+                            <constraint firstItem="Lly-PY-3Fh" firstAttribute="trailing" secondItem="rRc-9D-JdO" secondAttribute="trailingMargin" id="5FN-uz-1uX"/>
                             <constraint firstAttribute="bottom" secondItem="UQH-C4-uEC" secondAttribute="bottom" id="60g-qV-oH6"/>
                             <constraint firstItem="w9d-GY-nOy" firstAttribute="leading" secondItem="rRc-9D-JdO" secondAttribute="leadingMargin" constant="-5" id="7nu-ab-jY9"/>
                             <constraint firstItem="w9d-GY-nOy" firstAttribute="top" secondItem="rRc-9D-JdO" secondAttribute="topMargin" constant="25" id="8IJ-5S-TvO"/>
@@ -205,11 +190,17 @@
                             <constraint firstItem="Le6-L9-a0v" firstAttribute="trailing" secondItem="UQH-C4-uEC" secondAttribute="trailing" id="FeF-XX-gHm"/>
                             <constraint firstItem="Le6-L9-a0v" firstAttribute="top" secondItem="Lly-PY-3Fh" secondAttribute="bottom" constant="15" id="GXA-lw-TDV"/>
                             <constraint firstItem="UQH-C4-uEC" firstAttribute="leading" secondItem="rRc-9D-JdO" secondAttribute="leading" id="KvX-m9-MxS"/>
+                            <constraint firstItem="Lly-PY-3Fh" firstAttribute="centerY" secondItem="ZdF-6J-kOl" secondAttribute="centerY" id="LJD-0T-4c2"/>
                             <constraint firstItem="ZdF-6J-kOl" firstAttribute="top" secondItem="ygy-je-Fnl" secondAttribute="bottom" constant="10" id="aaH-EC-iBI"/>
                             <constraint firstAttribute="trailing" secondItem="UQH-C4-uEC" secondAttribute="trailing" id="fbH-Cv-tJ8"/>
                             <constraint firstItem="Le6-L9-a0v" firstAttribute="bottom" secondItem="UQH-C4-uEC" secondAttribute="top" id="n6Q-OP-8QK"/>
                             <constraint firstItem="Le6-L9-a0v" firstAttribute="leading" secondItem="UQH-C4-uEC" secondAttribute="leading" id="sjG-up-kXv"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="GXA-lw-TDV"/>
+                            </mask>
+                        </variation>
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="zaT-4z-gEO"/>
@@ -776,7 +767,6 @@
         <image name="Add" width="64" height="64"/>
         <image name="AddFriends" width="64" height="64"/>
         <image name="Cancel" width="85" height="85"/>
-        <image name="Checkmark" width="59" height="59"/>
         <image name="Exit" width="50" height="50"/>
         <image name="Settings" width="64" height="64"/>
     </resources>
