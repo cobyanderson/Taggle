@@ -5,10 +5,12 @@
 //  Created by Samuel Coby Anderson on 7/15/15.
 //  Copyright (c) 2015 Make School. All rights reserved.
 //
-
+import Parse
 import UIKit
 
 class GameViewController: UIViewController {
+    
+    var game: PFObject?
 
     @IBAction func quitGame(sender: AnyObject) {
             let alert = UIAlertController(title: "Quit Game", message: "Do you really want to be a jerk?", preferredStyle: UIAlertControllerStyle.Alert)
@@ -22,7 +24,7 @@ class GameViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-
+       
         // Do any additional setup after loading the view.
     }
 

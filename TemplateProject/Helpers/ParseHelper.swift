@@ -101,7 +101,6 @@ class ParseHelper {
     // fetches friend requests for the current user, limits this to 20
     // parameters: completion block
     // returns: a query
-    // SHOULD REPLACE WITH FRIEND REQUEST FUNCTION LATER!
     static func friendRequests(completionBlock: PFArrayResultBlock) -> PFQuery {
         let query = PFQuery(className: ParseFriendClass)
     

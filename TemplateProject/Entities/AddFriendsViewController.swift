@@ -145,7 +145,6 @@ class AddFriendsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       
     
         friendSearchBar.placeholder="Search for Friends by Username"
     }
@@ -161,7 +160,7 @@ extension AddFriendsViewController: UITableViewDataSource {
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.users?.count ?? 0
     }
-    
+
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("userCell") as! AddFriendsTableViewCell
         
@@ -253,7 +252,7 @@ extension AddFriendsViewController: AddFriendsTableViewCellDelegate {
             }
             self.addFriendsTableView.reloadData()
         }
-        
+    
         
     }
     

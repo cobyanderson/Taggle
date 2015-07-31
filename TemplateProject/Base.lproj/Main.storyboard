@@ -16,7 +16,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.76078431369999999" green="0.0" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <color key="barTintColor" red="0.15294118230000001" green="0.77254909279999995" blue="0.85098046059999999" alpha="1" colorSpace="deviceRGB"/>
+                        <color key="barTintColor" red="1" green="0.21930638860000001" blue="0.35919324279999998" alpha="1" colorSpace="calibratedRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <fontDescription key="fontDescription" name="STHeitiSC-Medium" family="Heiti SC" pointSize="18"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -93,7 +93,7 @@
                         <barButtonItem key="leftBarButtonItem" title="Item" image="Settings" style="plain" id="Whw-nJ-FsF" userLabel="Settings">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
-                                <segue destination="vYn-rC-1Eg" kind="presentation" modalTransitionStyle="flipHorizontal" id="gOa-xo-9Ef"/>
+                                <segue destination="vYn-rC-1Eg" kind="presentation" modalTransitionStyle="crossDissolve" id="gOa-xo-9Ef"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="AddFriends" id="3Hl-mv-UgP" userLabel="Add Friends">
@@ -106,7 +106,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="mainTableView" destination="xzb-fc-bfM" id="i7v-lf-UTn"/>
-                        <segue destination="nOJ-3H-nBB" kind="show" identifier="segueToGame" id="cNN-tQ-Te2"/>
+                        <segue destination="nOJ-3H-nBB" kind="presentation" identifier="segueToGame" modalTransitionStyle="flipHorizontal" id="cNN-tQ-Te2"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YmR-hL-N8W" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -208,6 +208,7 @@
                     <connections>
                         <outlet property="newGameSearchBar" destination="Le6-L9-a0v" id="Plw-Ef-re8"/>
                         <outlet property="newGameTableView" destination="UQH-C4-uEC" id="hfR-SF-5fK"/>
+                        <outlet property="startButton" destination="Lly-PY-3Fh" id="Tyc-ov-q8c"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IWa-NT-zWE" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -740,7 +741,7 @@
         <!--Game-->
         <scene sceneID="PXW-Dn-jRN">
             <objects>
-                <viewController id="nOJ-3H-nBB" customClass="GameViewController" customModule="Taggle" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="gameViewController" id="nOJ-3H-nBB" customClass="GameViewController" customModule="Taggle" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="kbO-ec-FyK"/>
                         <viewControllerLayoutGuide type="bottom" id="2yX-Hd-zRq"/>
@@ -748,7 +749,8 @@
                     <view key="view" contentMode="scaleToFill" id="ZFU-cd-B5k">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="tintColor" red="0.92941176469999998" green="0.87303275930000002" blue="0.37239463010000001" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <navigationItem key="navigationItem" title="Game" id="0Aq-Yg-pbu">
                         <barButtonItem key="rightBarButtonItem" image="Exit" id="XNs-7R-Uag">

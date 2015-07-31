@@ -9,7 +9,7 @@
 import UIKit
 import Parse
 
-class newGameViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchDisplayDelegate, UISearchBarDelegate  {
+class newGameViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchDisplayDelegate, UISearchBarDelegate {
     
 
     
@@ -17,18 +17,30 @@ class newGameViewController: UIViewController, UITableViewDataSource, UITableVie
     
     @IBOutlet var newGameSearchBar: UISearchBar!
     
+    @IBOutlet var startButton: UIButton!
+    
     @IBAction func cancelButtonPressed(sender: AnyObject) {
         dismissViewControllerAnimated(true, completion: nil)
-    }
-    @IBAction func StartButtonPressed(sender: AnyObject) {
-        
     }
     
     var foundFriends: [PFUser]!
     
     var selectedFriends: [PFUser] = []
     
-    var selectedFriendsCount: Int = 0
+    var selectedFriendsCount: Int = 0 {
+        didSet {
+            if selectedFriendsCount > 0 {
+                startButton.userInteractionEnabled = true
+                startButton.alpha = 1.0
+            }
+            else {
+                startButton.userInteractionEnabled = false
+                startButton.alpha = 0.4
+            }
+            
+        }
+    }
+    
     
     var query: PFQuery? {
         didSet {
@@ -40,10 +52,18 @@ class newGameViewController: UIViewController, UITableViewDataSource, UITableVie
         super.viewDidLoad()
         newGameTableView.dataSource = self
         query = ParseHelper.getFriends(searchUpdateList)
+        selectedFriendsCount = 0
         
-        // Do any additional setup after loading the view.
     }
-    
+    @IBAction func StartButtonPressed(sender: AnyObject) {
+        CreateNewGame(selectedFriends[0]) { (game) -> Void in
+        self.dismissViewControllerAnimated(true, completion: { () -> Void in
+            let notificationCenter = NSNotificationCenter.defaultCenter()
+            notificationCenter.postNotificationName("ShowGameController", object: game)
+        })
+        
+        }
+    }
     
     func searchUpdateList(results: [AnyObject]?, error: NSError?) {
         var friends = results as? [PFObject] ?? []
@@ -79,7 +99,7 @@ class newGameViewController: UIViewController, UITableViewDataSource, UITableVie
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
 
-        if contains(selectedFriends, foundFriends[indexPath.row]) == false && selectedFriendsCount < 4 {
+        if contains(selectedFriends, foundFriends[indexPath.row]) == false && selectedFriendsCount < 1 {
             selectedFriendsCount = selectedFriendsCount + 1
             selectedFriends.append(foundFriends[indexPath.row])
             tableView.cellForRowAtIndexPath(indexPath)?.accessoryType = UITableViewCellAccessoryType.Checkmark
