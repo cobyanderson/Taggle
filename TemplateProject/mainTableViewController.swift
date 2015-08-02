@@ -96,16 +96,19 @@ class mainTableViewController: UITableViewController, UITableViewDelegate, UITab
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let viewController = self.storyboard!.instantiateViewControllerWithIdentifier("gameViewController") as! GameViewController
+        //viewController.pr
         viewController.game = games[indexPath.row]
-        self.presentViewController(viewController, animated: true, completion: nil)
-//        self.performSegueWithIdentifier("segueToGame", sender: self)
+        
+        self.navigationController?.pushViewController(viewController, animated: true)
+        
+        //        self.performSegueWithIdentifier("segueToGame", sender: self)
 //        tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
     }
     
 
     override func viewDidAppear(animated: Bool) {
-    
+        super.viewDidAppear(animated)
         let image = UIImage(named: "Taggle")!
         self.navigationItem.titleView = UIImageView(image: image)
         self.navigationItem.backBarButtonItem?.title = "    "
@@ -118,7 +121,7 @@ class mainTableViewController: UITableViewController, UITableViewDelegate, UITab
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let game = sender as? PFObject {
             if let destination = segue.destinationViewController as? GameViewController {
-//                destination.game = game
+                destination.game = game
             }
         }
     }

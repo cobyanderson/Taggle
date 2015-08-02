@@ -48,7 +48,7 @@
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="180"/>
                             <connections>
-                                <segue destination="XlV-1E-lby" kind="presentation" identifier="main" modalTransitionStyle="coverVertical" id="7Cr-Xy-2GK"/>
+                                <segue destination="XlV-1E-lby" kind="presentation" identifier="newGameSegue" modalTransitionStyle="coverVertical" id="7Cr-Xy-2GK"/>
                             </connections>
                         </button>
                         <prototypes>
@@ -87,9 +87,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Taggle" id="Cjc-zL-V4r">
-                        <barButtonItem key="backBarButtonItem" title="Home" id="e2p-al-791">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        </barButtonItem>
+                        <barButtonItem key="backBarButtonItem" title="Home" id="X9t-Fs-ex2"/>
                         <barButtonItem key="leftBarButtonItem" title="Item" image="Settings" style="plain" id="Whw-nJ-FsF" userLabel="Settings">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
@@ -106,7 +104,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="mainTableView" destination="xzb-fc-bfM" id="i7v-lf-UTn"/>
-                        <segue destination="nOJ-3H-nBB" kind="presentation" identifier="segueToGame" modalTransitionStyle="flipHorizontal" id="cNN-tQ-Te2"/>
+                        <segue destination="nOJ-3H-nBB" kind="show" identifier="segueToGame" id="cNN-tQ-Te2"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YmR-hL-N8W" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -738,10 +736,10 @@
             </objects>
             <point key="canvasLocation" x="585" y="-597"/>
         </scene>
-        <!--Game-->
+        <!--Game View Controller-->
         <scene sceneID="PXW-Dn-jRN">
             <objects>
-                <viewController storyboardIdentifier="gameViewController" id="nOJ-3H-nBB" customClass="GameViewController" customModule="Taggle" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="gameViewController" id="nOJ-3H-nBB" userLabel="Game View Controller" customClass="GameViewController" customModule="Taggle" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="kbO-ec-FyK"/>
                         <viewControllerLayoutGuide type="bottom" id="2yX-Hd-zRq"/>
@@ -749,8 +747,98 @@
                     <view key="view" contentMode="scaleToFill" id="ZFU-cd-B5k">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                        <color key="tintColor" red="0.92941176469999998" green="0.87303275930000002" blue="0.37239463010000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J9Y-Cm-H5b">
+                                <rect key="frame" x="0.0" y="530" width="600" height="70"/>
+                                <color key="backgroundColor" red="0.0" green="1" blue="0.50196081400000003" alpha="0.92000000000000004" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="70" id="27Y-t4-Dip"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="STHeitiSC-Medium" family="Heiti SC" pointSize="35"/>
+                                <state key="normal" title="Next">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="nextButtonPressed:" destination="nOJ-3H-nBB" eventType="touchUpInside" id="y3N-PA-Abt"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nice Acting!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1tF-2h-N98">
+                                <rect key="frame" x="192" y="214" width="216" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="9cr-5c-KGd"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="STHeitiSC-Medium" family="Heiti SC" pointSize="36"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vik Guessed:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Gd-vf-iwH">
+                                <rect key="frame" x="0.0" y="279" width="600" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="oOq-on-GZC"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="STHeitiSC-Medium" family="Heiti SC" pointSize="22"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sat on a Cactus" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="Xff-MF-F3Y">
+                                <rect key="frame" x="0.0" y="299" width="600" height="80"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="UKM-jh-gyG"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="avU-DS-LdX"/>
+                                    <constraint firstAttribute="height" constant="30" id="hOm-JS-rGb"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="STHeitiSC-Medium" family="Heiti SC" pointSize="35"/>
+                                <color key="textColor" red="0.0" green="1" blue="0.50196081400000003" alpha="0.92000000000000004" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="avU-DS-LdX"/>
+                                        <exclude reference="hOm-JS-rGb"/>
+                                    </mask>
+                                </variation>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TaggleTitle.png" translatesAutoresizingMaskIntoConstraints="NO" id="zIh-OH-mIl">
+                                <rect key="frame" x="175" y="64" width="250" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="250" id="7nF-Bd-ubr"/>
+                                    <constraint firstAttribute="height" constant="150" id="zJW-t5-Oqd"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.15294118230000001" green="0.77254909279999995" blue="0.85098046059999999" alpha="1" colorSpace="deviceRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="J9Y-Cm-H5b" secondAttribute="trailing" constant="-16" id="CFu-B6-SoC"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Xff-MF-F3Y" secondAttribute="trailing" constant="-16" id="EHI-bn-2qy"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="8Gd-vf-iwH" secondAttribute="trailing" constant="-16" id="FTc-KK-HRK"/>
+                            <constraint firstItem="Xff-MF-F3Y" firstAttribute="leading" secondItem="ZFU-cd-B5k" secondAttribute="leadingMargin" constant="-16" id="ImT-Wt-gL8"/>
+                            <constraint firstItem="8Gd-vf-iwH" firstAttribute="leading" secondItem="ZFU-cd-B5k" secondAttribute="leadingMargin" constant="-16" id="LEM-1N-Lea"/>
+                            <constraint firstItem="8Gd-vf-iwH" firstAttribute="top" secondItem="1tF-2h-N98" secondAttribute="bottom" constant="15" id="OCJ-7d-RpH"/>
+                            <constraint firstItem="2yX-Hd-zRq" firstAttribute="top" secondItem="J9Y-Cm-H5b" secondAttribute="bottom" id="ODm-ox-SAr"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Xff-MF-F3Y" secondAttribute="trailing" constant="-16" id="QpZ-Jx-zCi"/>
+                            <constraint firstItem="Xff-MF-F3Y" firstAttribute="leading" secondItem="ZFU-cd-B5k" secondAttribute="leadingMargin" constant="-16" id="Xw2-JQ-31v"/>
+                            <constraint firstAttribute="centerX" secondItem="Xff-MF-F3Y" secondAttribute="centerX" id="Zw9-xN-7z3"/>
+                            <constraint firstAttribute="centerX" secondItem="1tF-2h-N98" secondAttribute="centerX" id="akJ-wU-Rzv"/>
+                            <constraint firstItem="Xff-MF-F3Y" firstAttribute="top" secondItem="8Gd-vf-iwH" secondAttribute="bottom" id="beU-W6-wEP"/>
+                            <constraint firstAttribute="centerX" secondItem="zIh-OH-mIl" secondAttribute="centerX" id="d5e-0J-Uvc"/>
+                            <constraint firstItem="zIh-OH-mIl" firstAttribute="top" secondItem="kbO-ec-FyK" secondAttribute="bottom" id="gmN-D0-xac"/>
+                            <constraint firstItem="Xff-MF-F3Y" firstAttribute="top" secondItem="8Gd-vf-iwH" secondAttribute="bottom" constant="8" id="iip-DR-d8t"/>
+                            <constraint firstAttribute="centerX" secondItem="8Gd-vf-iwH" secondAttribute="centerX" id="k88-mz-dQ8"/>
+                            <constraint firstItem="J9Y-Cm-H5b" firstAttribute="leading" secondItem="ZFU-cd-B5k" secondAttribute="leadingMargin" constant="-16" id="oyU-Mu-pE8"/>
+                            <constraint firstAttribute="centerX" secondItem="Xff-MF-F3Y" secondAttribute="centerX" id="u6Z-Gy-cff"/>
+                            <constraint firstItem="Xff-MF-F3Y" firstAttribute="top" secondItem="8Gd-vf-iwH" secondAttribute="bottom" constant="10" id="urK-WX-v7D"/>
+                            <constraint firstItem="1tF-2h-N98" firstAttribute="top" secondItem="zIh-OH-mIl" secondAttribute="bottom" id="yy5-kb-WC5"/>
+                            <constraint firstItem="8Gd-vf-iwH" firstAttribute="top" secondItem="zIh-OH-mIl" secondAttribute="bottom" constant="8" id="z0x-8O-S06"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="z0x-8O-S06"/>
+                                <exclude reference="ImT-Wt-gL8"/>
+                                <exclude reference="QpZ-Jx-zCi"/>
+                                <exclude reference="iip-DR-d8t"/>
+                                <exclude reference="u6Z-Gy-cff"/>
+                                <exclude reference="urK-WX-v7D"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Game" id="0Aq-Yg-pbu">
                         <barButtonItem key="rightBarButtonItem" image="Exit" id="XNs-7R-Uag">
@@ -759,6 +847,12 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="comment" destination="1tF-2h-N98" id="mbu-r3-XbY"/>
+                        <outlet property="guessedAnswer" destination="Xff-MF-F3Y" id="zeQ-PL-IpL"/>
+                        <outlet property="taggleView" destination="zIh-OH-mIl" id="W6P-b7-AZY"/>
+                        <outlet property="whoGuessed" destination="8Gd-vf-iwH" id="soJ-nA-V2u"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xyq-Gu-pwd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -771,5 +865,6 @@
         <image name="Cancel" width="85" height="85"/>
         <image name="Exit" width="50" height="50"/>
         <image name="Settings" width="64" height="64"/>
+        <image name="TaggleTitle.png" width="400" height="239"/>
     </resources>
 </document>
