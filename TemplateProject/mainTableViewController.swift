@@ -32,23 +32,52 @@ class mainTableViewController: UITableViewController, UITableViewDelegate, UITab
         self.refreshControl!.addTarget(self, action: "refresh:", forControlEvents: UIControlEvents.ValueChanged)
         self.tableView.addSubview(refreshControl!)
     
-        
+       
         self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
         mainTableView.dataSource = self
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("presentGameController:"), name: "ShowGameController", object: nil)
+        
     }
     
+    func animateTable() {
+        self.mainTableView.reloadData()
+        
+        let cells = mainTableView.visibleCells()
+        let tableHeight: CGFloat = mainTableView.bounds.size.height
+        
+        for i in cells {
+            let cell: UITableViewCell = i as! mainGameTableViewCell
+            cell.transform = CGAffineTransformMakeTranslation(0, tableHeight)
+        }
+        
+        var index = 0
+        
+        for a in cells {
+            let cell: UITableViewCell = a as! mainGameTableViewCell
+            UIView.animateWithDuration(1.5, delay: 0.05 * Double(index), usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: nil, animations: {
+                cell.transform = CGAffineTransformMakeTranslation(0, 0);
+                }, completion: nil)
+            
+            index += 1
+        }
+    }
     override func viewWillAppear(animated: Bool) {
         refresh(1)
     }
     func refresh(sender: AnyObject) -> Void  {
         GameQuery() { result in
             self.games = result
+            if let sender = sender as? Int {
+            } else {
+                self.animateTable()
+            }
+            //self.tableView.reloadData()
+            self.refreshControl?.endRefreshing()
         }
-        mainTableView.reloadData()
         
-        self.refreshControl?.endRefreshing()
+        
+        
     }
 
     
@@ -79,11 +108,23 @@ class mainTableViewController: UITableViewController, UITableViewDelegate, UITab
             }
             if PFUser.currentUser() == game["whoseTurn"] as? PFUser {
                 cell.userInteractionEnabled = true
-                cell.alpha = 0.4
+                cell.textLabel?.enabled = true
+                cell.textLabel?.alpha = 1.0
             }
             else {
                 cell.userInteractionEnabled = false
-                cell.alpha = 1.0
+//                cell.alpha = 0.1
+//                cell.backgroundColor = UIColor.grayColor()
+                cell.textLabel?.enabled = false
+                cell.textLabel?.alpha = 0.4
+//                cell.hidden = true
+//                let grayView = UIView(frame: CGRectMake(0, 0, cell.frame.size.width, cell.frame.size.height))
+//                grayView.backgroundColor = UIColor.blackColor()
+//                grayView.alpha = 0.5
+//                cell.addSubview(grayView)
+//                cell.bringSubviewToFront(grayView)
+                
+                
             }
             
             cell.textLabel?.text = playerName
@@ -96,13 +137,11 @@ class mainTableViewController: UITableViewController, UITableViewDelegate, UITab
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let viewController = self.storyboard!.instantiateViewControllerWithIdentifier("gameViewController") as! GameViewController
-        //viewController.pr
+  
         viewController.game = games[indexPath.row]
         
         self.navigationController?.pushViewController(viewController, animated: true)
         
-        //        self.performSegueWithIdentifier("segueToGame", sender: self)
-//        tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
     }
     

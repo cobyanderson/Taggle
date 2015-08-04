@@ -47,8 +47,8 @@ func GameQuery(callback: [PFObject] -> Void) {
     var gameQuery = PFQuery.orQueryWithSubqueries([firstPlayerQuery, secondPlayerQuery])
     gameQuery.includeKey(parseFirstPlayer)
     gameQuery.includeKey(parseSecondPlayer)
-    gameQuery.orderByAscending(parseObjectID)
-    gameQuery.orderByAscending(parseWhoseTurn)
+    gameQuery.includeKey(parseWhoseTurn)
+    gameQuery.orderByAscending("createdAt")
 
     gameQuery.findObjectsInBackgroundWithBlock { (objects:[AnyObject]?, error: NSError?) -> Void in
         if error == nil {
@@ -59,5 +59,8 @@ func GameQuery(callback: [PFObject] -> Void) {
         }
     }
 }
+
+
+
 
 

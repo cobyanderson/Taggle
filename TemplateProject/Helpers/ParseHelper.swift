@@ -56,8 +56,8 @@ class ParseHelper {
                 
                 result.setValue(true, forKey: "accepted")
                 result.saveInBackground()
-                
             }
+            
             friendObject.setObject(user, forKey: self.ParseFriendFromUser)
             friendObject.setObject(toUser, forKey: self.ParseFriendtoUser)
             friendObject.saveInBackgroundWithBlock(nil)
