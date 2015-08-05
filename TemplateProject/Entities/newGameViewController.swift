@@ -12,6 +12,7 @@ import Parse
 class newGameViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchDisplayDelegate, UISearchBarDelegate {
     
 
+    @IBOutlet weak var tableSpace: NSLayoutConstraint!
     
     @IBOutlet weak var newGameTableView: UITableView!
     
@@ -134,12 +135,17 @@ class newGameViewController: UIViewController, UITableViewDataSource, UITableVie
 extension newGameViewController: UISearchBarDelegate {
     func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
         searchBar.setShowsCancelButton(true, animated: true)
+        tableSpace.constant = 216
+        
     }
     func searchBarCancelButtonClicked(searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
         searchBar.text = ""
         searchBar.setShowsCancelButton(false, animated: true)
         query = ParseHelper.getFriends(searchUpdateList)
+        
+        tableSpace.constant = 0
+        
     }
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
         query = ParseHelper.getFriends(searchUpdateList)

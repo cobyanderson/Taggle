@@ -28,6 +28,8 @@ class ChoiceViewController: UIViewController {
     
     var color : UIColor = UIColor.whiteColor()
     
+   
+    
 
     @IBOutlet weak var pictureView: UIImageView!
     
@@ -138,6 +140,7 @@ class ChoiceViewController: UIViewController {
             result.setObject(self.chosenAnswer, forKey: "pickedAnswer")
             result.setObject(isCorrect, forKey: "isCorrect")
             
+            
          
             if isCorrect {
                 let score = self.game!["score"] as! Int + 1
@@ -146,6 +149,28 @@ class ChoiceViewController: UIViewController {
 
             result.saveInBackground()
         }
+        
+        let scoreQueryUser = PFUser.query()!.whereKey("objectId", equalTo: PFUser.currentUser()!.objectId!)
+        scoreQueryUser.findObjectsInBackgroundWithBlock {
+            ( results: [AnyObject]?, error: NSError?) -> Void in
+            let results = results as? [PFUser] ?? []
+            let result = results[0]
+            
+            var correctlyGuessed: Int
+            if result["correctlyGuessed"] != nil {
+                correctlyGuessed = result["correctlyGuessed"] as! Int
+            }
+            else { correctlyGuessed = 0
+            }
+            if isCorrect {
+                correctlyGuessed = correctlyGuessed + 1
+                }
+                
+            result.setObject(correctlyGuessed, forKey: "correctlyGuessed")
+            result.saveInBackground()
+        }
+        
+       
         
 
         NSTimer.scheduledTimerWithTimeInterval(4.0, target: self, selector: Selector("dismiss"), userInfo: nil, repeats: false)

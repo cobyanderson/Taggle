@@ -1,10 +1,4 @@
-//
-//  ViewController.swift
-//  Template Project
-//
-//  Created by Benjamin Encz on 5/15/15.
-//  Copyright (c) 2015 Make School. All rights reserved.
-//
+
 import Parse
 import UIKit
 import ConvenienceKit
@@ -12,6 +6,8 @@ import ConvenienceKit
 class mainTableViewController: UITableViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet var mainTableView: UITableView!
+    
+    @IBOutlet weak var addButton: UIButton!
     
     var gamePlayerNames: [String] = [] {
         didSet {
@@ -25,11 +21,10 @@ class mainTableViewController: UITableViewController, UITableViewDelegate, UITab
     }
 
     override func viewDidLoad() {
-        super.viewDidLoad()
+       // super.viewDidLoad()
         
-        self.refreshControl = UIRefreshControl()
-
-        self.refreshControl!.addTarget(self, action: "refresh:", forControlEvents: UIControlEvents.ValueChanged)
+        refreshControl = UIRefreshControl()
+       refreshControl!.addTarget(self, action: "refresh:", forControlEvents: UIControlEvents.ValueChanged)
         self.tableView.addSubview(refreshControl!)
     
        
@@ -50,6 +45,7 @@ class mainTableViewController: UITableViewController, UITableViewDelegate, UITab
             let cell: UITableViewCell = i as! mainGameTableViewCell
             cell.transform = CGAffineTransformMakeTranslation(0, tableHeight)
         }
+        addButton.transform = CGAffineTransformMakeTranslation(0, tableHeight)
         
         var index = 0
         
@@ -61,6 +57,10 @@ class mainTableViewController: UITableViewController, UITableViewDelegate, UITab
             
             index += 1
         }
+        UIView.animateWithDuration(1.5, delay: 0.05 * Double(index), usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: nil, animations: {
+            self.addButton.transform = CGAffineTransformMakeTranslation(0, 0);
+        }, completion: nil)
+        
     }
     override func viewWillAppear(animated: Bool) {
         refresh(1)
@@ -90,11 +90,10 @@ class mainTableViewController: UITableViewController, UITableViewDelegate, UITab
         }
     }
    
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 60
     }
-    
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell: mainGameTableViewCell = self.mainTableView.dequeueReusableCellWithIdentifier("gameCell") as! mainGameTableViewCell
         
         var playerName: String = ""
@@ -128,6 +127,7 @@ class mainTableViewController: UITableViewController, UITableViewDelegate, UITab
             if game["playNumber"] as! Int != 0 && game["playNumber"] as! Int != 1 {
                 let gotScore = game["score"] as! Int
                 
+
                 let calculatedScore = Float(Float(gotScore) / (game["playNumber"] as! Float)) * 100.0
                 let stringScore = String(format: "%0.0f", calculatedScore)
                 cell.score.text = "\(stringScore)%"
@@ -157,7 +157,7 @@ class mainTableViewController: UITableViewController, UITableViewDelegate, UITab
         return cell
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let viewController = self.storyboard!.instantiateViewControllerWithIdentifier("gameViewController") as! GameViewController
   
         viewController.game = games[indexPath.row]

@@ -22,6 +22,9 @@
 		493E9FF41B71797D00142DE1 /* TaggleSurprisedSmall.png in Resources */ = {isa = PBXBuildFile; fileRef = 493E9FF31B71797D00142DE1 /* TaggleSurprisedSmall.png */; };
 		493E9FF61B718C4300142DE1 /* AnswerBoxCorrect.png in Resources */ = {isa = PBXBuildFile; fileRef = 493E9FF51B718C4300142DE1 /* AnswerBoxCorrect.png */; };
 		493E9FF81B718C7500142DE1 /* AnswerBoxGrey.png in Resources */ = {isa = PBXBuildFile; fileRef = 493E9FF71B718C7500142DE1 /* AnswerBoxGrey.png */; };
+		493EA00D1B71C7EB00142DE1 /* WhitePlus.png in Resources */ = {isa = PBXBuildFile; fileRef = 493EA00C1B71C7EB00142DE1 /* WhitePlus.png */; };
+		493EA00F1B71CC7100142DE1 /* TaggleLine.png in Resources */ = {isa = PBXBuildFile; fileRef = 493EA00E1B71CC7100142DE1 /* TaggleLine.png */; };
+		493EA0111B721CEE00142DE1 /* CreditsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493EA0101B721CEE00142DE1 /* CreditsViewController.swift */; };
 		498577841B682EBA005DEB59 /* TaggleStack.png in Resources */ = {isa = PBXBuildFile; fileRef = 498577831B682EBA005DEB59 /* TaggleStack.png */; };
 		499419F81B5D78CF004F4760 /* AddFriendsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499419F71B5D78CF004F4760 /* AddFriendsTableViewCell.swift */; };
 		49941A041B5DC3F2004F4760 /* ParseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49941A031B5DC3F2004F4760 /* ParseHelper.swift */; };
@@ -166,6 +169,9 @@
 		493E9FF31B71797D00142DE1 /* TaggleSurprisedSmall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TaggleSurprisedSmall.png; sourceTree = "<group>"; };
 		493E9FF51B718C4300142DE1 /* AnswerBoxCorrect.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AnswerBoxCorrect.png; sourceTree = "<group>"; };
 		493E9FF71B718C7500142DE1 /* AnswerBoxGrey.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AnswerBoxGrey.png; sourceTree = "<group>"; };
+		493EA00C1B71C7EB00142DE1 /* WhitePlus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = WhitePlus.png; sourceTree = "<group>"; };
+		493EA00E1B71CC7100142DE1 /* TaggleLine.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TaggleLine.png; sourceTree = "<group>"; };
+		493EA0101B721CEE00142DE1 /* CreditsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CreditsViewController.swift; path = Entities/CreditsViewController.swift; sourceTree = "<group>"; };
 		498577831B682EBA005DEB59 /* TaggleStack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = TaggleStack.png; path = ../TaggleStack.png; sourceTree = "<group>"; };
 		499419F71B5D78CF004F4760 /* AddFriendsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddFriendsTableViewCell.swift; sourceTree = "<group>"; };
 		49941A031B5DC3F2004F4760 /* ParseHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseHelper.swift; sourceTree = "<group>"; };
@@ -254,6 +260,8 @@
 			isa = PBXGroup;
 			children = (
 				498577831B682EBA005DEB59 /* TaggleStack.png */,
+				493EA00C1B71C7EB00142DE1 /* WhitePlus.png */,
+				493EA00E1B71CC7100142DE1 /* TaggleLine.png */,
 				49D1F4CB1B6C382700E65DF3 /* TaggleAngry.png */,
 				493E9FF51B718C4300142DE1 /* AnswerBoxCorrect.png */,
 				493E9FF71B718C7500142DE1 /* AnswerBoxGrey.png */,
@@ -278,14 +286,15 @@
 			children = (
 				49F2163C1B5475CE00D7872C /* Entities */,
 				624262B21B4460CB00005CE3 /* AppDelegate.swift */,
+				49D232B51B599E6E003EA8C3 /* GameLogic.swift */,
+				493E9FED1B6F06BA00142DE1 /* RandomPhrasesGenerator.swift */,
 				624262BD1B4460CB00005CE3 /* mainTableViewController.swift */,
 				491176F11B55A0DA00665F1E /* newGameViewController.swift */,
 				491177001B56EA0800665F1E /* AddFriendsViewController.swift */,
 				491176FE1B561DFA00665F1E /* SettingsViewController.swift */,
 				491177091B572B6100665F1E /* GameViewController.swift */,
 				493E9FEF1B6F117300142DE1 /* ChoiceViewController.swift */,
-				493E9FED1B6F06BA00142DE1 /* RandomPhrasesGenerator.swift */,
-				49D232B51B599E6E003EA8C3 /* GameLogic.swift */,
+				493EA0101B721CEE00142DE1 /* CreditsViewController.swift */,
 				624262B31B4460CB00005CE3 /* LaunchScreen.xib */,
 				491177021B57017300665F1E /* Main.storyboard */,
 				624262B71B4460CB00005CE3 /* Helpers */,
@@ -509,9 +518,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				493EA00F1B71CC7100142DE1 /* TaggleLine.png in Resources */,
 				49D1F4D01B6C382700E65DF3 /* TaggleHappy.png in Resources */,
 				49D1F4C31B6C21AE00E65DF3 /* TaggleTitle.png in Resources */,
 				624262C51B4460CB00005CE3 /* Images.xcassets in Resources */,
+				493EA00D1B71C7EB00142DE1 /* WhitePlus.png in Resources */,
 				491177041B57017300665F1E /* Main.storyboard in Resources */,
 				493E9FF41B71797D00142DE1 /* TaggleSurprisedSmall.png in Resources */,
 				498577841B682EBA005DEB59 /* TaggleStack.png in Resources */,
@@ -565,6 +576,7 @@
 				493E9FE61B6EF24900142DE1 /* Picture.swift in Sources */,
 				499419F81B5D78CF004F4760 /* AddFriendsTableViewCell.swift in Sources */,
 				624262C31B4460CB00005CE3 /* ErrorHandling.swift in Sources */,
+				493EA0111B721CEE00142DE1 /* CreditsViewController.swift in Sources */,
 				491176FF1B561DFA00665F1E /* SettingsViewController.swift in Sources */,
 				49941A041B5DC3F2004F4760 /* ParseHelper.swift in Sources */,
 			);

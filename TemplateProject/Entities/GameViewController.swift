@@ -42,7 +42,7 @@ class GameViewController: UIViewController, UIImagePickerControllerDelegate, UIN
                     opponentName = secondPlayer.username!
                     opponent = secondPlayer
                 }
-                self.navigationItem.title = "Taggle with \(opponentName!)"
+                self.navigationItem.title = "\(opponentName!)"
                 
                 if game["playNumber"] as! Int == 0 || phase == 2 {
                     
@@ -68,6 +68,7 @@ class GameViewController: UIViewController, UIImagePickerControllerDelegate, UIN
                 else {
                     var taggleImage: UIImage
                     if game["isCorrect"] != nil {
+     
                     let isCorrect = game["isCorrect"] as! Bool
                         if isCorrect {
                             self.comment.text = "Nice Acting!"
@@ -82,6 +83,37 @@ class GameViewController: UIViewController, UIImagePickerControllerDelegate, UIN
                     self.taggleView.image = taggleImage
                     self.whoGuessed.text = "\(self.opponentName!) guessed:"
                     self.guessedAnswer.text = game["pickedAnswer"] as? String
+                        
+                        let scoreQueryUser = PFUser.query()!.whereKey("objectId", equalTo: PFUser.currentUser()!.objectId!)
+                        scoreQueryUser.findObjectsInBackgroundWithBlock {
+                            ( results: [AnyObject]?, error: NSError?) -> Void in
+                            let results = results as? [PFUser] ?? []
+                            let result = results[0]
+                            
+                            var totalFacesMade: Int
+                            if result["totalFacesMade"] != nil {
+                                totalFacesMade = result["totalFacesMade"] as! Int
+                            }
+                            else { totalFacesMade = 0
+                            }
+                            totalFacesMade = totalFacesMade + 1
+                            println(totalFacesMade)
+                            result.setObject(totalFacesMade, forKey: "totalFacesMade")
+                            
+                            var successfullyActed: Int
+                            if result["successfullyActed"] != nil {
+                                successfullyActed = result["successfullyActed"] as! Int
+                            }
+                            else { successfullyActed = 0
+                            }
+                            if isCorrect {
+                                successfullyActed = successfullyActed + 1
+                            }
+                            
+                            result.setObject(successfullyActed, forKey: "successfullyActed")
+                            println(successfullyActed)
+                            result.saveInBackground()
+                        }
                     }
                 }
                 
@@ -127,7 +159,7 @@ class GameViewController: UIViewController, UIImagePickerControllerDelegate, UIN
 //            imagePicker.navigationItem.hidesBackButton = true
 //            imagePicker.allowsEditing = true
             imagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
-          //  imagePicker.cameraDevice = UIImagePickerControllerCameraDevice.Front
+           // imagePicker.cameraDevice = UIImagePickerControllerCameraDevice.Front
           
             presentViewController(imagePicker, animated: true, completion: nil)
             }
@@ -139,7 +171,6 @@ class GameViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     else {
         phase = 2
         let viewController = self.storyboard!.instantiateViewControllerWithIdentifier("choiceViewController") as! ChoiceViewController
-        
         viewController.game = self.game!
         presentViewController(viewController, animated: true, completion: nil)
         

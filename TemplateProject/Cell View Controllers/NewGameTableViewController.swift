@@ -8,21 +8,10 @@
 import Parse
 import UIKit
 
-public var selectedFriends: [PFUser] = []
 
 class NewGameTableViewCell: UITableViewCell {
     
     
 
-    @IBOutlet weak var button: UIButton!
-    
-    @IBAction func buttontapped(sender: AnyObject) {
         
-        let image = UIImage(named: "Checkmark")
-        button.setImage(image, forState: .Normal)
-        
-    }
-    
-
-
 }
