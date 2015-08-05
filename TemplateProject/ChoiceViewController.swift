@@ -12,7 +12,7 @@ import Parse
 //protocol ChoiceViewControllerDelegate {
 //    func passPhase(passedPhase: Int)
 //}
-public var PHASE = 1 
+
 
 class ChoiceViewController: UIViewController {
     
@@ -40,6 +40,7 @@ class ChoiceViewController: UIViewController {
         answerChoices = game!["answerChoices"] as! [String]
         shuffledAnswerChoices = shuffle(answerChoices)
         choice1.setTitle(shuffledAnswerChoices[0], forState: .Normal)
+        //choice1.setAttributedTitle(NSMutableAttributedString(string: shuffledAnswerChoices[0]), forState: UIControlState.Normal)
         choice2.setTitle(shuffledAnswerChoices[1], forState: .Normal)
         choice3.setTitle(shuffledAnswerChoices[2], forState: .Normal)
         choice4.setTitle(shuffledAnswerChoices[3], forState: .Normal)
@@ -64,21 +65,36 @@ class ChoiceViewController: UIViewController {
     
     @IBAction func pressed4(sender: AnyObject) {
         AnswerChosen(3)
+        
     }
    
     func AnswerChosen(shuffledIndex: Int) {
         
+        var index = 0
+        let choices: [UIButton] = [choice1, choice2, choice3, choice4]
+        for x in shuffledAnswerChoices {
+            if x == answerChoices[0] {
+                let image = UIImage(named: "AnswerBoxCorrect")
+                choices[index].setBackgroundImage(image, forState: .Normal)
+            }
+            index = index + 1
+            
+        }
+        
         chosenAnswer = shuffledAnswerChoices[shuffledIndex]
-        var labelText = ""
+//        var labelText = ""
         var isCorrect = true
+        var taggleImage = UIImage(named: "TaggleAngry")
         if answerChoices[0] == shuffledAnswerChoices[shuffledIndex] {
             color = UIColor(red: 34/255, green: 250/255, blue: 109/255, alpha: 1)
-            labelText = "Nice! 😄"
+//            labelText = "Nice!"
             isCorrect = true
+            taggleImage = UIImage(named: "TaggleHappy")
+            
         }
         else {
             color = UIColor(red: 250/255, green: 43/255, blue: 86/255, alpha: 1)
-            labelText = "Nope 😩"
+//            labelText = "Nope"
             isCorrect = false
         }
         if let wnd = self.view{
@@ -88,15 +104,22 @@ class ChoiceViewController: UIViewController {
             temporaryView.backgroundColor = color
             temporaryView.alpha = 1
             
-            let label = UILabel(frame: wnd.bounds)
-            label.textAlignment = NSTextAlignment.Center
-            label.text = labelText
-            label.textColor = UIColor.whiteColor()
-            label.font = UIFont(name: "STHeitiSC-Medium", size: 30)
+//            let label = UILabel(frame: wnd.bounds)
+//            label.textAlignment = NSTextAlignment.Center
+//            label.text = labelText
+//            label.textColor = UIColor.whiteColor()
+//            label.font = UIFont(name: "STHeitiSC-Medium", size: 50)
             
-            temporaryView.addSubview(label)
-            temporaryView.bringSubviewToFront(label)
-            label.center = temporaryView.center
+            let imageView = UIImageView(frame: wnd.bounds)
+            imageView.image = taggleImage
+            imageView.contentMode = UIViewContentMode.ScaleAspectFit
+            
+            temporaryView.addSubview(imageView)
+            temporaryView.bringSubviewToFront(imageView)
+          //  temporaryView.addSubview(label)
+          //  temporaryView.bringSubviewToFront(label)
+          //  label.center = temporaryView.center
+            imageView.center = temporaryView.center
             
             wnd.addSubview(temporaryView)
             UIView.animateWithDuration(3.0, animations: {
@@ -114,19 +137,21 @@ class ChoiceViewController: UIViewController {
             let result = results[0]
             result.setObject(self.chosenAnswer, forKey: "pickedAnswer")
             result.setObject(isCorrect, forKey: "isCorrect")
+            
+         
+            if isCorrect {
+                let score = self.game!["score"] as! Int + 1
+                result.setObject(score, forKey: "score")
+            }
 
             result.saveInBackground()
         }
-        PHASE = 2
-//        dismissViewControllerAnimated(true, completion: { () -> Void in
         
-//        })
-        NSTimer.scheduledTimerWithTimeInterval(3.0, target: self, selector: Selector("dismiss"), userInfo: nil, repeats: false)
+
+        NSTimer.scheduledTimerWithTimeInterval(4.0, target: self, selector: Selector("dismiss"), userInfo: nil, repeats: false)
         
     }
-    
     func dismiss() {
-//        PHASE = 2
         dismissViewControllerAnimated(true, completion: { () -> Void in
             
         })

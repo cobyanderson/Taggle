@@ -9,7 +9,17 @@
 import UIKit
 
 class mainGameTableViewCell: UITableViewCell {
+    
+    @IBOutlet weak var score: UILabel!
+    
+    var theScore: String = "New Game" {
+        didSet {
+            score.text = theScore
+            
+        }
+    }
 
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

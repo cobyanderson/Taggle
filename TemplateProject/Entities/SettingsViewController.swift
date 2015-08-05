@@ -31,7 +31,8 @@ class SettingsViewController: UIViewController, PFLogInViewControllerDelegate, P
         super.viewDidLoad()
         if let wholeUser  = PFUser.currentUser() {
             let nameUser = wholeUser.username
-            self.viewUsername.text = nameUser
+            let playerName = nameUser!.truncate(20, trailing: "...")
+            self.viewUsername.text = playerName
         }
         else {
             let viewUsername = "Nobody"

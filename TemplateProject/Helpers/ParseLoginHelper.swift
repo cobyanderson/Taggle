@@ -30,7 +30,9 @@ class ParseLoginHelper : NSObject, NSObjectProtocol {
 
 extension ParseLoginHelper : PFLogInViewControllerDelegate{
   
-
+    func logInViewController(logInController: PFLogInViewController, didFailToLogInWithError error: NSError?) {
+//        self.callback(nil, error)
+    }
     
   func logInViewController(logInController: PFLogInViewController, didLogInUser user: PFUser) {
     // Determine if this is a Facebook login
@@ -81,6 +83,7 @@ extension ParseLoginHelper : PFLogInViewControllerDelegate{
 extension ParseLoginHelper : PFSignUpViewControllerDelegate {
   
   func signUpViewController(signUpController: PFSignUpViewController, didSignUpUser user: PFUser) {
+    signUpController.dismissViewControllerAnimated(false, completion: nil)
     self.callback(user, nil)
   }
   

@@ -10,7 +10,7 @@ import UIKit
 import ConvenienceKit
 
 class mainTableViewController: UITableViewController, UITableViewDelegate, UITableViewDataSource {
-
+    
     @IBOutlet var mainTableView: UITableView!
     
     var gamePlayerNames: [String] = [] {
@@ -95,41 +95,63 @@ class mainTableViewController: UITableViewController, UITableViewDelegate, UITab
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell:UITableViewCell = self.mainTableView.dequeueReusableCellWithIdentifier("gameCell") as! UITableViewCell
+        var cell: mainGameTableViewCell = self.mainTableView.dequeueReusableCellWithIdentifier("gameCell") as! mainGameTableViewCell
+        
         var playerName: String = ""
         let game = games[indexPath.row]
         //RememberThis
         if let firstPlayer = game["firstPlayer"] as? PFUser, secondPlayer = game["secondPlayer"] as? PFUser {
             if firstPlayer != PFUser.currentUser() {
                 playerName = firstPlayer.username!
+                
             }
             else {
                 playerName = secondPlayer.username!
             }
+            playerName = playerName.truncate(20, trailing: "...")
             if PFUser.currentUser() == game["whoseTurn"] as? PFUser {
                 cell.userInteractionEnabled = true
                 cell.textLabel?.enabled = true
                 cell.textLabel?.alpha = 1.0
+                cell.textLabel?.text = "Play \(playerName)!"
+                
             }
             else {
                 cell.userInteractionEnabled = false
-//                cell.alpha = 0.1
-//                cell.backgroundColor = UIColor.grayColor()
                 cell.textLabel?.enabled = false
                 cell.textLabel?.alpha = 0.4
-//                cell.hidden = true
-//                let grayView = UIView(frame: CGRectMake(0, 0, cell.frame.size.width, cell.frame.size.height))
-//                grayView.backgroundColor = UIColor.blackColor()
-//                grayView.alpha = 0.5
-//                cell.addSubview(grayView)
-//                cell.bringSubviewToFront(grayView)
-                
-                
-            }
+                cell.textLabel?.text = "\(playerName)'s Turn"
             
-            cell.textLabel?.text = playerName
+            }
             cell.textLabel?.textColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
             cell.textLabel!.font = UIFont(name: "STHeitiSC-Medium", size: 17)
+            if game["playNumber"] as! Int != 0 && game["playNumber"] as! Int != 1 {
+                let gotScore = game["score"] as! Int
+                
+                let calculatedScore = Float(Float(gotScore) / (game["playNumber"] as! Float)) * 100.0
+                let stringScore = String(format: "%0.0f", calculatedScore)
+                cell.score.text = "\(stringScore)%"
+                if calculatedScore < 50 {
+                    cell.score.textColor = UIColor(red: 250/255, green: 43/255, blue: 86/255, alpha: 1)
+                }
+                else {
+                    cell.score.textColor = UIColor(red: 34/255, green: 250/255, blue: 109/255, alpha: 1)
+                }
+                cell.score.font = UIFont(name: "STHeitiSC-Medium", size: 25)
+            }
+            else {
+                if game["firstPlayer"] as? PFUser != PFUser.currentUser() {
+                    cell.score.text = "New!"
+                    cell.score.font = UIFont(name: "STHeitiSC-Medium", size: 18)
+                    cell.score.textColor = UIColor(red: 232/255, green: 219/255, blue: 77/255, alpha: 1)
+                }
+                else {
+                    cell.score.text = "Waiting"
+                    cell.score.font = UIFont(name: "STHeitiSC-Medium", size: 18)
+                    cell.score.textColor = UIColor(red: 38/255, green: 173/255, blue: 197/255, alpha: 1)
+                }
+
+            }
         }
         
         return cell
@@ -150,7 +172,6 @@ class mainTableViewController: UITableViewController, UITableViewDelegate, UITab
         super.viewDidAppear(animated)
         let image = UIImage(named: "Taggle")!
         self.navigationItem.titleView = UIImageView(image: image)
-        self.navigationItem.backBarButtonItem?.title = "    "
     }
 
     override func didReceiveMemoryWarning() {
@@ -168,6 +189,17 @@ class mainTableViewController: UITableViewController, UITableViewDelegate, UITab
     func presentGameController(notification: NSNotification) {
         if let game = notification.object as? PFObject {
             self.performSegueWithIdentifier("segueToGame", sender: game)
+        }
+    }
+}
+extension String {
+    /// Truncates the string to length number of characters and
+    /// appends optional trailing string if longer
+    func truncate(length: Int, trailing: String? = nil) -> String {
+        if count(self) > length {
+            return self.substringToIndex(advance(self.startIndex, length)) + (trailing ?? "")
+        } else {
+            return self
         }
     }
 }

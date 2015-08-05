@@ -19,6 +19,9 @@
 		493E9FE61B6EF24900142DE1 /* Picture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493E9FE51B6EF24900142DE1 /* Picture.swift */; };
 		493E9FEE1B6F06BA00142DE1 /* RandomPhrasesGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493E9FED1B6F06BA00142DE1 /* RandomPhrasesGenerator.swift */; };
 		493E9FF01B6F117300142DE1 /* ChoiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493E9FEF1B6F117300142DE1 /* ChoiceViewController.swift */; };
+		493E9FF41B71797D00142DE1 /* TaggleSurprisedSmall.png in Resources */ = {isa = PBXBuildFile; fileRef = 493E9FF31B71797D00142DE1 /* TaggleSurprisedSmall.png */; };
+		493E9FF61B718C4300142DE1 /* AnswerBoxCorrect.png in Resources */ = {isa = PBXBuildFile; fileRef = 493E9FF51B718C4300142DE1 /* AnswerBoxCorrect.png */; };
+		493E9FF81B718C7500142DE1 /* AnswerBoxGrey.png in Resources */ = {isa = PBXBuildFile; fileRef = 493E9FF71B718C7500142DE1 /* AnswerBoxGrey.png */; };
 		498577841B682EBA005DEB59 /* TaggleStack.png in Resources */ = {isa = PBXBuildFile; fileRef = 498577831B682EBA005DEB59 /* TaggleStack.png */; };
 		499419F81B5D78CF004F4760 /* AddFriendsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499419F71B5D78CF004F4760 /* AddFriendsTableViewCell.swift */; };
 		49941A041B5DC3F2004F4760 /* ParseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49941A031B5DC3F2004F4760 /* ParseHelper.swift */; };
@@ -160,6 +163,9 @@
 		493E9FE51B6EF24900142DE1 /* Picture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Picture.swift; sourceTree = "<group>"; };
 		493E9FED1B6F06BA00142DE1 /* RandomPhrasesGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RandomPhrasesGenerator.swift; path = Entities/RandomPhrasesGenerator.swift; sourceTree = "<group>"; };
 		493E9FEF1B6F117300142DE1 /* ChoiceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChoiceViewController.swift; sourceTree = "<group>"; };
+		493E9FF31B71797D00142DE1 /* TaggleSurprisedSmall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TaggleSurprisedSmall.png; sourceTree = "<group>"; };
+		493E9FF51B718C4300142DE1 /* AnswerBoxCorrect.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AnswerBoxCorrect.png; sourceTree = "<group>"; };
+		493E9FF71B718C7500142DE1 /* AnswerBoxGrey.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AnswerBoxGrey.png; sourceTree = "<group>"; };
 		498577831B682EBA005DEB59 /* TaggleStack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = TaggleStack.png; path = ../TaggleStack.png; sourceTree = "<group>"; };
 		499419F71B5D78CF004F4760 /* AddFriendsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddFriendsTableViewCell.swift; sourceTree = "<group>"; };
 		49941A031B5DC3F2004F4760 /* ParseHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseHelper.swift; sourceTree = "<group>"; };
@@ -249,7 +255,10 @@
 			children = (
 				498577831B682EBA005DEB59 /* TaggleStack.png */,
 				49D1F4CB1B6C382700E65DF3 /* TaggleAngry.png */,
+				493E9FF51B718C4300142DE1 /* AnswerBoxCorrect.png */,
+				493E9FF71B718C7500142DE1 /* AnswerBoxGrey.png */,
 				49D1F4CC1B6C382700E65DF3 /* TaggleHappy.png */,
+				493E9FF31B71797D00142DE1 /* TaggleSurprisedSmall.png */,
 				49D1F4CD1B6C382700E65DF3 /* TaggleSad.png */,
 				49D1F4C21B6C21AE00E65DF3 /* TaggleTitle.png */,
 				49D1F4CE1B6C382700E65DF3 /* TaggleSurprised.png */,
@@ -404,6 +413,7 @@
 				TargetAttributes = {
 					62C8C1DF1B06BD6500DC3EA7 = {
 						CreatedOnToolsVersion = 6.3;
+						DevelopmentTeam = D6C7YNZ89Q;
 					};
 				};
 			};
@@ -503,11 +513,14 @@
 				49D1F4C31B6C21AE00E65DF3 /* TaggleTitle.png in Resources */,
 				624262C51B4460CB00005CE3 /* Images.xcassets in Resources */,
 				491177041B57017300665F1E /* Main.storyboard in Resources */,
+				493E9FF41B71797D00142DE1 /* TaggleSurprisedSmall.png in Resources */,
 				498577841B682EBA005DEB59 /* TaggleStack.png in Resources */,
 				49D1F4CF1B6C382700E65DF3 /* TaggleAngry.png in Resources */,
 				624262C11B4460CB00005CE3 /* LaunchScreen.xib in Resources */,
 				49D1F4D11B6C382700E65DF3 /* TaggleSad.png in Resources */,
 				49F216421B54D05900D7872C /* STHeitiLight.ttc in Resources */,
+				493E9FF81B718C7500142DE1 /* AnswerBoxGrey.png in Resources */,
+				493E9FF61B718C4300142DE1 /* AnswerBoxCorrect.png in Resources */,
 				49D1F4D21B6C382700E65DF3 /* TaggleSurprised.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -680,6 +693,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEFINES_MODULE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -692,6 +707,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = Taggle;
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "TemplateProject/TemplateProject-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -702,6 +718,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEFINES_MODULE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -714,6 +732,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = Taggle;
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "TemplateProject/TemplateProject-Bridging-Header.h";
 			};
 			name = Release;

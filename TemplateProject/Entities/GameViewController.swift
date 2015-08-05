@@ -14,11 +14,13 @@ class GameViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     
     var opponentName: String?
     
-    let imagePicker = UIImagePickerController()
+    let imagePicker = myPickerClass()
     
     var opponent: PFUser?
     
     var choiceView: ChoiceViewController?
+    
+    var phase: Int = 1
     
     @IBOutlet weak var taggleView: UIImageView!
     @IBOutlet weak var comment: UILabel!
@@ -27,8 +29,9 @@ class GameViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     @IBOutlet weak var guessedAnswer: UILabel!
     
     override func viewWillAppear(animated: Bool) {
-        
+        self.navigationItem.hidesBackButton =  true
         imagePicker.delegate = self
+        imagePicker.allowsEditing = true
         if let game = game {
             if let firstPlayer = game["firstPlayer"] as? PFUser, secondPlayer = game["secondPlayer"] as? PFUser {
                 if firstPlayer != PFUser.currentUser() {
@@ -41,9 +44,12 @@ class GameViewController: UIViewController, UIImagePickerControllerDelegate, UIN
                 }
                 self.navigationItem.title = "Taggle with \(opponentName!)"
                 
-                if game["playNumber"] as! Int == 0 || PHASE == 2 {
+                if game["playNumber"] as! Int == 0 || phase == 2 {
+                    
+                    self.taggleView.image = UIImage(named: "TaggleSurprised")
                     self.comment.text = "Your Turn!"
                     self.whoGuessed.text = "Make \(self.opponentName!) guess:"
+                    
                     
                     let unshuffledAnswers: [String] = getRandomPromptList()
                     let answer = unshuffledAnswers.first
@@ -60,16 +66,20 @@ class GameViewController: UIViewController, UIImagePickerControllerDelegate, UIN
                     }
                 }
                 else {
+                    var taggleImage: UIImage
                     if game["isCorrect"] != nil {
                     let isCorrect = game["isCorrect"] as! Bool
                         if isCorrect {
                             self.comment.text = "Nice Acting!"
+                            taggleImage = UIImage(named: "TaggleHappy")!
                             self.guessedAnswer.textColor = UIColor(red: 34/255, green: 250/255, blue: 109/255, alpha: 1)
                         }
                         else {
                             self.comment.text = "More Emotion!"
+                            taggleImage = UIImage(named: "TaggleSad")!
                             self.guessedAnswer.textColor = UIColor(red: 250/255, green: 43/255, blue: 86/255, alpha: 1)
                     }
+                    self.taggleView.image = taggleImage
                     self.whoGuessed.text = "\(self.opponentName!) guessed:"
                     self.guessedAnswer.text = game["pickedAnswer"] as? String
                     }
@@ -107,10 +117,18 @@ class GameViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     
     }
     @IBAction func nextButtonPressed(sender: AnyObject) {
-    if game!["playNumber"] as! Int == 0 || PHASE == 2 {
-        if game!["playNumber"] as! Int != 6 {
-            imagePicker.allowsEditing = true
-            imagePicker.sourceType = .PhotoLibrary
+    if game!["playNumber"] as! Int == 0 || phase == 2 {
+        
+        // -1 ensures the game will never end... to be changed later
+        if game!["playNumber"] as! Int != -1 {
+            imagePicker.delegate = self
+            imagePicker.navigationController?.delegate = self
+//            imagePicker.navigationItem.rightBarButtonItem = nil
+//            imagePicker.navigationItem.hidesBackButton = true
+//            imagePicker.allowsEditing = true
+            imagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
+          //  imagePicker.cameraDevice = UIImagePickerControllerCameraDevice.Front
+          
             presentViewController(imagePicker, animated: true, completion: nil)
             }
         else {
@@ -119,6 +137,7 @@ class GameViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         }
     }
     else {
+        phase = 2
         let viewController = self.storyboard!.instantiateViewControllerWithIdentifier("choiceViewController") as! ChoiceViewController
         
         viewController.game = self.game!
@@ -129,7 +148,8 @@ class GameViewController: UIViewController, UIImagePickerControllerDelegate, UIN
 
         
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
-        if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
+        phase = 1
+        if let pickedImage = info[UIImagePickerControllerEditedImage] as? UIImage {
             let imageData = UIImageJPEGRepresentation(pickedImage, 0.4)
             let imageFile = PFFile(data: imageData)
             imageFile.saveInBackground()
@@ -159,10 +179,8 @@ class GameViewController: UIViewController, UIImagePickerControllerDelegate, UIN
                     
                 })
                 }
-          
             
         }
-        PHASE = 1
     }
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {
         dismissViewControllerAnimated(true, completion: nil)

@@ -29,6 +29,7 @@ func CreateNewGame(secondPlayer: PFUser, callback: GameCreatedCallback ) {
     game[parseFirstPlayer] = PFUser.currentUser()
     game[parseWhoseTurn] = PFUser.currentUser()
     game[parseSecondPlayer] = secondPlayer
+    game["score"] = 0
     game.saveInBackgroundWithBlock { (success, error) -> Void in
         if success {
             callback(game)

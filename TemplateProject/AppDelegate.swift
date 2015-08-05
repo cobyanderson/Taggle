@@ -1,4 +1,4 @@
-
+ 
 //
 //  AppDelegate.swift
 //  Template Project
@@ -37,6 +37,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
                 let tabBarController = storyboard.instantiateViewControllerWithIdentifier("MainViewController") as! UIViewController
                 // 3
+                
                 self.window?.rootViewController?.presentViewController(tabBarController, animated: true, completion: nil)
             }
         }
@@ -127,7 +128,7 @@ func presentLogInView() {
     logoImage.image = UIImage(named: "TaggleBig")
     logoImage.contentMode = UIViewContentMode.ScaleAspectFill
     var otherImage = UIImageView()
-    otherImage.image = UIImage(named: "TaggleSurprised")
+    otherImage.image = UIImage(named: "TaggleSurprisedSmall")
     otherImage.contentMode = UIViewContentMode.ScaleAspectFill
     
     

@@ -18,6 +18,9 @@ class AddFriendsViewController: UIViewController {
     
     @IBOutlet weak var friendSearchBar: UISearchBar!
     
+    @IBOutlet weak var bottomSpace: NSLayoutConstraint!
+    
+    
     @IBOutlet weak var addFriendsTableView: UITableView!
     
     
@@ -213,18 +216,25 @@ extension AddFriendsViewController: UISearchBarDelegate {
     
     func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
         searchBar.setShowsCancelButton(true, animated: true)
-        state = .SearchMode
+        
+        
+        bottomSpace.constant = 216
     }
+    
     
     func searchBarCancelButtonClicked(searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
         searchBar.text = ""
         searchBar.setShowsCancelButton(false, animated: true)
         state = .DefaultMode
+        
+        bottomSpace.constant = 0
     }
     
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+        state = .SearchMode
         ParseHelper.searchUsers(searchText, completionBlock:searchUpdateList)
+        
     }
    
     
