@@ -181,7 +181,7 @@ class GameViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
         phase = 1
         if let pickedImage = info[UIImagePickerControllerEditedImage] as? UIImage {
-            let imageData = UIImageJPEGRepresentation(pickedImage, 0.4)
+            let imageData = UIImageJPEGRepresentation(pickedImage, 0.8)
             let imageFile = PFFile(data: imageData)
             imageFile.saveInBackground()
         
