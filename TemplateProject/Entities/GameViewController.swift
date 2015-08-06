@@ -158,8 +158,8 @@ class GameViewController: UIViewController, UIImagePickerControllerDelegate, UIN
 //            imagePicker.navigationItem.rightBarButtonItem = nil
 //            imagePicker.navigationItem.hidesBackButton = true
 //            imagePicker.allowsEditing = true
-            imagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
-           // imagePicker.cameraDevice = UIImagePickerControllerCameraDevice.Front
+            imagePicker.sourceType = UIImagePickerControllerSourceType.Camera
+            imagePicker.cameraDevice = UIImagePickerControllerCameraDevice.Front
           
             presentViewController(imagePicker, animated: true, completion: nil)
             }

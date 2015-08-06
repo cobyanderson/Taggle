@@ -29,7 +29,7 @@ class AddFriendsTableViewCell: UITableViewCell {
     var user: PFUser? = nil {
         didSet {
             if let user = user {
-                usernameLabel.text = user.username
+                usernameLabel.text = (user.username)?.truncate(20, trailing: "...")
             }
         }
     }

@@ -12,6 +12,7 @@ import UIKit
 class NewGameTableViewCell: UITableViewCell {
     
     
+    @IBOutlet weak var score: UILabel!
 
         
 }

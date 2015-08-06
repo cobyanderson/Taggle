@@ -119,6 +119,7 @@ class ParseHelper {
         query.whereKey(ParseHelper.ParseFriendFromUser, equalTo: PFUser.currentUser()!)
         query.whereKey("accepted", equalTo: true)
         query.includeKey("toUser")
+        // include Keys here?
         query.orderByAscending(ParseHelper.ParseFriendtoUser)
         query.findObjectsInBackgroundWithBlock(completionBlock)
        

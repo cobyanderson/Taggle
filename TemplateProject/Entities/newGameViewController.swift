@@ -88,8 +88,38 @@ class newGameViewController: UIViewController, UITableViewDataSource, UITableVie
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell: NewGameTableViewCell = self.newGameTableView.dequeueReusableCellWithIdentifier("friendCell") as! NewGameTableViewCell!
         let foundFriend = foundFriends![indexPath.row]
-
-        cell.textLabel?.text = foundFriend.username
+        
+        if let totalFacesMade = foundFriend["totalFacesMade"] as? Float {
+            
+            let successfullyActed = foundFriend["successfullyActed"] as? Float ?? 0.0
+            let correctlyGuessed = foundFriend["correctlyGuessed"] as? Float ?? 0.0
+            let averageScore = ((successfullyActed + correctlyGuessed) / (totalFacesMade * 2.0)) * 100.0
+            
+            let stringAverageScore = String(format: "%0.0f", averageScore)
+            let stringTotalFacesMade = String(format: "%0.0f", totalFacesMade)
+            
+            let friendScore = "\(stringAverageScore)% of \(stringTotalFacesMade)"
+            
+            cell.score.text = friendScore
+            if averageScore > 50 {
+                cell.score.textColor = UIColor(red: 34/255, green: 250/255, blue: 109/255, alpha: 1)
+            }
+            else {
+                cell.score.textColor =  UIColor(red: 250/255, green: 43/255, blue: 86/255, alpha: 1)
+            }
+        }
+        else {
+            cell.score.text = "New"
+            cell.score.textColor = UIColor.blackColor()
+        }
+//
+//        friendScoreQuery.findObjectsInBackgroundWithBlock {
+//            ( results: [AnyObject]?, error:NSError?) -> Void in
+//            let results = results as? [PFUser] ?? []
+//            }
+    
+        
+        cell.textLabel?.text = (foundFriend.username)?.truncate(20, trailing: "...")
         cell.textLabel?.font = UIFont(name: "STHeitiSC-Light", size: 18)
         return cell
     }

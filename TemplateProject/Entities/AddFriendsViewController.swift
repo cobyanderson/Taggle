@@ -10,10 +10,10 @@ import UIKit
 import Parse
 import ConvenienceKit
 
+import MessageUI
 
 
-
-class AddFriendsViewController: UIViewController {
+class AddFriendsViewController: UIViewController, MFMessageComposeViewControllerDelegate {
     
     
     @IBOutlet weak var friendSearchBar: UISearchBar!
@@ -23,6 +23,27 @@ class AddFriendsViewController: UIViewController {
     
     @IBOutlet weak var addFriendsTableView: UITableView!
     
+    @IBAction func invite(sender: AnyObject) {
+        var message = MFMessageComposeViewController()
+        message.body = "Set Link Here"
+        message.messageComposeDelegate = self
+        self.presentViewController(message, animated: true, completion: nil)
+    }
+    func messageComposeViewController(controller: MFMessageComposeViewController!, didFinishWithResult result: MessageComposeResult) {
+        switch (result.value) {
+        case MessageComposeResultCancelled.value:
+            println("Message was cancelled")
+            self.dismissViewControllerAnimated(true, completion: nil)
+        case MessageComposeResultFailed.value:
+            println("Message failed")
+            self.dismissViewControllerAnimated(true, completion: nil)
+        case MessageComposeResultSent.value:
+            println("Message was sent")
+            self.dismissViewControllerAnimated(true, completion: nil)
+        default:
+            break;
+        }
+    }
     
     
     // stores all the users that match the current search query
