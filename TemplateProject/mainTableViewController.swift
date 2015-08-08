@@ -72,12 +72,36 @@ class mainTableViewController: UITableViewController, UITableViewDelegate, UITab
             } else {
                 self.animateTable()
             }
-            //self.tableView.reloadData()
             self.refreshControl?.endRefreshing()
         }
         
         
         
+    }
+    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return true
+    }
+    override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [AnyObject]? {
+        var deleteButton = UITableViewRowAction(style: .Default, title: "Delete", handler: { (action, indexPath) in
+            self.tableView.dataSource?.tableView?(
+                self.tableView,
+                commitEditingStyle: .Delete,
+                forRowAtIndexPath: indexPath
+            )
+            
+            return
+        })
+        
+        deleteButton.backgroundColor = UIColor(red: 250/255, green: 43/255, blue: 86/255, alpha: 0.9)
+        
+        return [deleteButton]
+    }
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == UITableViewCellEditingStyle.Delete {
+            self.games[indexPath.row].deleteInBackgroundWithBlock({ (bool: Bool, error: NSError?) -> Void in
+                self.refresh(true)
+            })
+        }
     }
 
     
@@ -109,16 +133,14 @@ class mainTableViewController: UITableViewController, UITableViewDelegate, UITab
             }
             playerName = playerName.truncate(20, trailing: "...")
             if PFUser.currentUser() == game["whoseTurn"] as? PFUser {
-                cell.userInteractionEnabled = true
-                cell.textLabel?.enabled = true
+                
                 cell.textLabel?.alpha = 1.0
                 cell.textLabel?.text = "Play \(playerName)!"
                 
             }
             else {
-                cell.userInteractionEnabled = false
-                cell.textLabel?.enabled = false
-                cell.textLabel?.alpha = 0.4
+                
+                cell.textLabel?.alpha = 0.5
                 cell.textLabel?.text = "\(playerName)'s Turn"
             
             }
@@ -128,7 +150,10 @@ class mainTableViewController: UITableViewController, UITableViewDelegate, UITab
                 let gotScore = game["score"] as! Int
                 
 
-                let calculatedScore = Float(Float(gotScore) / (game["playNumber"] as! Float)) * 100.0
+                var calculatedScore = Float(Float(gotScore) / (game["playNumber"] as! Float)) * 100.0
+                if calculatedScore > 100 {
+                    calculatedScore = 100
+                }
                 let stringScore = String(format: "%0.0f", calculatedScore)
                 cell.score.text = "\(stringScore)%"
                 if calculatedScore < 50 {
@@ -158,12 +183,14 @@ class mainTableViewController: UITableViewController, UITableViewDelegate, UITab
     }
     
      override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let viewController = self.storyboard!.instantiateViewControllerWithIdentifier("gameViewController") as! GameViewController
+        if mainTableView.cellForRowAtIndexPath(indexPath)?.textLabel?.alpha == 1 {
+            let viewController = self.storyboard!.instantiateViewControllerWithIdentifier("gameViewController") as! GameViewController
   
-        viewController.game = games[indexPath.row]
+            viewController.game = games[indexPath.row]
         
-        self.navigationController?.pushViewController(viewController, animated: true)
-        
+            self.navigationController?.pushViewController(viewController, animated: true)
+        }
+        mainTableView.cellForRowAtIndexPath(indexPath)?.selected = false
         
     }
     

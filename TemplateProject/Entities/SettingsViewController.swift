@@ -31,6 +31,10 @@ class SettingsViewController: UIViewController, PFLogInViewControllerDelegate, P
         dismissViewControllerAnimated(true, completion: nil)
     }
     
+    @IBAction func makePrompts(sender: AnyObject) {
+        UIApplication.sharedApplication().openURL(NSURL(string: "https://docs.google.com/forms/d/1q4b5pMdp2Rh4_s-gOTyXBgHiGoGjJ42NeVLSgpcqA80/viewform?usp=send_form")!)
+    }
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()

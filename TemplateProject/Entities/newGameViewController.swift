@@ -93,8 +93,10 @@ class newGameViewController: UIViewController, UITableViewDataSource, UITableVie
             
             let successfullyActed = foundFriend["successfullyActed"] as? Float ?? 0.0
             let correctlyGuessed = foundFriend["correctlyGuessed"] as? Float ?? 0.0
-            let averageScore = ((successfullyActed + correctlyGuessed) / (totalFacesMade * 2.0)) * 100.0
-            
+            var averageScore = ((successfullyActed + correctlyGuessed) / (totalFacesMade * 2)) * 100.0
+            if averageScore > 100 {
+                averageScore = 100
+            }
             let stringAverageScore = String(format: "%0.0f", averageScore)
             let stringTotalFacesMade = String(format: "%0.0f", totalFacesMade)
             
@@ -132,16 +134,20 @@ class newGameViewController: UIViewController, UITableViewDataSource, UITableVie
 
         if contains(selectedFriends, foundFriends[indexPath.row]) == false && selectedFriendsCount < 1 {
             selectedFriendsCount = selectedFriendsCount + 1
-            selectedFriends.append(foundFriends[indexPath.row])
-            tableView.cellForRowAtIndexPath(indexPath)?.accessoryType = UITableViewCellAccessoryType.Checkmark
-        }
-        else {
-            if let index = find(selectedFriends, foundFriends[indexPath.row]) {
-                selectedFriends.removeAtIndex(index)
-                selectedFriendsCount = selectedFriendsCount - 1
-                tableView.cellForRowAtIndexPath(indexPath)?.accessoryType = UITableViewCellAccessoryType.None
+            if selectedFriends.isEmpty == false {
+                selectedFriends.removeLast()
             }
+
+            selectedFriends.append(foundFriends[indexPath.row])
+
         }
+//        else {
+//            if let index = find(selectedFriends, foundFriends[indexPath.row]) {
+//                selectedFriends.removeAtIndex(index)
+//                selectedFriendsCount = selectedFriendsCount - 1
+//
+//            }
+//        }
 
     }
 

@@ -39,19 +39,29 @@ class ChoiceViewController: UIViewController {
     @IBOutlet weak var choice4: UIButton!
     
     override func viewDidLoad() {
+        
         answerChoices = game!["answerChoices"] as! [String]
         shuffledAnswerChoices = shuffle(answerChoices)
         choice1.setTitle(shuffledAnswerChoices[0], forState: .Normal)
-        //choice1.setAttributedTitle(NSMutableAttributedString(string: shuffledAnswerChoices[0]), forState: UIControlState.Normal)
         choice2.setTitle(shuffledAnswerChoices[1], forState: .Normal)
         choice3.setTitle(shuffledAnswerChoices[2], forState: .Normal)
         choice4.setTitle(shuffledAnswerChoices[3], forState: .Normal)
         
+        
+        let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.WhiteLarge)
+        self.pictureView.addSubview(activityIndicator)
+        activityIndicator.center = self.pictureView.center
+        
+        
         let imageFile: PFFile = game!["picture"] as! PFFile
-        imageFile.getDataInBackgroundWithBlock { (data, error) -> Void in
+        imageFile.getDataInBackgroundWithBlock({ (data: NSData?, error: NSError?) -> Void in
             self.pictureView.image = UIImage(data: data!, scale: 1.0)
-            
-        }
+            activityIndicator.stopAnimating()
+        }, progressBlock: { (Int32) -> Void in
+            activityIndicator.startAnimating()
+        })
+        
+       
     }
     @IBAction func pressed1(sender: AnyObject) {
         AnswerChosen(0)
@@ -71,7 +81,10 @@ class ChoiceViewController: UIViewController {
     }
    
     func AnswerChosen(shuffledIndex: Int) {
-        
+        choice1.userInteractionEnabled = false
+        choice2.userInteractionEnabled = false
+        choice3.userInteractionEnabled = false
+        choice4.userInteractionEnabled = false
         var index = 0
         let choices: [UIButton] = [choice1, choice2, choice3, choice4]
         for x in shuffledAnswerChoices {

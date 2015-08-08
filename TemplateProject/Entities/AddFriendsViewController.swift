@@ -25,7 +25,7 @@ class AddFriendsViewController: UIViewController, MFMessageComposeViewController
     
     @IBAction func invite(sender: AnyObject) {
         var message = MFMessageComposeViewController()
-        message.body = "Set Link Here"
+        message.body = "Hey, come play Taggle with me!  https://itunes.apple.com/us/app/taggle-one-shot-selfie-charades/id1027687966?ls=1&mt=8"
         message.messageComposeDelegate = self
         self.presentViewController(message, animated: true, completion: nil)
     }
