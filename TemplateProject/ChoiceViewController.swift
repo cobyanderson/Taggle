@@ -52,8 +52,25 @@ class ChoiceViewController: UIViewController {
         self.pictureView.addSubview(activityIndicator)
         activityIndicator.center = self.pictureView.center
         
+        var imageKey = ""
+        switch game!["playNumber"] as! Int {
+        case 1:
+            imageKey = "picture1"
+        case 2:
+            imageKey = "picture2"
+        case 3:
+            imageKey = "picture3"
+        case 4:
+            imageKey = "picture4"
+        case 4:
+            imageKey = "picture5"
+        case 6:
+            imageKey = "picture6"
+        default:
+            imageKey = "picture"
+        }
         
-        let imageFile: PFFile = game!["picture"] as! PFFile
+        let imageFile: PFFile = game![imageKey] as! PFFile
         imageFile.getDataInBackgroundWithBlock({ (data: NSData?, error: NSError?) -> Void in
             self.pictureView.image = UIImage(data: data!, scale: 1.0)
             activityIndicator.stopAnimating()
@@ -150,7 +167,7 @@ class ChoiceViewController: UIViewController {
             (results: [AnyObject]?, error: NSError?) -> Void in
             let results = results as? [PFObject] ?? []
             let result = results[0]
-            result.setObject(self.chosenAnswer, forKey: "pickedAnswer")
+            result.addObject(self.chosenAnswer, forKey: "pickedAnswers")
             result.setObject(isCorrect, forKey: "isCorrect")
             
             
@@ -178,7 +195,7 @@ class ChoiceViewController: UIViewController {
             if isCorrect {
                 correctlyGuessed = correctlyGuessed + 1
                 }
-                
+            
             result.setObject(correctlyGuessed, forKey: "correctlyGuessed")
             result.saveInBackground()
         }

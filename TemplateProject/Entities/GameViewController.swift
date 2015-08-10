@@ -28,12 +28,14 @@ class GameViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     
     @IBOutlet weak var guessedAnswer: UILabel!
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewDidLoad() {
+
         self.navigationItem.hidesBackButton =  true
         imagePicker.delegate = self
         imagePicker.allowsEditing = true
         if let game = game {
             if let firstPlayer = game["firstPlayer"] as? PFUser, secondPlayer = game["secondPlayer"] as? PFUser {
+                let playNumber = game["playNumber"] as! Int
                 if firstPlayer != PFUser.currentUser() {
                     opponentName = firstPlayer.username!
                     opponent = firstPlayer
@@ -42,7 +44,7 @@ class GameViewController: UIViewController, UIImagePickerControllerDelegate, UIN
                     opponentName = secondPlayer.username!
                     opponent = secondPlayer
                 }
-                self.navigationItem.title = "\(opponentName!)"
+                self.navigationItem.title = "Round \(playNumber) / 6"
                 
                 if game["playNumber"] as! Int == 0 || phase == 2 {
                     
@@ -82,7 +84,11 @@ class GameViewController: UIViewController, UIImagePickerControllerDelegate, UIN
                     }
                     self.taggleView.image = taggleImage
                     self.whoGuessed.text = "\(self.opponentName!) guessed:"
-                    self.guessedAnswer.text = game["pickedAnswer"] as? String
+                    
+                    let guessedAnswers = game["pickedAnswers"] as? [String]
+                    println(game["pickedAnswers"] as? [String])
+                    println(self.game!["playNumber"] as! Int)
+                    self.guessedAnswer.text = guessedAnswers![(self.game!["playNumber"] as! Int) - 2]
                         
                         let scoreQueryUser = PFUser.query()!.whereKey("objectId", equalTo: PFUser.currentUser()!.objectId!)
                         scoreQueryUser.findObjectsInBackgroundWithBlock {
@@ -152,14 +158,15 @@ class GameViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     if game!["playNumber"] as! Int == 0 || phase == 2 {
         
         // -1 ensures the game will never end... to be changed later
-        if game!["playNumber"] as! Int != -1 {
+        println(game!["playNumber"])
+        if (game!["playNumber"] as! Int) < 6 {
             imagePicker.delegate = self
             imagePicker.navigationController?.delegate = self
 //            imagePicker.navigationItem.rightBarButtonItem = nil
 //            imagePicker.navigationItem.hidesBackButton = true
 //            imagePicker.allowsEditing = true
-            imagePicker.sourceType = UIImagePickerControllerSourceType.Camera
-            imagePicker.cameraDevice = UIImagePickerControllerCameraDevice.Front
+            imagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
+           // imagePicker.cameraDevice = UIImagePickerControllerCameraDevice.Front
           
             presentViewController(imagePicker, animated: true, completion: nil)
             }
@@ -172,8 +179,9 @@ class GameViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         phase = 2
         let viewController = self.storyboard!.instantiateViewControllerWithIdentifier("choiceViewController") as! ChoiceViewController
         viewController.game = self.game!
-        presentViewController(viewController, animated: true, completion: nil)
         
+        presentViewController(viewController, animated: true, completion: nil)
+        self.viewDidLoad()
         }
     }
 
@@ -184,32 +192,54 @@ class GameViewController: UIViewController, UIImagePickerControllerDelegate, UIN
             let imageData = UIImageJPEGRepresentation(pickedImage, 0.8)
             let imageFile = PFFile(data: imageData)
             imageFile.saveInBackground()
-        
-            let query = PFQuery(className: "Game")
-            query.whereKey("objectId", equalTo: self.game!.objectId! )
-            query.findObjectsInBackgroundWithBlock {
-                (results: [AnyObject]?, error: NSError?) -> Void in
-                let results = results as? [PFObject] ?? []
-                let result = results[0]
+//        
+//            let query = PFQuery(className: "Game")
+//            query.whereKey("objectId", equalTo: self.game!.objectId! )
+//            query.findObjectsInBackgroundWithBlock {
+//                (results: [AnyObject]?, error: NSError?) -> Void in
+//                let results = results as? [PFObject] ?? []
+//                let result = results[0]
+            
+                let newPlayNumber: Int = game!["playNumber"] as! Int + 1
+            
                 
-                let newPlayNumber: Int = result["playNumber"] as! Int + 1
-
+                game!.setObject(self.opponent!, forKey: "whoseTurn")
+                game!.setObject(newPlayNumber, forKey: "playNumber")
+            
+            var imageKey = ""
+            switch game!["playNumber"] as! Int {
+            case 1:
+                imageKey = "picture1"
+            case 2:
+                imageKey = "picture2"
+            case 3:
+                imageKey = "picture3"
+            case 4:
+                imageKey = "picture4"
+            case 4:
+                imageKey = "picture5"
+            case 6:
+                imageKey = "picture6"
+            default:
+                imageKey = "picture"
+            }
                 
-                result.setObject(self.opponent!, forKey: "whoseTurn")
-                result.setObject(newPlayNumber, forKey: "playNumber")
-                result.setObject(imageFile, forKey: "picture")
+                
+                game!.setObject(imageFile, forKey: imageKey)
+                
+                
                 let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.WhiteLarge)
                 picker.view.addSubview(activityIndicator)
                 activityIndicator.center = picker.view.center
                 activityIndicator.startAnimating()
-                result.saveInBackgroundWithBlock({ (success: Bool, error: NSError?) -> Void in
+                game!.saveInBackgroundWithBlock({ (success: Bool, error: NSError?) -> Void in
                     activityIndicator.stopAnimating()
                     activityIndicator.removeFromSuperview()
                     self.dismissViewControllerAnimated(true, completion: nil)
                     self.navigationController?.popToRootViewControllerAnimated(true)
                     
                 })
-                }
+//                }
             
         }
     }
