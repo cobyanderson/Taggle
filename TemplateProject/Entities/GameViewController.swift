@@ -197,7 +197,7 @@ class GameViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     @IBAction func nextButtonPressed(sender: AnyObject) {
     
     if (game!["playNumber"] as! Int) == 6 {
-       
+        
         game!.setObject(7, forKey: "playNumber")
         game!.setObject(self.opponent!, forKey: "whoseTurn")
         game!.saveInBackgroundWithBlock({ (Bool, NSError) -> Void in })
@@ -221,6 +221,7 @@ class GameViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     }
         
     else if game!["playNumber"] as! Int == 0 || phase == 2 {
+        
             imagePicker.delegate = self
             imagePicker.navigationController?.delegate = self
             imagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
@@ -231,11 +232,13 @@ class GameViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     }
     else {
         phase = 2
+      
         let viewController = self.storyboard!.instantiateViewControllerWithIdentifier("choiceViewController") as! ChoiceViewController
         viewController.game = self.game!
-        
-        presentViewController(viewController, animated: true, completion: nil)
         self.viewDidLoad()
+        presentViewController(viewController, animated: true, completion: nil)
+        
+      
         }
     }
 
@@ -275,12 +278,12 @@ class GameViewController: UIViewController, UIImagePickerControllerDelegate, UIN
             default:
                 imageKey = "picture"
             }
-                
+           
             let newPlayNumber: Int = game!["playNumber"] as! Int + 1
-            
+            game!.setObject(newPlayNumber, forKey: "playNumber")
             
             game!.setObject(self.opponent!, forKey: "whoseTurn")
-            game!.setObject(newPlayNumber, forKey: "playNumber")
+            
             game!.setObject(imageFile, forKey: imageKey)
                 
                 

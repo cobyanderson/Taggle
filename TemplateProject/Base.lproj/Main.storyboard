@@ -1154,39 +1154,39 @@ http://goo.gl/forms/nmYdtqx4RJ</string>
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="fill" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="oNY-V3-g96">
-                                <rect key="frame" x="0.0" y="340" width="106.5" height="88"/>
+                                <rect key="frame" x="0.0" y="361" width="106.5" height="78.5"/>
                                 <fontDescription key="fontDescription" name="STHeitiSC-Light" family="Heiti SC" pointSize="24"/>
-                                <state key="normal" title="Round 1" backgroundImage="AnswerBoxGrey.png">
+                                <state key="normal" title="Round 1">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="pressed1:" destination="Rzg-7l-mED" eventType="touchUpInside" id="U5e-eZ-BzN"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleAspectFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="fill" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="rUp-uD-n40">
-                                <rect key="frame" x="106.5" y="340" width="107.5" height="88"/>
+                            <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="fill" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="1wl-h1-KiU" userLabel="Choice2">
+                                <rect key="frame" x="0.0" y="439.5" width="106.5" height="78.5"/>
                                 <fontDescription key="fontDescription" name="STHeitiSC-Light" family="Heiti SC" pointSize="24"/>
-                                <state key="normal" title="Round 3" backgroundImage="AnswerBoxGrey.png">
+                                <state key="normal" title="Round 2">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="pressed2:" destination="Rzg-7l-mED" eventType="touchUpInside" id="ioa-lr-phu"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="fill" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="rUp-uD-n40">
+                                <rect key="frame" x="107" y="361" width="106.5" height="78.5"/>
+                                <fontDescription key="fontDescription" name="STHeitiSC-Light" family="Heiti SC" pointSize="24"/>
+                                <state key="normal" title="Round 3">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="pressed3:" destination="Rzg-7l-mED" eventType="touchUpInside" id="J8p-3p-euT"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleAspectFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="fill" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="LMT-E8-bww" userLabel="Choice4">
-                                <rect key="frame" x="106.5" y="428" width="107.5" height="88"/>
-                                <fontDescription key="fontDescription" name="STHeitiSC-Light" family="Heiti SC" pointSize="24"/>
-                                <state key="normal" title="Round 4" backgroundImage="AnswerBoxGrey.png">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="pressed4:" destination="Rzg-7l-mED" eventType="touchUpInside" id="1eE-Ja-lof"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="fill" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="J5Q-K1-143" userLabel="Choice5">
-                                <rect key="frame" x="213.5" y="428" width="106.5" height="88"/>
+                                <rect key="frame" x="213.5" y="439.5" width="106.5" height="78.5"/>
                                 <fontDescription key="fontDescription" name="STHeitiSC-Light" family="Heiti SC" pointSize="24"/>
-                                <state key="normal" title="Round 6" backgroundImage="AnswerBoxGrey.png">
+                                <state key="normal" title="Round 6">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -1194,15 +1194,24 @@ http://goo.gl/forms/nmYdtqx4RJ</string>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="fill" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="1OE-2S-Nyl" userLabel="Choice6">
-                                <rect key="frame" x="213.5" y="340" width="106.5" height="88"/>
+                                <rect key="frame" x="213.5" y="361" width="106.5" height="78.5"/>
                                 <fontDescription key="fontDescription" name="STHeitiSC-Light" family="Heiti SC" pointSize="24"/>
-                                <state key="normal" title="Round 5" backgroundImage="AnswerBoxGrey.png">
+                                <state key="normal" title="Round 5">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="pressed5:" destination="Rzg-7l-mED" eventType="touchUpInside" id="Rri-lQ-7xJ"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Touch Image to Save" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="it6-if-NGh">
+                                <rect key="frame" x="0.0" y="340" width="320" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="JXw-u4-8T2"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="STHeitiSC-Light" family="Heiti SC" pointSize="16"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h2Y-B2-aw3">
                                 <rect key="frame" x="0.0" y="20" width="320" height="320"/>
                                 <state key="normal">
@@ -1213,9 +1222,10 @@ http://goo.gl/forms/nmYdtqx4RJ</string>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Knx-2S-0zM">
-                                <rect key="frame" x="0.0" y="516" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="518" width="320" height="50"/>
+                                <color key="backgroundColor" red="0.40000000600000002" green="1" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="1Y6-HB-nnD"/>
+                                    <constraint firstAttribute="height" constant="50" id="1Y6-HB-nnD"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="STHeitiSC-Medium" family="Heiti SC" pointSize="27"/>
                                 <state key="normal" title="Done">
@@ -1226,14 +1236,14 @@ http://goo.gl/forms/nmYdtqx4RJ</string>
                                     <action selector="pressedDone:" destination="Rzg-7l-mED" eventType="touchUpInside" id="pKP-mQ-RYc"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="fill" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="1wl-h1-KiU" userLabel="Choice2">
-                                <rect key="frame" x="0.0" y="428" width="106.5" height="88"/>
+                            <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="fill" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="LMT-E8-bww" userLabel="Choice4">
+                                <rect key="frame" x="107" y="439" width="106.5" height="78.5"/>
                                 <fontDescription key="fontDescription" name="STHeitiSC-Light" family="Heiti SC" pointSize="24"/>
-                                <state key="normal" title="Round 2" backgroundImage="AnswerBoxGrey.png">
+                                <state key="normal" title="Round 4">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="pressed2:" destination="Rzg-7l-mED" eventType="touchUpInside" id="ioa-lr-phu"/>
+                                    <action selector="pressed4:" destination="Rzg-7l-mED" eventType="touchUpInside" id="1eE-Ja-lof"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1245,6 +1255,7 @@ http://goo.gl/forms/nmYdtqx4RJ</string>
                             <constraint firstItem="1OE-2S-Nyl" firstAttribute="top" secondItem="WSQ-Gk-5gP" secondAttribute="bottom" id="73h-In-DbL"/>
                             <constraint firstItem="1OE-2S-Nyl" firstAttribute="height" secondItem="rUp-uD-n40" secondAttribute="height" id="C05-bp-fxH"/>
                             <constraint firstItem="rUp-uD-n40" firstAttribute="top" secondItem="WSQ-Gk-5gP" secondAttribute="bottom" id="D6k-fW-cBo"/>
+                            <constraint firstItem="1OE-2S-Nyl" firstAttribute="top" secondItem="it6-if-NGh" secondAttribute="bottom" id="DmU-UN-U3q"/>
                             <constraint firstItem="t7l-Dk-9G9" firstAttribute="top" secondItem="LMT-E8-bww" secondAttribute="bottom" id="Gad-tc-hjR"/>
                             <constraint firstItem="oNY-V3-g96" firstAttribute="leading" secondItem="xpE-pC-krD" secondAttribute="leadingMargin" constant="-16" id="IjJ-OI-h3I"/>
                             <constraint firstItem="J5Q-K1-143" firstAttribute="top" secondItem="1OE-2S-Nyl" secondAttribute="bottom" id="Jys-eF-Ja8"/>
@@ -1259,8 +1270,11 @@ http://goo.gl/forms/nmYdtqx4RJ</string>
                             <constraint firstAttribute="trailingMargin" secondItem="WSQ-Gk-5gP" secondAttribute="trailing" constant="-16" id="RHV-uQ-f4B"/>
                             <constraint firstItem="rUp-uD-n40" firstAttribute="leading" secondItem="oNY-V3-g96" secondAttribute="trailing" id="RXo-yn-iT3"/>
                             <constraint firstItem="1wl-h1-KiU" firstAttribute="width" secondItem="J5Q-K1-143" secondAttribute="width" id="S6P-3I-1L8"/>
+                            <constraint firstItem="it6-if-NGh" firstAttribute="top" secondItem="WSQ-Gk-5gP" secondAttribute="bottom" id="STD-cp-xGl"/>
                             <constraint firstItem="J5Q-K1-143" firstAttribute="height" secondItem="oNY-V3-g96" secondAttribute="height" id="Scs-vg-qJW"/>
                             <constraint firstItem="oNY-V3-g96" firstAttribute="top" secondItem="WSQ-Gk-5gP" secondAttribute="bottom" id="Uh0-df-rvO"/>
+                            <constraint firstItem="oNY-V3-g96" firstAttribute="top" secondItem="it6-if-NGh" secondAttribute="bottom" id="X1N-M3-Kiu"/>
+                            <constraint firstItem="rUp-uD-n40" firstAttribute="top" secondItem="it6-if-NGh" secondAttribute="bottom" id="XD2-DY-WCZ"/>
                             <constraint firstItem="J5Q-K1-143" firstAttribute="width" secondItem="oNY-V3-g96" secondAttribute="width" id="YpA-Bb-jbE"/>
                             <constraint firstItem="h2Y-B2-aw3" firstAttribute="top" secondItem="WSQ-Gk-5gP" secondAttribute="top" id="ZjV-7v-aT6"/>
                             <constraint firstItem="J5Q-K1-143" firstAttribute="width" secondItem="LMT-E8-bww" secondAttribute="width" id="bEn-DT-gkB"/>
@@ -1273,11 +1287,13 @@ http://goo.gl/forms/nmYdtqx4RJ</string>
                             <constraint firstItem="LMT-E8-bww" firstAttribute="leading" secondItem="1wl-h1-KiU" secondAttribute="trailing" id="f3f-ga-nIl"/>
                             <constraint firstItem="1OE-2S-Nyl" firstAttribute="leading" secondItem="oNY-V3-g96" secondAttribute="trailing" id="fGF-Hr-dpi"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Knx-2S-0zM" secondAttribute="trailing" constant="-16" id="gAh-vr-Bba"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="it6-if-NGh" secondAttribute="trailing" constant="-16" id="gPB-Uk-oL2"/>
                             <constraint firstItem="1wl-h1-KiU" firstAttribute="leading" secondItem="xpE-pC-krD" secondAttribute="leadingMargin" constant="-16" id="gW8-iH-LfE"/>
+                            <constraint firstItem="it6-if-NGh" firstAttribute="leading" secondItem="xpE-pC-krD" secondAttribute="leadingMargin" constant="-16" id="i8x-cI-31P"/>
                             <constraint firstItem="h2Y-B2-aw3" firstAttribute="trailing" secondItem="WSQ-Gk-5gP" secondAttribute="trailing" id="jaH-R2-nfQ"/>
                             <constraint firstItem="Knx-2S-0zM" firstAttribute="top" secondItem="LMT-E8-bww" secondAttribute="bottom" id="qSr-jO-Ttr"/>
                             <constraint firstItem="1OE-2S-Nyl" firstAttribute="width" secondItem="oNY-V3-g96" secondAttribute="width" id="rzj-4X-DYA"/>
-                            <constraint firstItem="t7l-Dk-9G9" firstAttribute="top" secondItem="Knx-2S-0zM" secondAttribute="bottom" constant="8" id="t4c-Zv-b97"/>
+                            <constraint firstItem="t7l-Dk-9G9" firstAttribute="top" secondItem="Knx-2S-0zM" secondAttribute="bottom" id="t4c-Zv-b97"/>
                             <constraint firstItem="h2Y-B2-aw3" firstAttribute="leading" secondItem="WSQ-Gk-5gP" secondAttribute="leading" id="tkw-tP-408"/>
                             <constraint firstItem="J5Q-K1-143" firstAttribute="leading" secondItem="1wl-h1-KiU" secondAttribute="trailing" id="x3T-cS-T4t"/>
                             <constraint firstItem="1wl-h1-KiU" firstAttribute="height" secondItem="J5Q-K1-143" secondAttribute="height" id="yKV-TY-QSo"/>
@@ -1286,9 +1302,12 @@ http://goo.gl/forms/nmYdtqx4RJ</string>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="fGF-Hr-dpi"/>
+                                <exclude reference="Uh0-df-rvO"/>
+                                <exclude reference="D6k-fW-cBo"/>
                                 <exclude reference="Ldf-n0-pD1"/>
                                 <exclude reference="Qgt-bP-XZ3"/>
+                                <exclude reference="73h-In-DbL"/>
+                                <exclude reference="fGF-Hr-dpi"/>
                                 <exclude reference="x3T-cS-T4t"/>
                                 <exclude reference="Gad-tc-hjR"/>
                                 <exclude reference="O6t-Cc-wst"/>

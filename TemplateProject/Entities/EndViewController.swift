@@ -29,7 +29,32 @@ class EndViewController: UIViewController {
 //    @IBOutlet weak var choice6: UIButton!
     
     @IBAction func saveImage(sender: AnyObject) {
-        UIImageWriteToSavedPhotosAlbum(self.picture.image, nil , nil, nil)
+        if let wnd = self.view{
+            
+            var temporaryView = UIView(frame: wnd.bounds)
+            
+            temporaryView.backgroundColor = UIColor.whiteColor()
+            temporaryView.alpha = 1
+            
+            let label = UILabel(frame: wnd.bounds)
+            label.textAlignment = NSTextAlignment.Center
+            label.text = "Saved"
+            label.textColor = UIColor.blackColor()
+            label.font = UIFont(name: "STHeitiSC-Medium", size: 50)
+    
+            temporaryView.addSubview(label)
+            temporaryView.bringSubviewToFront(label)
+            label.center = temporaryView.center
+            
+            wnd.addSubview(temporaryView)
+            UIView.animateWithDuration(1.0, animations: {
+                temporaryView.alpha = 0.0
+                }, completion: {(finished:Bool) in
+                    temporaryView.removeFromSuperview()
+                    //dismiss here
+            })
+        }
+        
         
     }
     
