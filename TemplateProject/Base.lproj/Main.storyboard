@@ -916,6 +916,26 @@
             </objects>
             <point key="canvasLocation" x="630" y="274"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="ORf-h5-yQb">
+            <objects>
+                <viewController id="KYz-PR-tvN" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="l6k-kK-PuO"/>
+                        <viewControllerLayoutGuide type="bottom" id="CPg-Ty-nms"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="wQT-B2-my3">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="600" height="600"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kPr-ec-M7W" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="942" y="1029"/>
+        </scene>
         <!--Choice View Controller-->
         <scene sceneID="2Qn-zd-4bI">
             <objects>

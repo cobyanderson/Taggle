@@ -54,7 +54,7 @@ class SettingsViewController: UIViewController, PFLogInViewControllerDelegate, P
             let nameUser = wholeUser.username
             let playerName = nameUser!.truncate(20, trailing: "...")
             self.viewUsername.text = playerName
-            println(wholeUser)
+          
             
             
             

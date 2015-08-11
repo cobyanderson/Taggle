@@ -62,14 +62,14 @@ class ChoiceViewController: UIViewController {
             imageKey = "picture3"
         case 4:
             imageKey = "picture4"
-        case 4:
+        case 5:
             imageKey = "picture5"
         case 6:
             imageKey = "picture6"
         default:
             imageKey = "picture"
         }
-        
+        println(imageKey)
         let imageFile: PFFile = game![imageKey] as! PFFile
         imageFile.getDataInBackgroundWithBlock({ (data: NSData?, error: NSError?) -> Void in
             self.pictureView.image = UIImage(data: data!, scale: 1.0)

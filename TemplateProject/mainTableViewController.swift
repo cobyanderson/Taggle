@@ -99,7 +99,7 @@ class mainTableViewController: UITableViewController, UITableViewDelegate, UITab
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == UITableViewCellEditingStyle.Delete {
             self.games[indexPath.row].deleteInBackgroundWithBlock({ (bool: Bool, error: NSError?) -> Void in
-                self.refresh(true)
+                self.refresh("")
             })
         }
     }
@@ -135,48 +135,40 @@ class mainTableViewController: UITableViewController, UITableViewDelegate, UITab
             if PFUser.currentUser() == game["whoseTurn"] as? PFUser {
                 
                 cell.textLabel?.alpha = 1.0
-                cell.textLabel?.text = "Play \(playerName)!"
-                
             }
             else {
-                
                 cell.textLabel?.alpha = 0.5
-                cell.textLabel?.text = "\(playerName)'s Turn"
-            
             }
-            cell.textLabel?.textColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
+            
+            cell.textLabel!.text = "\(playerName)"
+            cell.textLabel!.textColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
             cell.textLabel!.font = UIFont(name: "STHeitiSC-Medium", size: 17)
             if game["playNumber"] as! Int != 0 && game["playNumber"] as! Int != 1 {
-                let gotScore = game["score"] as! Int
                 
-
-                var calculatedScore = Float(Float(gotScore) / (game["playNumber"] as! Float)) * 100.0
-                if calculatedScore > 100 {
-                    calculatedScore = 100
-                }
-                let stringScore = String(format: "%0.0f", calculatedScore)
-                cell.score.text = "\(stringScore)%"
-                if calculatedScore < 50 {
+                if (game["whoseTurn"] as! PFUser) != PFUser.currentUser()! {
                     cell.score.textColor = UIColor(red: 250/255, green: 43/255, blue: 86/255, alpha: 1)
+                    cell.score.text = "Their Turn"
                 }
                 else {
                     cell.score.textColor = UIColor(red: 34/255, green: 250/255, blue: 109/255, alpha: 1)
+                    cell.score.text = "Your Turn!"
                 }
-                cell.score.font = UIFont(name: "STHeitiSC-Medium", size: 25)
+              
             }
             else {
                 if game["firstPlayer"] as? PFUser != PFUser.currentUser() {
                     cell.score.text = "New!"
-                    cell.score.font = UIFont(name: "STHeitiSC-Medium", size: 18)
+                    
                     cell.score.textColor = UIColor(red: 232/255, green: 219/255, blue: 77/255, alpha: 1)
                 }
                 else {
                     cell.score.text = "Waiting"
-                    cell.score.font = UIFont(name: "STHeitiSC-Medium", size: 18)
+                   
                     cell.score.textColor = UIColor(red: 38/255, green: 173/255, blue: 197/255, alpha: 1)
                 }
 
             }
+             cell.score.font = UIFont(name: "STHeitiSC-Medium", size: 18)
         }
         
         return cell
