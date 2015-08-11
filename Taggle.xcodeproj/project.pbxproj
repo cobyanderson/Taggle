@@ -25,6 +25,7 @@
 		493EA00D1B71C7EB00142DE1 /* WhitePlus.png in Resources */ = {isa = PBXBuildFile; fileRef = 493EA00C1B71C7EB00142DE1 /* WhitePlus.png */; };
 		493EA00F1B71CC7100142DE1 /* TaggleLine.png in Resources */ = {isa = PBXBuildFile; fileRef = 493EA00E1B71CC7100142DE1 /* TaggleLine.png */; };
 		493EA0111B721CEE00142DE1 /* CreditsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493EA0101B721CEE00142DE1 /* CreditsViewController.swift */; };
+		4978ECB11B79BDA0005DB331 /* EndViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4978ECB01B79BDA0005DB331 /* EndViewController.swift */; };
 		498577841B682EBA005DEB59 /* TaggleStack.png in Resources */ = {isa = PBXBuildFile; fileRef = 498577831B682EBA005DEB59 /* TaggleStack.png */; };
 		499419F81B5D78CF004F4760 /* AddFriendsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499419F71B5D78CF004F4760 /* AddFriendsTableViewCell.swift */; };
 		49941A041B5DC3F2004F4760 /* ParseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49941A031B5DC3F2004F4760 /* ParseHelper.swift */; };
@@ -172,6 +173,7 @@
 		493EA00C1B71C7EB00142DE1 /* WhitePlus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = WhitePlus.png; sourceTree = "<group>"; };
 		493EA00E1B71CC7100142DE1 /* TaggleLine.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TaggleLine.png; sourceTree = "<group>"; };
 		493EA0101B721CEE00142DE1 /* CreditsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CreditsViewController.swift; path = Entities/CreditsViewController.swift; sourceTree = "<group>"; };
+		4978ECB01B79BDA0005DB331 /* EndViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EndViewController.swift; path = Entities/EndViewController.swift; sourceTree = "<group>"; };
 		498577831B682EBA005DEB59 /* TaggleStack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = TaggleStack.png; path = ../TaggleStack.png; sourceTree = "<group>"; };
 		499419F71B5D78CF004F4760 /* AddFriendsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddFriendsTableViewCell.swift; sourceTree = "<group>"; };
 		49941A031B5DC3F2004F4760 /* ParseHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseHelper.swift; sourceTree = "<group>"; };
@@ -295,6 +297,7 @@
 				491177091B572B6100665F1E /* GameViewController.swift */,
 				493E9FEF1B6F117300142DE1 /* ChoiceViewController.swift */,
 				493EA0101B721CEE00142DE1 /* CreditsViewController.swift */,
+				4978ECB01B79BDA0005DB331 /* EndViewController.swift */,
 				624262B31B4460CB00005CE3 /* LaunchScreen.xib */,
 				491177021B57017300665F1E /* Main.storyboard */,
 				624262B71B4460CB00005CE3 /* Helpers */,
@@ -576,6 +579,7 @@
 				493E9FE61B6EF24900142DE1 /* Picture.swift in Sources */,
 				499419F81B5D78CF004F4760 /* AddFriendsTableViewCell.swift in Sources */,
 				624262C31B4460CB00005CE3 /* ErrorHandling.swift in Sources */,
+				4978ECB11B79BDA0005DB331 /* EndViewController.swift in Sources */,
 				493EA0111B721CEE00142DE1 /* CreditsViewController.swift in Sources */,
 				491176FF1B561DFA00665F1E /* SettingsViewController.swift in Sources */,
 				49941A041B5DC3F2004F4760 /* ParseHelper.swift in Sources */,

@@ -197,15 +197,24 @@ class GameViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     @IBAction func nextButtonPressed(sender: AnyObject) {
     
     if (game!["playNumber"] as! Int) == 6 {
+       
         game!.setObject(7, forKey: "playNumber")
         game!.setObject(self.opponent!, forKey: "whoseTurn")
-        game!.saveInBackgroundWithBlock({ (Bool, NSError) -> Void in
-            self.navigationController?.popToRootViewControllerAnimated(true)
+        game!.saveInBackgroundWithBlock({ (Bool, NSError) -> Void in })
+        let endingViewController = self.storyboard!.instantiateViewControllerWithIdentifier("endViewController") as! EndViewController
+        endingViewController.game = self.game!
+        presentViewController(endingViewController, animated: true, completion: { () -> Void in
         })
-    
+       //     self.navigationController?.popToRootViewControllerAnimated(true)
+            
     }
         
     else if (game!["playNumber"] as! Int) == 7 {
+        let endingViewController = self.storyboard!.instantiateViewControllerWithIdentifier("endViewController") as! EndViewController
+        endingViewController.game = self.game!
+        presentViewController(endingViewController, animated: true, completion: { () -> Void in
+        })
+
         game!.deleteInBackgroundWithBlock({ (Bool, NSError) -> Void in
             self.navigationController?.popToRootViewControllerAnimated(true)
         })
@@ -233,6 +242,7 @@ class GameViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
         phase = 1
+        
         if let pickedImage = info[UIImagePickerControllerEditedImage] as? UIImage {
             let imageData = UIImageJPEGRepresentation(pickedImage, 0.8)
             let imageFile = PFFile(data: imageData)
@@ -283,7 +293,7 @@ class GameViewController: UIViewController, UIImagePickerControllerDelegate, UIN
                     activityIndicator.removeFromSuperview()
                     self.dismissViewControllerAnimated(true, completion: nil)
                     self.navigationController?.popToRootViewControllerAnimated(true)
-                    
+                    //self.viewDidLoad()
                 })
 //                }
             
