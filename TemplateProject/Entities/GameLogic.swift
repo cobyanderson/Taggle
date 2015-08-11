@@ -26,6 +26,7 @@ func CreateNewGame(secondPlayer: PFUser, callback: GameCreatedCallback ) {
     
     let game = PFObject(className: parseGame)
     game[parsePlayNumber] = 0
+    game["phaseNumber"] = 0
     game[parseFirstPlayer] = PFUser.currentUser()
     game[parseWhoseTurn] = PFUser.currentUser()
     game[parseSecondPlayer] = secondPlayer

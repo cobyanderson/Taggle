@@ -29,7 +29,9 @@ class EndViewController: UIViewController {
 //    @IBOutlet weak var choice6: UIButton!
     
     @IBAction func saveImage(sender: AnyObject) {
-        if let wnd = self.view{
+        
+        UIImageWriteToSavedPhotosAlbum(picture.image, nil, nil, nil)
+        if let wnd = self.picture{
             
             var temporaryView = UIView(frame: wnd.bounds)
             

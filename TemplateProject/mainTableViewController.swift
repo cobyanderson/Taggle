@@ -143,7 +143,7 @@ class mainTableViewController: UITableViewController, UITableViewDelegate, UITab
             cell.textLabel!.text = "\(playerName)"
             cell.textLabel!.textColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
             cell.textLabel!.font = UIFont(name: "STHeitiSC-Medium", size: 17)
-            if game["playNumber"] as! Int != 0 && game["playNumber"] as! Int != 1 {
+            if game["playNumber"] as! Int != 0 {
                 
                 if (game["whoseTurn"] as! PFUser) != PFUser.currentUser()! {
                     cell.score.textColor = UIColor(red: 250/255, green: 43/255, blue: 86/255, alpha: 1)

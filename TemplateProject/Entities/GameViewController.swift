@@ -20,7 +20,7 @@ class GameViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     
     var choiceView: ChoiceViewController?
     
-    var phase: Int = 1
+    var phase: Int = 0
     
     @IBOutlet weak var taggleView: UIImageView!
     @IBOutlet weak var comment: UILabel!
@@ -34,6 +34,9 @@ class GameViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         imagePicker.delegate = self
         imagePicker.allowsEditing = true
         if let game = game {
+            
+            phase = game["phaseNumber"] as! Int
+            
             if let firstPlayer = game["firstPlayer"] as? PFUser, secondPlayer = game["secondPlayer"] as? PFUser {
                 let playNumber = game["playNumber"] as! Int
                 if firstPlayer != PFUser.currentUser() {
@@ -46,7 +49,7 @@ class GameViewController: UIViewController, UIImagePickerControllerDelegate, UIN
                 }
                 self.navigationItem.title = "Round \(playNumber + 1) / 6"
                 
-                if game["playNumber"] as! Int > 5 {
+                if game["phaseNumber"] as! Int > 11 {
                     
                 self.navigationItem.title = "End"
                     
@@ -86,7 +89,7 @@ class GameViewController: UIViewController, UIImagePickerControllerDelegate, UIN
                
                 }
                 
-                else if game["playNumber"] as! Int == 0 || phase == 2 {
+                else if ((phase % 2) == 0) {
                     
                     self.taggleView.image = UIImage(named: "TaggleSurprised")
                     self.comment.text = "Your Turn!"
@@ -128,7 +131,7 @@ class GameViewController: UIViewController, UIImagePickerControllerDelegate, UIN
                     let guessedAnswers = game["pickedAnswers"] as? [String]
                     
                     
-                    self.guessedAnswer.text = guessedAnswers![(self.game!["playNumber"] as! Int) - 2]
+                    self.guessedAnswer.text = guessedAnswers![(self.game!["playNumber"] as! Int) - 1]
                         
                         let scoreQueryUser = PFUser.query()!.whereKey("objectId", equalTo: PFUser.currentUser()!.objectId!)
                         scoreQueryUser.findObjectsInBackgroundWithBlock {
@@ -195,21 +198,23 @@ class GameViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     
     }
     @IBAction func nextButtonPressed(sender: AnyObject) {
-    
-    if (game!["playNumber"] as! Int) == 6 {
         
-        game!.setObject(7, forKey: "playNumber")
+    println(game!["phaseNumber"] as! Int)
+    
+    if (game!["phaseNumber"] as! Int) == 12 {
+        
+        game!.setObject(13, forKey: "phaseNumber")
         game!.setObject(self.opponent!, forKey: "whoseTurn")
         game!.saveInBackgroundWithBlock({ (Bool, NSError) -> Void in })
         let endingViewController = self.storyboard!.instantiateViewControllerWithIdentifier("endViewController") as! EndViewController
         endingViewController.game = self.game!
         presentViewController(endingViewController, animated: true, completion: { () -> Void in
         })
-       //     self.navigationController?.popToRootViewControllerAnimated(true)
+        self.navigationController?.popToRootViewControllerAnimated(true)
             
     }
         
-    else if (game!["playNumber"] as! Int) == 7 {
+    else if (game!["phaseNumber"] as! Int) == 13 {
         let endingViewController = self.storyboard!.instantiateViewControllerWithIdentifier("endViewController") as! EndViewController
         endingViewController.game = self.game!
         presentViewController(endingViewController, animated: true, completion: { () -> Void in
@@ -220,7 +225,7 @@ class GameViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         })
     }
         
-    else if game!["playNumber"] as! Int == 0 || phase == 2 {
+    else if ((phase % 2) == 0) {
         
             imagePicker.delegate = self
             imagePicker.navigationController?.delegate = self
@@ -231,12 +236,21 @@ class GameViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     
     }
     else {
-        phase = 2
-      
+       
+        let newPhaseNumber: Int = game!["phaseNumber"] as! Int + 1
+        game?.setObject(newPhaseNumber, forKey: "phaseNumber")
+        
+        let newPlayNumber: Int = game!["playNumber"] as! Int + 1
+        game!.setObject(newPlayNumber, forKey: "playNumber")
+        
         let viewController = self.storyboard!.instantiateViewControllerWithIdentifier("choiceViewController") as! ChoiceViewController
         viewController.game = self.game!
-        self.viewDidLoad()
-        presentViewController(viewController, animated: true, completion: nil)
+        viewController.modalTransitionStyle = UIModalTransitionStyle.CrossDissolve
+        game!.saveInBackgroundWithBlock({ (Bool, NSError) -> Void in
+            self.viewDidLoad()
+            self.presentViewController(viewController, animated: true, completion: nil)
+        })
+        
         
       
         }
@@ -244,7 +258,7 @@ class GameViewController: UIViewController, UIImagePickerControllerDelegate, UIN
 
         
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
-        phase = 1
+       
         
         if let pickedImage = info[UIImagePickerControllerEditedImage] as? UIImage {
             let imageData = UIImageJPEGRepresentation(pickedImage, 0.8)
@@ -279,8 +293,8 @@ class GameViewController: UIViewController, UIImagePickerControllerDelegate, UIN
                 imageKey = "picture"
             }
            
-            let newPlayNumber: Int = game!["playNumber"] as! Int + 1
-            game!.setObject(newPlayNumber, forKey: "playNumber")
+            let newPhaseNumber: Int = game!["phaseNumber"] as! Int + 1
+            game?.setObject(newPhaseNumber, forKey: "phaseNumber")
             
             game!.setObject(self.opponent!, forKey: "whoseTurn")
             

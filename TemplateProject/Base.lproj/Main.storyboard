@@ -1154,7 +1154,7 @@ http://goo.gl/forms/nmYdtqx4RJ</string>
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="fill" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="oNY-V3-g96">
-                                <rect key="frame" x="0.0" y="361" width="106.5" height="78.5"/>
+                                <rect key="frame" x="0.0" y="363" width="106.5" height="67.5"/>
                                 <fontDescription key="fontDescription" name="STHeitiSC-Light" family="Heiti SC" pointSize="24"/>
                                 <state key="normal" title="Round 1">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1164,7 +1164,7 @@ http://goo.gl/forms/nmYdtqx4RJ</string>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="fill" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="1wl-h1-KiU" userLabel="Choice2">
-                                <rect key="frame" x="0.0" y="439.5" width="106.5" height="78.5"/>
+                                <rect key="frame" x="0.0" y="430.5" width="106.5" height="67.5"/>
                                 <fontDescription key="fontDescription" name="STHeitiSC-Light" family="Heiti SC" pointSize="24"/>
                                 <state key="normal" title="Round 2">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1174,7 +1174,7 @@ http://goo.gl/forms/nmYdtqx4RJ</string>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="fill" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="rUp-uD-n40">
-                                <rect key="frame" x="107" y="361" width="106.5" height="78.5"/>
+                                <rect key="frame" x="107" y="363" width="106.5" height="67.5"/>
                                 <fontDescription key="fontDescription" name="STHeitiSC-Light" family="Heiti SC" pointSize="24"/>
                                 <state key="normal" title="Round 3">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1184,7 +1184,7 @@ http://goo.gl/forms/nmYdtqx4RJ</string>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="fill" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="J5Q-K1-143" userLabel="Choice5">
-                                <rect key="frame" x="213.5" y="439.5" width="106.5" height="78.5"/>
+                                <rect key="frame" x="213.5" y="430.5" width="106.5" height="67.5"/>
                                 <fontDescription key="fontDescription" name="STHeitiSC-Light" family="Heiti SC" pointSize="24"/>
                                 <state key="normal" title="Round 6">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1194,7 +1194,7 @@ http://goo.gl/forms/nmYdtqx4RJ</string>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="fill" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="1OE-2S-Nyl" userLabel="Choice6">
-                                <rect key="frame" x="213.5" y="361" width="106.5" height="78.5"/>
+                                <rect key="frame" x="213.5" y="363" width="106.5" height="67.5"/>
                                 <fontDescription key="fontDescription" name="STHeitiSC-Light" family="Heiti SC" pointSize="24"/>
                                 <state key="normal" title="Round 5">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1204,7 +1204,7 @@ http://goo.gl/forms/nmYdtqx4RJ</string>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Touch Image to Save" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="it6-if-NGh">
-                                <rect key="frame" x="0.0" y="340" width="320" height="21"/>
+                                <rect key="frame" x="0.0" y="342" width="320" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="JXw-u4-8T2"/>
                                 </constraints>
@@ -1222,12 +1222,12 @@ http://goo.gl/forms/nmYdtqx4RJ</string>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Knx-2S-0zM">
-                                <rect key="frame" x="0.0" y="518" width="320" height="50"/>
+                                <rect key="frame" x="0.0" y="498" width="320" height="70"/>
                                 <color key="backgroundColor" red="0.40000000600000002" green="1" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="1Y6-HB-nnD"/>
+                                    <constraint firstAttribute="height" constant="70" id="1Y6-HB-nnD"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="STHeitiSC-Medium" family="Heiti SC" pointSize="27"/>
+                                <fontDescription key="fontDescription" name="STHeitiSC-Medium" family="Heiti SC" pointSize="35"/>
                                 <state key="normal" title="Done">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -1237,7 +1237,7 @@ http://goo.gl/forms/nmYdtqx4RJ</string>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="fill" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="LMT-E8-bww" userLabel="Choice4">
-                                <rect key="frame" x="107" y="439" width="106.5" height="78.5"/>
+                                <rect key="frame" x="107" y="430" width="106.5" height="67.5"/>
                                 <fontDescription key="fontDescription" name="STHeitiSC-Light" family="Heiti SC" pointSize="24"/>
                                 <state key="normal" title="Round 4">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1270,7 +1270,7 @@ http://goo.gl/forms/nmYdtqx4RJ</string>
                             <constraint firstAttribute="trailingMargin" secondItem="WSQ-Gk-5gP" secondAttribute="trailing" constant="-16" id="RHV-uQ-f4B"/>
                             <constraint firstItem="rUp-uD-n40" firstAttribute="leading" secondItem="oNY-V3-g96" secondAttribute="trailing" id="RXo-yn-iT3"/>
                             <constraint firstItem="1wl-h1-KiU" firstAttribute="width" secondItem="J5Q-K1-143" secondAttribute="width" id="S6P-3I-1L8"/>
-                            <constraint firstItem="it6-if-NGh" firstAttribute="top" secondItem="WSQ-Gk-5gP" secondAttribute="bottom" id="STD-cp-xGl"/>
+                            <constraint firstItem="it6-if-NGh" firstAttribute="top" secondItem="WSQ-Gk-5gP" secondAttribute="bottom" constant="2" id="STD-cp-xGl"/>
                             <constraint firstItem="J5Q-K1-143" firstAttribute="height" secondItem="oNY-V3-g96" secondAttribute="height" id="Scs-vg-qJW"/>
                             <constraint firstItem="oNY-V3-g96" firstAttribute="top" secondItem="WSQ-Gk-5gP" secondAttribute="bottom" id="Uh0-df-rvO"/>
                             <constraint firstItem="oNY-V3-g96" firstAttribute="top" secondItem="it6-if-NGh" secondAttribute="bottom" id="X1N-M3-Kiu"/>
