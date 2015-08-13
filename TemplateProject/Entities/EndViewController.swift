@@ -13,8 +13,17 @@ import AssetsLibrary
 
 class EndViewController: UIViewController {
     
-    var game: PFObject?
+    var game : PFObject?
     var imageKey = "picture1"
+
+    var prompts: [String] = []
+    var prompt: String = ""
+
+    
+    @IBOutlet weak var imageContainer: UIView!
+    
+    @IBOutlet weak var promptLabel: UILabel!
+    
     @IBAction func pressedDone(sender: AnyObject) {
         dismissViewControllerAnimated(true, completion: { () -> Void in
         })
@@ -30,19 +39,20 @@ class EndViewController: UIViewController {
     
     @IBAction func saveImage(sender: AnyObject) {
         
-        UIImageWriteToSavedPhotosAlbum(picture.image, nil, nil, nil)
+        let image = imageContainer.pb_takeSnapshot()
+        UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
         if let wnd = self.picture{
             
             var temporaryView = UIView(frame: wnd.bounds)
             
-            temporaryView.backgroundColor = UIColor.whiteColor()
+            temporaryView.backgroundColor = UIColor.grayColor()
             temporaryView.alpha = 1
             
             let label = UILabel(frame: wnd.bounds)
             label.textAlignment = NSTextAlignment.Center
             label.text = "Saved"
             label.textColor = UIColor.blackColor()
-            label.font = UIFont(name: "STHeitiSC-Medium", size: 50)
+            label.font = UIFont(name: "STHeitiSC-Medium", size: 30)
     
             temporaryView.addSubview(label)
             temporaryView.bringSubviewToFront(label)
@@ -58,41 +68,63 @@ class EndViewController: UIViewController {
         }
         
         
-    }
+}
+    
+
     
     @IBAction func pressed1(sender: AnyObject) {
         imageKey = "picture1"
         viewDidLoad()
+        prompts = game!["pickedAnswers"] as! [String]
+        prompt = prompts[0]
+        
     }
     @IBAction func pressed2(sender: AnyObject) {
         imageKey = "picture2"
+ 
+        prompts = game!["pickedAnswers"] as! [String]
+        prompt = prompts[1]
         viewDidLoad()
     }
     @IBAction func pressed3(sender: AnyObject) {
         imageKey = "picture3"
+
+        prompts = game!["pickedAnswers"] as! [String]
+        prompt = prompts[2]
         viewDidLoad()
     }
     @IBAction func pressed4(sender: AnyObject) {
         imageKey = "picture4"
+
+        prompts = game!["pickedAnswers"] as! [String]
+        prompt = prompts[3]
         viewDidLoad()
     }
     @IBAction func pressed5(sender: AnyObject) {
         imageKey = "picture5"
+
+        prompts = game!["pickedAnswers"] as! [String]
+        prompt = prompts[4]
         viewDidLoad()
     }
     @IBAction func pressed6(sender: AnyObject) {
         imageKey = "picture6"
+        prompts = game!["pickedAnswers"] as! [String]
+        prompt = prompts[5]
         viewDidLoad()
     }
     
+    
     override func viewDidLoad() {
-        let playerAnswers = game!["pickedAnswers"] as! [String]
+        promptLabel.text = prompt
+        
         let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.WhiteLarge)
         self.picture.addSubview(activityIndicator)
         activityIndicator.center = self.picture.center
    
         let imageFile: PFFile = game![imageKey] as! PFFile
         imageFile.getDataInBackgroundWithBlock({ (data: NSData?, error: NSError?) -> Void in
+            
             self.picture.image = UIImage(data: data!, scale: 1.0)
             activityIndicator.stopAnimating()
             }, progressBlock: { (Int32) -> Void in
@@ -108,5 +140,20 @@ class EndViewController: UIViewController {
 //        choice6.setTitle(playerAnswers[5], forState: .Normal)
         
     
+    }
+}
+
+extension UIView {
+    
+    func pb_takeSnapshot() -> UIImage {
+        UIGraphicsBeginImageContextWithOptions(bounds.size, false, UIScreen.mainScreen().scale)
+        
+        drawViewHierarchyInRect(self.bounds, afterScreenUpdates: true)
+        
+        // old style: layer.renderInContext(UIGraphicsGetCurrentContext())
+        
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return image
     }
 }

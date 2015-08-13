@@ -119,7 +119,7 @@ class ChoiceViewController: UIViewController {
         var isCorrect = true
         var taggleImage = UIImage(named: "TaggleAngry")
         if answerChoices[0] == shuffledAnswerChoices[shuffledIndex] {
-            color = UIColor(red: 34/255, green: 250/255, blue: 109/255, alpha: 1)
+            color = UIColor(red: 34/255, green: 254/255, blue: 115/255, alpha: 1)
 //            labelText = "Nice!"
             isCorrect = true
             taggleImage = UIImage(named: "TaggleHappy")
@@ -178,8 +178,10 @@ class ChoiceViewController: UIViewController {
                 result.setObject(score, forKey: "score")
             }
 
-            result.saveInBackground()
-        }
+            result.saveInBackgroundWithBlock({ (Bool, NSError) -> Void in
+                
+            })
+        
         
         let scoreQueryUser = PFUser.query()!.whereKey("objectId", equalTo: PFUser.currentUser()!.objectId!)
         scoreQueryUser.findObjectsInBackgroundWithBlock {
@@ -198,19 +200,25 @@ class ChoiceViewController: UIViewController {
                 }
             
             result.setObject(correctlyGuessed, forKey: "correctlyGuessed")
-            result.saveInBackground()
+            result.saveInBackgroundWithBlock({ (Bool, NSError) -> Void in
+                
+            NSTimer.scheduledTimerWithTimeInterval(3.0, target: self, selector: Selector("dismiss"), userInfo: nil, repeats: false)
+            })
         }
         
-       
+        }
         
 
-        NSTimer.scheduledTimerWithTimeInterval(4.0, target: self, selector: Selector("dismiss"), userInfo: nil, repeats: false)
+        
         
     }
     func dismiss() {
         dismissViewControllerAnimated(true, completion: { () -> Void in
-            
-        })
+         })
+//        if self.game!["phaseNumber"] as! Int == 12 {
+//            navigationController?.popToRootViewControllerAnimated(true)
+//            }
+       
     }
 
     

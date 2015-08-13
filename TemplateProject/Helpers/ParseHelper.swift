@@ -26,12 +26,14 @@ class ParseHelper {
         let query = PFQuery(className: ParseFriendClass)
         query.whereKey(ParseFriendFromUser, equalTo: user)
         query.whereKey("accepted", equalTo: false)
+        query.orderByAscending("Username")
         query.findObjectsInBackgroundWithBlock(completionBlock)
     }
     static func getFriendedUsersForUser(user: PFUser, completionBlock: PFArrayResultBlock) {
         let query = PFQuery(className: ParseFriendClass)
         query.whereKey(ParseFriendFromUser, equalTo: user)
         query.whereKey("accepted", equalTo: true)
+        query.orderByAscending("Username")
         query.findObjectsInBackgroundWithBlock(completionBlock)
  
     }
@@ -48,7 +50,19 @@ class ParseHelper {
             let results = results as? [PFObject] ?? []
             if results.isEmpty == true {
                 friendObject.setObject(false, forKey: "accepted")
-                
+                if let pushQuery = PFInstallation.query() {
+                    pushQuery.whereKey("user", equalTo: toUser)
+                    
+                    let data = [
+                        "alert" : "\(user.username!) wants to be your friend on Taggle!",
+                        "badge" : "Increment"
+                    ]
+                    
+                    let push = PFPush()
+                    push.setQuery(pushQuery) // Set our Installation query
+                    push.setData(data)
+                    push.sendPushInBackground()
+                }
             }
             else {
                 friendObject.setObject(true, forKey: "accepted")
@@ -98,7 +112,7 @@ class ParseHelper {
         }
     }
 
-    // fetches friend requests for the current user, limits this to 20
+    // fetches friend requests for the current user
     // parameters: completion block
     // returns: a query
     static func friendRequests(completionBlock: PFArrayResultBlock) -> PFQuery {
@@ -107,7 +121,7 @@ class ParseHelper {
         query.whereKey(ParseHelper.ParseFriendtoUser, equalTo: PFUser.currentUser()!)
         query.whereKey("accepted", equalTo: false)
         query.includeKey("fromUser")
-       
+        query.orderByAscending("Username")
         query.findObjectsInBackgroundWithBlock(completionBlock)
 
         return query 
@@ -122,7 +136,7 @@ class ParseHelper {
         // include Keys here?
         query.orderByAscending(ParseHelper.ParseFriendtoUser)
         query.findObjectsInBackgroundWithBlock(completionBlock)
-       
+        query.limit = 20
         return query
     }
     // fetches users that match the search

@@ -104,7 +104,7 @@ class newGameViewController: UIViewController, UITableViewDataSource, UITableVie
             
             cell.score.text = friendScore
             if averageScore > 50 {
-                cell.score.textColor = UIColor(red: 34/255, green: 250/255, blue: 109/255, alpha: 1)
+                cell.score.textColor = UIColor(red: 34/255, green: 254/255, blue: 115/255, alpha: 1)
             }
             else {
                 cell.score.textColor =  UIColor(red: 250/255, green: 43/255, blue: 86/255, alpha: 1)
@@ -132,12 +132,12 @@ class newGameViewController: UIViewController, UITableViewDataSource, UITableVie
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
 
-        if contains(selectedFriends, foundFriends[indexPath.row]) == false && selectedFriendsCount < 1 {
-            selectedFriendsCount = selectedFriendsCount + 1
+        if contains(selectedFriends, foundFriends[indexPath.row]) == false {
+            selectedFriendsCount = 1
             if selectedFriends.isEmpty == false {
                 selectedFriends.removeLast()
             }
-
+            println(selectedFriends)
             selectedFriends.append(foundFriends[indexPath.row])
 
         }

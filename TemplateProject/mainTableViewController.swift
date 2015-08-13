@@ -19,7 +19,7 @@ class mainTableViewController: UITableViewController, UITableViewDelegate, UITab
             mainTableView.reloadData()
         }
     }
-
+    
     override func viewDidLoad() {
        // super.viewDidLoad()
         
@@ -150,7 +150,7 @@ class mainTableViewController: UITableViewController, UITableViewDelegate, UITab
                     cell.score.text = "Their Turn"
                 }
                 else {
-                    cell.score.textColor = UIColor(red: 34/255, green: 250/255, blue: 109/255, alpha: 1)
+                    cell.score.textColor = UIColor(red: 34/255, green: 254/255, blue: 115/255, alpha: 1)
                     cell.score.text = "Your Turn!"
                 }
               
