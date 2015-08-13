@@ -86,7 +86,7 @@ class SettingsViewController: UIViewController, PFLogInViewControllerDelegate, P
             self.CorrectlyGuessed.text = "\(CGstringScore)%"
             
             if CGcalculatedScore > 50 {
-                self.CorrectlyGuessed.textColor = UIColor(red: 34/255, green: 254/255, blue: 115/255, alpha: 1)
+                self.CorrectlyGuessed.textColor = UIColor(red: 34/255, green: 254/255, blue: 155/255, alpha: 1)
             }
             else {
                 self.CorrectlyGuessed.textColor = UIColor(red: 250/255, green: 43/255, blue: 86/255, alpha: 1)
