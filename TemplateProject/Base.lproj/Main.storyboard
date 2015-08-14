@@ -15,7 +15,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="F5G-en-YSG">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" red="0.76078431369999999" green="0.0" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="1" green="0.2570281365" blue="0.3796108346" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="barTintColor" red="1" green="0.21930638860000001" blue="0.35919324279999998" alpha="1" colorSpace="calibratedRGB"/>
                         <textAttributes key="titleTextAttributes">
@@ -806,13 +806,61 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Ready" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="1tF-2h-N98">
+                                <rect key="frame" x="0.0" y="310" width="600" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="9cr-5c-KGd"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="Tld-2e-ajx"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="60" id="ef2-Fz-0kH"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="STHeitiSC-Medium" family="Heiti SC" pointSize="50"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="9cr-5c-KGd"/>
+                                    </mask>
+                                </variation>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Start?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="Xff-MF-F3Y">
+                                <rect key="frame" x="0.0" y="399" width="600" height="119"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="60" id="IZo-cZ-6HE"/>
+                                    <constraint firstAttribute="height" constant="80" id="UKM-jh-gyG"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="avU-DS-LdX"/>
+                                    <constraint firstAttribute="height" constant="30" id="hOm-JS-rGb"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="73"/>
+                                <color key="textColor" red="0.0" green="1" blue="0.50196081400000003" alpha="0.92000000000000004" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="UKM-jh-gyG"/>
+                                        <exclude reference="avU-DS-LdX"/>
+                                        <exclude reference="hOm-JS-rGb"/>
+                                    </mask>
+                                </variation>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="TaggleSurprised.png" translatesAutoresizingMaskIntoConstraints="NO" id="zIh-OH-mIl">
+                                <rect key="frame" x="76" y="64" width="448" height="238"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="7nF-Bd-ubr"/>
+                                    <constraint firstAttribute="height" constant="200" id="zJW-t5-Oqd"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="7nF-Bd-ubr"/>
+                                        <exclude reference="zJW-t5-Oqd"/>
+                                    </mask>
+                                </variation>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J9Y-Cm-H5b">
                                 <rect key="frame" x="-10" y="530" width="620" height="70"/>
                                 <color key="backgroundColor" red="0.0" green="1" blue="0.50196081400000003" alpha="0.92000000000000004" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="70" id="27Y-t4-Dip"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="STHeitiSC-Medium" family="Heiti SC" pointSize="35"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="35"/>
                                 <state key="normal" title="Next">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -820,53 +868,29 @@
                                     <action selector="nextButtonPressed:" destination="nOJ-3H-nBB" eventType="touchUpInside" id="y3N-PA-Abt"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Ready to Start?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1tF-2h-N98">
-                                <rect key="frame" x="167" y="264" width="264" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="9cr-5c-KGd"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="STHeitiSC-Medium" family="Heiti SC" pointSize="36"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Gd-vf-iwH">
-                                <rect key="frame" x="0.0" y="329" width="600" height="20"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="to" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="8Gd-vf-iwH">
+                                <rect key="frame" x="0.0" y="362" width="600" height="29"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="oOq-on-GZC"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="40" id="orj-ch-z0m"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="20" id="ziT-W8-RQU"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="STHeitiSC-Medium" family="Heiti SC" pointSize="20"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="30"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="Xff-MF-F3Y">
-                                <rect key="frame" x="0.0" y="354" width="600" height="80"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="80" id="UKM-jh-gyG"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="avU-DS-LdX"/>
-                                    <constraint firstAttribute="height" constant="30" id="hOm-JS-rGb"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="STHeitiSC-Medium" family="Heiti SC" pointSize="35"/>
-                                <color key="textColor" red="0.0" green="1" blue="0.50196081400000003" alpha="0.92000000000000004" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="default">
                                     <mask key="constraints">
-                                        <exclude reference="avU-DS-LdX"/>
-                                        <exclude reference="hOm-JS-rGb"/>
+                                        <exclude reference="oOq-on-GZC"/>
                                     </mask>
                                 </variation>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TaggleSurprised.png" translatesAutoresizingMaskIntoConstraints="NO" id="zIh-OH-mIl">
-                                <rect key="frame" x="150" y="64" width="300" height="200"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="300" id="7nF-Bd-ubr"/>
-                                    <constraint firstAttribute="height" constant="200" id="zJW-t5-Oqd"/>
-                                </constraints>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.15294118230000001" green="0.77254909279999995" blue="0.85098046059999999" alpha="1" colorSpace="deviceRGB"/>
                         <constraints>
+                            <constraint firstItem="J9Y-Cm-H5b" firstAttribute="top" secondItem="Xff-MF-F3Y" secondAttribute="bottom" constant="15" id="AFT-Ty-hUz"/>
                             <constraint firstAttribute="trailingMargin" secondItem="J9Y-Cm-H5b" secondAttribute="trailing" constant="-26" id="CFu-B6-SoC"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Xff-MF-F3Y" secondAttribute="trailing" constant="-16" id="EHI-bn-2qy"/>
+                            <constraint firstItem="1tF-2h-N98" firstAttribute="leading" secondItem="ZFU-cd-B5k" secondAttribute="leadingMargin" constant="-16" id="EgY-Ng-1hX"/>
                             <constraint firstAttribute="trailingMargin" secondItem="8Gd-vf-iwH" secondAttribute="trailing" constant="-16" id="FTc-KK-HRK"/>
                             <constraint firstItem="Xff-MF-F3Y" firstAttribute="leading" secondItem="ZFU-cd-B5k" secondAttribute="leadingMargin" constant="-16" id="ImT-Wt-gL8"/>
                             <constraint firstItem="8Gd-vf-iwH" firstAttribute="leading" secondItem="ZFU-cd-B5k" secondAttribute="leadingMargin" constant="-16" id="LEM-1N-Lea"/>
@@ -874,17 +898,20 @@
                             <constraint firstItem="2yX-Hd-zRq" firstAttribute="top" secondItem="J9Y-Cm-H5b" secondAttribute="bottom" id="ODm-ox-SAr"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Xff-MF-F3Y" secondAttribute="trailing" constant="-16" id="QpZ-Jx-zCi"/>
                             <constraint firstItem="Xff-MF-F3Y" firstAttribute="leading" secondItem="ZFU-cd-B5k" secondAttribute="leadingMargin" constant="-16" id="Xw2-JQ-31v"/>
+                            <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="zIh-OH-mIl" secondAttribute="trailing" id="YV5-cz-MSP"/>
                             <constraint firstAttribute="centerX" secondItem="Xff-MF-F3Y" secondAttribute="centerX" id="Zw9-xN-7z3"/>
                             <constraint firstAttribute="centerX" secondItem="1tF-2h-N98" secondAttribute="centerX" id="akJ-wU-Rzv"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="1tF-2h-N98" secondAttribute="trailing" constant="-16" id="axX-k7-EqP"/>
                             <constraint firstItem="Xff-MF-F3Y" firstAttribute="top" secondItem="8Gd-vf-iwH" secondAttribute="bottom" constant="5" id="beU-W6-wEP"/>
                             <constraint firstAttribute="centerX" secondItem="zIh-OH-mIl" secondAttribute="centerX" id="d5e-0J-Uvc"/>
+                            <constraint firstItem="zIh-OH-mIl" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="ZFU-cd-B5k" secondAttribute="leadingMargin" id="dtk-LC-bZv"/>
                             <constraint firstItem="zIh-OH-mIl" firstAttribute="top" secondItem="kbO-ec-FyK" secondAttribute="bottom" id="gmN-D0-xac"/>
                             <constraint firstItem="Xff-MF-F3Y" firstAttribute="top" secondItem="8Gd-vf-iwH" secondAttribute="bottom" constant="8" id="iip-DR-d8t"/>
                             <constraint firstAttribute="centerX" secondItem="8Gd-vf-iwH" secondAttribute="centerX" id="k88-mz-dQ8"/>
                             <constraint firstItem="J9Y-Cm-H5b" firstAttribute="leading" secondItem="ZFU-cd-B5k" secondAttribute="leadingMargin" constant="-26" id="oyU-Mu-pE8"/>
                             <constraint firstAttribute="centerX" secondItem="Xff-MF-F3Y" secondAttribute="centerX" id="u6Z-Gy-cff"/>
                             <constraint firstItem="Xff-MF-F3Y" firstAttribute="top" secondItem="8Gd-vf-iwH" secondAttribute="bottom" constant="10" id="urK-WX-v7D"/>
-                            <constraint firstItem="1tF-2h-N98" firstAttribute="top" secondItem="zIh-OH-mIl" secondAttribute="bottom" id="yy5-kb-WC5"/>
+                            <constraint firstItem="1tF-2h-N98" firstAttribute="top" secondItem="zIh-OH-mIl" secondAttribute="bottom" constant="5" id="yy5-kb-WC5"/>
                             <constraint firstItem="8Gd-vf-iwH" firstAttribute="top" secondItem="zIh-OH-mIl" secondAttribute="bottom" constant="8" id="z0x-8O-S06"/>
                         </constraints>
                         <variation key="default">
@@ -1175,11 +1202,20 @@ http://goo.gl/forms/nmYdtqx4RJ</string>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="76q-15-VM4">
-                                        <rect key="frame" x="0.0" y="289" width="320" height="25"/>
-                                        <fontDescription key="fontDescription" name="STHeitiSC-Medium" family="Heiti SC" pointSize="25"/>
+                                        <rect key="frame" x="0.0" y="281.5" width="320" height="32.5"/>
+                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="25"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h2Y-B2-aw3" userLabel="takeshot">
+                                        <rect key="frame" x="0.0" y="-20" width="30" height="30"/>
+                                        <state key="normal">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="saveImage:" destination="Rzg-7l-mED" eventType="touchUpInside" id="mUn-Xe-Xlb"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -1207,7 +1243,7 @@ http://goo.gl/forms/nmYdtqx4RJ</string>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="fill" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="rUp-uD-n40">
-                                <rect key="frame" x="109" y="366" width="103.5" height="63"/>
+                                <rect key="frame" x="109" y="366" width="103" height="63"/>
                                 <fontDescription key="fontDescription" name="STHeitiSC-Light" family="Heiti SC" pointSize="18"/>
                                 <state key="normal" title="Round 3" backgroundImage="AnswerBoxWhite.png">
                                     <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -1217,7 +1253,7 @@ http://goo.gl/forms/nmYdtqx4RJ</string>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="fill" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="LMT-E8-bww" userLabel="Choice4">
-                                <rect key="frame" x="109" y="432" width="103" height="62.5"/>
+                                <rect key="frame" x="109" y="432" width="102.5" height="62.5"/>
                                 <fontDescription key="fontDescription" name="STHeitiSC-Light" family="Heiti SC" pointSize="18"/>
                                 <state key="normal" title="Round 4" backgroundImage="AnswerBoxWhite.png">
                                     <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -1227,7 +1263,7 @@ http://goo.gl/forms/nmYdtqx4RJ</string>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="fill" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="J5Q-K1-143" userLabel="Choice5">
-                                <rect key="frame" x="214" y="432" width="102.5" height="62.5"/>
+                                <rect key="frame" x="214.5" y="432" width="102.5" height="62.5"/>
                                 <fontDescription key="fontDescription" name="STHeitiSC-Light" family="Heiti SC" pointSize="18"/>
                                 <state key="normal" title="Round 6" backgroundImage="AnswerBoxWhite.png">
                                     <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -1237,7 +1273,7 @@ http://goo.gl/forms/nmYdtqx4RJ</string>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="fill" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="1OE-2S-Nyl" userLabel="Choice6">
-                                <rect key="frame" x="215" y="366" width="103" height="63"/>
+                                <rect key="frame" x="214.5" y="366" width="103" height="63"/>
                                 <fontDescription key="fontDescription" name="STHeitiSC-Light" family="Heiti SC" pointSize="18"/>
                                 <state key="normal" title="Round 5" backgroundImage="AnswerBoxWhite.png">
                                     <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -1246,21 +1282,12 @@ http://goo.gl/forms/nmYdtqx4RJ</string>
                                     <action selector="pressed5:" destination="Rzg-7l-mED" eventType="touchUpInside" id="Rri-lQ-7xJ"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h2Y-B2-aw3" userLabel="takeshot">
-                                <rect key="frame" x="0.0" y="20" width="320" height="322"/>
-                                <state key="normal">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="saveImage:" destination="Rzg-7l-mED" eventType="touchUpInside" id="mUn-Xe-Xlb"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Touch Image to Save to Camera Roll" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="it6-if-NGh">
                                 <rect key="frame" x="0.0" y="342" width="320" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="JXw-u4-8T2"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="STHeitiSC-Light" family="Heiti SC" pointSize="16"/>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <color key="highlightedColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             </label>
@@ -1283,11 +1310,8 @@ http://goo.gl/forms/nmYdtqx4RJ</string>
                         <color key="backgroundColor" red="0.15294118230000001" green="0.77254909279999995" blue="0.85098046059999999" alpha="1" colorSpace="deviceRGB"/>
                         <constraints>
                             <constraint firstItem="Knx-2S-0zM" firstAttribute="top" secondItem="1wl-h1-KiU" secondAttribute="bottom" constant="3" id="0XN-Hv-wSD"/>
-                            <constraint firstItem="h2Y-B2-aw3" firstAttribute="leading" secondItem="xpE-pC-krD" secondAttribute="leadingMargin" constant="-16" id="2E4-1g-qJT"/>
                             <constraint firstItem="1OE-2S-Nyl" firstAttribute="width" secondItem="rUp-uD-n40" secondAttribute="width" id="2G9-Um-tCu"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="h2Y-B2-aw3" secondAttribute="trailing" constant="-16" id="5Gu-qF-AS6"/>
                             <constraint firstAttribute="trailingMargin" secondItem="J5Q-K1-143" secondAttribute="trailing" constant="-13" id="5dc-l7-Fds"/>
-                            <constraint firstItem="h2Y-B2-aw3" firstAttribute="top" secondItem="pt1-GN-oFy" secondAttribute="bottom" id="7Bv-8W-5v2"/>
                             <constraint firstItem="r4V-l3-Uml" firstAttribute="top" secondItem="pt1-GN-oFy" secondAttribute="bottom" id="7S3-oY-6QE"/>
                             <constraint firstItem="r4V-l3-Uml" firstAttribute="leading" secondItem="xpE-pC-krD" secondAttribute="leadingMargin" constant="-16" id="9Iv-me-eFM"/>
                             <constraint firstItem="1OE-2S-Nyl" firstAttribute="height" secondItem="rUp-uD-n40" secondAttribute="height" id="C05-bp-fxH"/>
@@ -1306,7 +1330,6 @@ http://goo.gl/forms/nmYdtqx4RJ</string>
                             <constraint firstItem="oNY-V3-g96" firstAttribute="top" secondItem="it6-if-NGh" secondAttribute="bottom" constant="3" id="X1N-M3-Kiu"/>
                             <constraint firstItem="rUp-uD-n40" firstAttribute="top" secondItem="it6-if-NGh" secondAttribute="bottom" constant="3" id="XD2-DY-WCZ"/>
                             <constraint firstItem="J5Q-K1-143" firstAttribute="width" secondItem="oNY-V3-g96" secondAttribute="width" id="YpA-Bb-jbE"/>
-                            <constraint firstItem="it6-if-NGh" firstAttribute="top" secondItem="h2Y-B2-aw3" secondAttribute="bottom" id="ZxA-nP-DHY"/>
                             <constraint firstItem="J5Q-K1-143" firstAttribute="width" secondItem="LMT-E8-bww" secondAttribute="width" id="bEn-DT-gkB"/>
                             <constraint firstItem="1OE-2S-Nyl" firstAttribute="height" secondItem="oNY-V3-g96" secondAttribute="height" id="ban-b8-0d4"/>
                             <constraint firstItem="1OE-2S-Nyl" firstAttribute="leading" secondItem="rUp-uD-n40" secondAttribute="trailing" constant="3" id="c7x-av-wA5"/>
