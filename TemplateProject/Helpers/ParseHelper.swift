@@ -136,7 +136,7 @@ class ParseHelper {
         // include Keys here?
         query.orderByAscending(ParseHelper.ParseFriendtoUser)
         query.findObjectsInBackgroundWithBlock(completionBlock)
-        query.limit = 20
+      
         return query
     }
     // fetches users that match the search
